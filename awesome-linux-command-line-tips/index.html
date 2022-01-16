@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>Awesome Command-line tips to 10x your productivity</title>
+
+    
+    
+    <meta name="description" content="Manage your configuration like code Suppose you need to work on another machine, saving your configuration in GitHub will save you much time when re-customize your working environment.
+ Many de...">
+    <link rel="canonical" href="http://coderscat.com/awesome-linux-command-line-tips/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Awesome Command-line tips to 10x your productivity">
+    <meta property="og:description" content="Manage your configuration like code Suppose you need to work on another machine, saving your configuration in GitHub will save you much time when re-customize your working environment.
+ Many de...">
+    <meta property="og:url" content="http://coderscat.com/awesome-linux-command-line-tips/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2019-11-26 19:55:00">
+    <meta property="article:modified_time" content="2019-11-26 19:55:00">
+    <meta property="og:updated_time" content="2019-11-26 19:55:00">
+    <meta property="og:image" content="http://coderscat.com/images/2019_11_25_awesome-linux-commands.org_20191127_121607.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/2019_11_25_awesome-linux-commands.org_20191127_121607.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Awesome Command-line tips to 10x your productivity">
+    <meta name="twitter:description" content="Manage your configuration like code Suppose you need to work on another machine, saving your configuration in GitHub will save you much time when re-customize your working environment.
+ Many de...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/2019_11_25_awesome-linux-commands.org_20191127_121607.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            Awesome Command-line tips to 10x your productivity | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Awesome Command-line tips to 10x your productivity</h2>
+  <p class="post-date">2019-11-26</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <h2 id="Manage-your-configuration-like-code"><a href="#Manage-your-configuration-like-code" class="headerlink" title="Manage your configuration like code"></a>Manage your configuration like code</h2><p> Suppose you need to work on another machine, saving your configuration in GitHub will save you much time when re-customize your working environment.</p>
+<p> Many developers already do <a target="_blank" rel="noopener" href="https://github.com/fongandrew/shell-setup">the same thing</a>. Manage any configuration(.bashrc, .vimrc, .emacs, etc) with Git is a good habit you should develop from the beginning of working on <code>Linux/Mac</code>.</p>
+<p> The benefits of managing configurations with Git is:</p>
+<ul>
+<li>Reviewing your change history, which is useful for troubleshooting.</li>
+</ul>
+<ul>
+<li>Accumulating the tips and configuration.</li>
+</ul>
+<ul>
+<li>Use it on multiple machines.</li>
+</ul>
+<p>If you are not ready to share your configuration with others, use a <code>private</code> GitHub repo for security.</p>
+<p>Currently, we can use private repo in GitHub without pay any fees.</p>
+<p>Remember to add sensitive files into .gitignore, and <code>DO NOT</code> push files which contain password or secrets into GitHub.</p>
+<p> I saw many developers pushed sensitive files into GitHub, and got security issues. Don’t be a fool.</p>
+<h2 id="How-to-get-help"><a href="#How-to-get-help" class="headerlink" title="How to get help"></a>How to get help</h2><p> Don’t be afraid of so many commands options in the command line working environment.</p>
+<p> Developers don’t need to remember everything,</p>
+<p> The manual and documents are organized in the same pattern and Google is your final lifebuoy.</p>
+<p> Whenever you need help for any command, try these:</p>
+<h3 id="Use-man-to-query-the-manuals"><a href="#Use-man-to-query-the-manuals" class="headerlink" title="Use man to query the manuals"></a>Use <code>man</code> to query the manuals</h3><p> Command <code>man</code> used to display the user manual of any command that we can run on the terminal.</p>
+<p> On Ubuntu/Debian, you need to install it from the terminal: <code>sudo apt-get install man</code>.</p>
+<p> Except for querying the manual of command, you can also use <code>man</code> to read the manual and details of the function or files you are interested in.</p>
+<p> <code>man exec</code> will display on screen:</p>
+<p> <img src="/images/2019_11_25_awesome-linux-commands.org_20191127_121607.png" alt="file:img/2019_11_25_awesome-linux-commands.org_20191127_121607.png"></p>
+<h3 id="Use-command-with-help-h"><a href="#Use-command-with-help-h" class="headerlink" title="Use command with --help/-h"></a>Use command with <code>--help/-h</code></h3><p> Any command or script will come with a help message. Whenever you don’t know which option to use for your task, have a try on <code>command --help</code>. Linux/Unix help messages usually designed in a similar format, you need to adapt to it.</p>
+<p> <img src="/images/2019_11_25_awesome-linux-commands.org_20191127_122357.png" alt="file:img/2019_11_25_awesome-linux-commands.org_20191127_122357.png"></p>
+<h3 id="Google-effectively"><a href="#Google-effectively" class="headerlink" title="Google effectively"></a>Google effectively</h3><p> <a target="_blank" rel="noopener" href="https://medium.com/@niamhpower/how-to-google-effectively-as-a-developer-4ebe363afe">Learn how to google effectively as a developer</a>, it needs time but rewarding for your development life.</p>
+<p> You should know using which keywords to search for command line issues.</p>
+<p> For Linux commands “Linux command <code>#keyword#</code>“ should be a good try.</p>
+<h2 id="Shell-alias"><a href="#Shell-alias" class="headerlink" title="Shell alias"></a>Shell alias</h2><p> Shell aliases are the most useful tips when you working on Linux/Mac.</p>
+<p> Whenever you think one command line will be repeated later(especially the long one), you should add it to your configuration as a <code>alias</code>.</p>
+<p> Part of my configuration includes:</p>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">alias</span> nis=<span class="hljs-string">&quot;npm install --save &quot;</span><br><span class="hljs-built_in">alias</span> www=<span class="hljs-string">&#x27;python -m SimpleHTTPServer 8000&#x27;</span><br><span class="hljs-built_in">alias</span> svim=<span class="hljs-string">&#x27;sudo vim&#x27;</span><br><span class="hljs-built_in">alias</span> mkcd=<span class="hljs-string">&#x27;mkdir_with_name()&#123; mkdir -p &quot;$1&quot;; cd &quot;$1&quot; &#125;; makedir_with_name &#x27;</span><br><span class="hljs-built_in">alias</span> install=<span class="hljs-string">&#x27;sudo apt get install&#x27;</span><br><span class="hljs-built_in">alias</span> update=<span class="hljs-string">&#x27;sudo apt-get update; sudo apt-get upgrade&#x27;</span><br><span class="hljs-built_in">alias</span> ..=<span class="hljs-string">&quot;cd ..&quot;</span><br><span class="hljs-built_in">alias</span> ...=<span class="hljs-string">&quot;cd ..; cd ..&quot;</span><br><span class="hljs-built_in">alias</span> sock5=<span class="hljs-string">&#x27;ssh -D 8080 -q -C -N -f user@your.server&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p> Other handy aliases:</p>
+<p> <a target="_blank" rel="noopener" href="https://www.cyberciti.biz/tips/bash-aliases-mac-centos-linux-unix.html">30 Handy Bash Shell Aliases For Linux / Unix / Mac OS X</a></p>
+<p> <a target="_blank" rel="noopener" href="https://brettterpstra.com/2013/03/31/a-few-more-of-my-favorite-shell-aliases/">A few more of my favorite Bash aliases</a></p>
+<h2 id="Shell-tips"><a href="#Shell-tips" class="headerlink" title="Shell tips"></a>Shell tips</h2><h3 id="go-back-to-the-previous-working-directory"><a href="#go-back-to-the-previous-working-directory" class="headerlink" title="go back to the previous working directory"></a>go back to the previous working directory</h3><p> Suppose you change current working directory into /tmp, finished some tasks and want to go back to the previous working directory, in this case, <code>cd -</code> will help you saving time.</p>
+<h3 id="execute-the-command-in-history"><a href="#execute-the-command-in-history" class="headerlink" title="execute the command in history"></a>execute the command in history</h3><p> <code>history</code> will show the commands executed recently</p>
+<p> <img src="/images/2019_11_25_awesome-linux-commands.org_20191126_160158.png" alt="file:img/2019_11_25_awesome-linux-commands.org_20191126_160158.png"></p>
+<p> From the output,  <code>!5</code> will re-execute command ‘pwd’ If you want to re-execute the last command, you could use <code>!!</code> to finish it.</p>
+<h3 id="free-top"><a href="#free-top" class="headerlink" title="free/top"></a>free/top</h3><p> <code>free/top</code> used to display the usage statistics of resources, like memory and CPU usage. A more friendly alternative is <code>htop</code>, which display all kind of statistics with visualization.</p>
+<h3 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h3><p> <code>netstat</code> is a command-line network utility that displays network connections for Transmission Control Protocol, routing tables, and several network interface and network protocol statistics.</p>
+<p> More usage examples <a target="_blank" rel="noopener" href="https://www.tecmint.com/20-netstat-commands-for-linux-network-management/">listed here</a>.</p>
+<h2 id="Combine-commands-for-your-task"><a href="#Combine-commands-for-your-task" class="headerlink" title="Combine commands for your task"></a>Combine commands for your task</h2><p> The best way to use the Linux/Unix is to use the commands like awk, sed, grep, xargs, find, sort, etc., combine them into the function you wanted. Just like what’s I have done for <a target="_blank" rel="noopener" href="https://www.coderscat.com/code-scan-in-git-repos">Git repo checking</a>.</p>
+<p> Most of the simple tasks like grep word from files, filter files with pattern can be finished with these tiny commands.</p>
+<p> <code>cat/head/tail</code> : show the content of files, <a target="_blank" rel="noopener" href="https://github.com/sharkdp/bat">bat</a> is a Rust clone of <code>cat</code>, which supports syntax highlighting for a large number of programming and markup languages.</p>
+<p> <code>grep</code> : Search any line that contains the keyword in a file.</p>
+<p> <code>sort</code>: sorts the contents of a text file, line by line.</p>
+<p> <code>uniq</code> : Remove duplicated parts from string or files.</p>
+<p> <code>find</code> : Find or filter files with patterns.</p>
+<p> <code>xargs</code> : Allows tools or commands to accept standard input as arguments.</p>
+<p> <code>awk</code> : A scripting language used for manipulating data and generating reports.</p>
+<h2 id="Some-fancy-tools-which-power-your-productivity"><a href="#Some-fancy-tools-which-power-your-productivity" class="headerlink" title="Some fancy tools which power your productivity"></a>Some fancy tools which power your productivity</h2><h3 id="httpie"><a href="#httpie" class="headerlink" title="httpie"></a>httpie</h3><p> <a target="_blank" rel="noopener" href="https://httpie.org/">httpie</a> is a fancy command line HTTP client with an intuitive UI, it also supports JSON format, with highlighting, and many plugins. Maybe you have used <code>curl</code> or <code>wget</code>, you will forget them when you have tried <code>httpie</code>.</p>
+ <img src="/images/httpie.gif" width="70%">
+
+
+<h3 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h3><p> <a target="_blank" rel="noopener" href="https://github.com/tmux/tmux">tmux</a> is a terminal multiplexer, it can manage windows and sessions in your terminal. You can split the screen into multiple sub-panels, you can also detach and re-attach sessions.</p>
+<p> If you want to connect to remote servers frequently, this is an invaluable tool for you.</p>
+<p> <img src="/images/2019_11_25_awesome-linux-commands.org_20191127_223129.png" alt="file:img/2019_11_25_awesome-linux-commands.org_20191127_223129.png"></p>
+<h2 id="Which-shell-to-use"><a href="#Which-shell-to-use" class="headerlink" title="Which shell to use"></a>Which shell to use</h2><p> Bash is the default shell on many Linux distributions today.</p>
+<p> <a target="_blank" rel="noopener" href="https://www.howtoforge.com/tutorial/how-to-setup-zsh-and-oh-my-zsh-on-linux/">Zsh</a> is a modern one with features of other Unix/GNU Linux shells such as bash, tcsh, and ksh.</p>
+<p> <a target="_blank" rel="noopener" href="https://fishshell.com/">Fish</a> is a smart and user-friendly command-line shell for Linux, macOS. It supports powerful features like syntax highlighting, autosuggestions, and tab completions that just work, with nothing to learn or configure.</p>
+<p> If you work on Mac: Zsh on <a target="_blank" rel="noopener" href="https://iterm2.com/">iterm2</a> is my most recommended one.</p>
+<p> <a target="_blank" rel="noopener" href="https://ohmyz.sh/">Oh My Zsh</a> is a delightful, open-source, community-driven framework for managing your Zsh configuration. With the configuration from the community, it saves much of your time.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p> tmux guide: <a target="_blank" rel="noopener" href="https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/">https://www.hamvocke.com</a></p>
+<p> Oh-my-zsh: <a target="_blank" rel="noopener" href="https://ohmyz.sh/">https://ohmyz.sh/</a></p>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#System" >
+    <span class="tag-code-index">System</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/leetcode-regular-expression-matching/">
+        <span class="nav-arrow">← </span>
+        
+          LeetCode: Regular Expression Mat...
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/caching-from-top-to-bottom/">
+            
+                Caching: From Top To Bottom
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Manage-your-configuration-like-code"><span class="toc-nav-text">Manage your configuration like code</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#How-to-get-help"><span class="toc-nav-text">How to get help</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Use-man-to-query-the-manuals"><span class="toc-nav-text">Use man to query the manuals</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Use-command-with-help-h"><span class="toc-nav-text">Use command with --help&#x2F;-h</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Google-effectively"><span class="toc-nav-text">Google effectively</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Shell-alias"><span class="toc-nav-text">Shell alias</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Shell-tips"><span class="toc-nav-text">Shell tips</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#go-back-to-the-previous-working-directory"><span class="toc-nav-text">go back to the previous working directory</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#execute-the-command-in-history"><span class="toc-nav-text">execute the command in history</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#free-top"><span class="toc-nav-text">free&#x2F;top</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#netstat"><span class="toc-nav-text">netstat</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Combine-commands-for-your-task"><span class="toc-nav-text">Combine commands for your task</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Some-fancy-tools-which-power-your-productivity"><span class="toc-nav-text">Some fancy tools which power your productivity</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#httpie"><span class="toc-nav-text">httpie</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#tmux"><span class="toc-nav-text">tmux</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Which-shell-to-use"><span class="toc-nav-text">Which shell to use</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#References"><span class="toc-nav-text">References</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/awesome-linux-command-line-tips/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

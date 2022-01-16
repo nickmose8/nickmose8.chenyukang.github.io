@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>5 Pieces of advice for Learning Emacs</title>
+
+    
+    
+    <meta name="description" content="
+ I have been lived with Emacs for 16 years and will likely continue with it in more years. I programming, write articles, and do the presentation with Emacs effectively.
+I tried to escape from...">
+    <link rel="canonical" href="http://coderscat.com/5-advice-for-learning-emacs/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="5 Pieces of advice for Learning Emacs">
+    <meta property="og:description" content="
+ I have been lived with Emacs for 16 years and will likely continue with it in more years. I programming, write articles, and do the presentation with Emacs effectively.
+I tried to escape from...">
+    <meta property="og:url" content="http://coderscat.com/5-advice-for-learning-emacs/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2020-03-03 13:22:00">
+    <meta property="article:modified_time" content="2020-03-03 13:22:00">
+    <meta property="og:updated_time" content="2020-03-03 13:22:00">
+    <meta property="og:image" content="http://coderscat.com../images/learning-emacs.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com../images/learning-emacs.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="5 Pieces of advice for Learning Emacs">
+    <meta name="twitter:description" content="
+ I have been lived with Emacs for 16 years and will likely continue with it in more years. I programming, write articles, and do the presentation with Emacs effectively.
+I tried to escape from...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com../images/learning-emacs.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            5 Pieces of advice for Learning Emacs | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>5 Pieces of advice for Learning Emacs</h2>
+  <p class="post-date">2020-03-03</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <p><img src="../images/learning-emacs.png" alt="file:img/learning-emacs.png"></p>
+<p> I have been lived with Emacs for 16 years and will likely continue with it in more years. I programming, write articles, and do the presentation with Emacs effectively.</p>
+<p>I tried to escape from Emacs for some fresh experiences. I used some modern editors, such as Sublime, Atom, and VSCode.</p>
+<p> The result is always the same. I’m more productive and more enjoyable with Emacs. Living with Emacs eventually becomes a lifestyle.</p>
+<p> Two decades ago, most programmers were Emacs users or Vim users. Sadly, fewer and fewer programmers use these ancient editors, Emacs’s user ratio is shrinking.</p>
+<p> <img src="/images/2020_03_03_5-tips-for-learning-emacs.org_20200303_160025.png" alt="file:img/2020_03_03_5-tips-for-learning-emacs.org_20200303_160025.png"></p>
+<p> Even so, I’m encouraging you to have a try on Emacs.</p>
+<p><strong>Something is good doesn’t mean it is popular</strong>. We should try to find the tools that suit ourselves best.</p>
+<h2 id="Why-learning-Emacs-is-worth-it"><a href="#Why-learning-Emacs-is-worth-it" class="headerlink" title="Why learning Emacs is worth it"></a>Why learning Emacs is worth it</h2><p> The time we spent on Emacs is rewarding in the long term. Emacs is the most extensible editor and gives users maximum freedom. We will get the best productivity after familiar with it.</p>
+<p> Emacs is a 45 years old software. It’s stable and with lots of packages and supports for different programming languages and all kinds of tasks.</p>
+<p> Most Emacs users are senior developers who have mastered multiple languages. I got well programming experience with Emacs, even for those less popular programming languages, such as OCaml, Scheme, and Clojure.</p>
+<p> Think about how much our computing life revolves around editing. Emacs will be a rewarding choice for those who will programming for years and will be open for different technology stacks.</p>
+<p> Do you want to have a try on Emacs? Here are my five tips for you:</p>
+<h2 id="1-Learning-Emacs-by-using-it"><a href="#1-Learning-Emacs-by-using-it" class="headerlink" title="#1 Learning Emacs by using it"></a>#1 Learning Emacs by using it</h2><p> Don’t be afraid of so many commands and key bindings.</p>
+<p> Emacs has a learning curve in the beginning.</p>
+<p> Keep using it consistently. After some time, Your fingers and muscles will form memories, and everything you do is performed naturally.</p>
+<p> You don’t need to write <code>Emacs Lisp</code> from the beginning.</p>
+<p> Follow this <a target="_blank" rel="noopener" href="https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-en.org">best guide for mastering Emacs in one year</a>.</p>
+<h2 id="2-Start-with-open-source-configurations"><a href="#2-Start-with-open-source-configurations" class="headerlink" title="#2 Start with open-source configurations"></a>#2 Start with open-source configurations</h2><p> Please check out <a target="_blank" rel="noopener" href="https://github.com/syl20bnr/spacemacs">spacemacs</a> or <a target="_blank" rel="noopener" href="https://github.com/hlissner/doom-emacs">doom-emacs</a>.</p>
+<p> They are maintained by the community and have many excellent default configurations for most tasks and most programming languages.</p>
+<p> Even more, these two projects contain handy configurations for Vim users.</p>
+<blockquote>
+<p>The best editor is neither Emacs nor Vim. It’s Emacs <strong>and</strong> Vim!<br> This video is an introduction for Spacemacs:</p>
+</blockquote>
+  <style>.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+  }
+  .embed-container iframe, .embed-container object, .embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+
+<div class="embed-container"><iframe src="https://www.youtube.com/embed/hCNOB5jjtmc" allowfullscreen frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe></div>
+
+<p> <a target="_blank" rel="noopener" href="https://github.com/emacs-tw/awesome-emacs">awesome-emacs</a> lists popular packages with all kinds of categories. It will save much of our time.</p>
+<h2 id="3-Keep-your-finger-healthy"><a href="#3-Keep-your-finger-healthy" class="headerlink" title="#3 Keep your finger healthy"></a>#3 Keep your finger healthy</h2><p> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=psKzEwESMpw">Switch the key of <code>Ctrl</code> with =Caps Lock=</a> so that your finger will feel better.</p>
+<p> <code>Ctrl</code> is the modifier key for most Emacs key bindings, <code>Caps Lock</code> is the more proper key position for the left pinky finger.</p>
+<p> For this reason, <a target="_blank" rel="noopener" href="https://amzn.to/2vBBwqI">HHKB</a> is an excellent gift for most Emacs users.</p>
+<p> <img src="/images/2020_03_03_5-tips-for-learning-emacs.org_20200303_200632.png" alt="file:img/2020_03_03_5-tips-for-learning-emacs.org_20200303_200632.png"></p>
+<p> I bought an HHKB 8 years ago, but I don’t use it frequently. It’s a little bit inconvenient for mobility.</p>
+<h2 id="4-Try-org-mode"><a href="#4-Try-org-mode" class="headerlink" title="#4 Try org-mode"></a>#4 Try org-mode</h2><p> <a target="_blank" rel="noopener" href="https://orgmode.org/">org-mode</a> is a killer application in Emacs, it’s the reason I can not escape from Emacs and some non-programmers to use Emacs.</p>
+<p> <code>org-mode</code> is a complete system to organize your project, take notes, track tasks, track time, agenda, write documents, and much more! Everything is plaintext, and you could sync them with Github or Dropbox, or export your writings into PDF, HTML, Markdown formats.</p>
+<p> It’s your emacs-based knowledge management system!</p>
+<p> I’m currently writing most of my blogging posts in Emacs, then sync up to my WordPress with a key binding.</p>
+<p> <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=PVsSOmUB7ic">Learn Emacs Org Mode: Spacemacs Intro Tutorial</a> is a good tutorial video for you to start.</p>
+ <style>.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+  }
+  .embed-container iframe, .embed-container object, .embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+
+<div class="embed-container"><iframe src="https://www.youtube.com/embed/PVsSOmUB7ic" allowfullscreen frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe></div>
+
+
+<h2 id="5-Don’t-use-it-as-an-operating-system"><a href="#5-Don’t-use-it-as-an-operating-system" class="headerlink" title="#5 Don’t use it as an operating system"></a>#5 Don’t use it as an operating system</h2><p> After you get the fun of Emacs, you may be obsessed with it, imperceptibly.</p>
+<p> Because of its extreme extensibility, Emacs could serve as a “Great Operating System.” It means you could write extensions to Emacs for various kinds of tasks.</p>
+<p> You could use it to browse Web pages, play music, send Emails, you could even use it to <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=y0LEW7a0LoQ">control a coffee maker</a>!</p>
+<p> In some cases, I put too much time to hack Emacs for various tasks. It is OK if you have enough spare time, <code>Emacs Lisp</code> is also a Lisp dialect which worth exploring.</p>
+<p> However, some tasks could be finished in Emacs does not mean it’s the best choice to do this. The job of browsing the Web pages should adopt a modern Web browser.</p>
+<p> So, avoid being too addicted to it and put our time on more valuable stuff.</p>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Misc" >
+    <span class="tag-code-index">Misc</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/blogging-with-emacs-and-wordpress/">
+        <span class="nav-arrow">← </span>
+        
+          Blogging with Emacs and Wordpress
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/5-things-i-learned-from-teslas-anti-handbook/">
+            
+                5 things I learned from Tesla&#39;s ...
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Why-learning-Emacs-is-worth-it"><span class="toc-nav-text">Why learning Emacs is worth it</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-Learning-Emacs-by-using-it"><span class="toc-nav-text">#1 Learning Emacs by using it</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-Start-with-open-source-configurations"><span class="toc-nav-text">#2 Start with open-source configurations</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Keep-your-finger-healthy"><span class="toc-nav-text">#3 Keep your finger healthy</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-Try-org-mode"><span class="toc-nav-text">#4 Try org-mode</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-Don%E2%80%99t-use-it-as-an-operating-system"><span class="toc-nav-text">#5 Don’t use it as an operating system</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/5-advice-for-learning-emacs/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>Form Validator In Svelte</title>
+
+    
+    
+    <meta name="description" content="I begin to write some tutorials on learning Svelte. Again, I’m also a new front-end developer, so I’m not sure if I’m doing is the best practice.
+I will follow the project list of vanillawebpro...">
+    <link rel="canonical" href="http://coderscat.com/svelte-form-validator/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Form Validator In Svelte">
+    <meta property="og:description" content="I begin to write some tutorials on learning Svelte. Again, I’m also a new front-end developer, so I’m not sure if I’m doing is the best practice.
+I will follow the project list of vanillawebpro...">
+    <meta property="og:url" content="http://coderscat.com/svelte-form-validator/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2021-11-30 07:17:48">
+    <meta property="article:modified_time" content="2021-11-30 07:17:48">
+    <meta property="og:updated_time" content="2021-11-30 07:17:48">
+    <meta property="og:image" content="http://coderscat.com/images/ob_2021-11-29-16-37-14.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/ob_2021-11-29-16-37-14.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Form Validator In Svelte">
+    <meta name="twitter:description" content="I begin to write some tutorials on learning Svelte. Again, I’m also a new front-end developer, so I’m not sure if I’m doing is the best practice.
+I will follow the project list of vanillawebpro...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/ob_2021-11-29-16-37-14.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            Form Validator In Svelte | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Form Validator In Svelte</h2>
+  <p class="post-date">2021-11-30</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <p>I begin to write some tutorials on learning Svelte. Again, I’m also a new front-end developer, so I’m not sure if I’m doing is the best practice.</p>
+<p>I will follow the project list of <a target="_blank" rel="noopener" href="https://github.com/bradtraversy/vanillawebprojects">vanillawebprojects</a>, try to re-implement the projects with Svelte.<br>I think this is a good way to practice front-end development skills.</p>
+<p>Ok, let’s go to the <a target="_blank" rel="noopener" href="https://github.com/chenyukang/sveltejs-apps/tree/main/form-validator">Svelte Form Validator</a> project.</p>
+<p>It’s a simple form validator, which will be commonly used in registration UI.</p>
+<p><img src="/images/ob_2021-11-29-16-37-14.png" alt="/images/ob_2021-11-29-16-37-14.png"></p>
+<p>Let’s create the project directory with the following command:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">npx degit sveltejs/template form-validator<br><span class="hljs-built_in">cd</span> form-validator<br>npm install <br>npm run dev <br></code></pre></td></tr></table></figure>
+
+<p>Access <a target="_blank" rel="noopener" href="http://localhost:5000/">http://localhost:5000</a> will show the demo HTML page.</p>
+<p>The basic structure of a Svelte component is like this:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><br><span class="javascript">  <span class="hljs-comment">// Component logic goes here</span></span><br><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- HTML goes here --&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><br><span class="css">  <span class="hljs-comment">/* CSS goes here (scoped by default!) */</span></span><br><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>Here, let’s begin with some JavaScript variables, which will be used in validation.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript">&lt;script&gt;<br> <span class="hljs-keyword">let</span> username = <span class="hljs-string">&quot;&quot;</span>;	<br> <span class="hljs-keyword">let</span> email = <span class="hljs-string">&quot;&quot;</span>;<br> <span class="hljs-keyword">let</span> password = <span class="hljs-string">&quot;&quot;</span>;<br> <span class="hljs-keyword">let</span> password2 = <span class="hljs-string">&quot;&quot;</span>;<br>    ...<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="Bind-values"><a href="#Bind-values" class="headerlink" title="Bind values"></a>Bind values</h2><p>Then we will bind the variablesw in HTML elements with <code>bind:value</code> attribute, and hook the <code>handleSubmit</code> function to the <code>on:click</code> event.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span>Username<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">bind:value</span>=<span class="hljs-string">&#123;username&#125;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;username&quot;</span> </span><br><span class="hljs-tag">     <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Ente username&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">small</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;email&quot;</span>&gt;</span>Email<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">bind:value</span>=<span class="hljs-string">&#123;email&#125;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;email&quot;</span> </span><br><span class="hljs-tag">    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Enter email&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">small</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">on:click</span>=<span class="hljs-string">&#123;handleSubmit&#125;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br></code></pre></td></tr></table></figure>
+<h2 id="Validation"><a href="#Validation" class="headerlink" title="Validation"></a>Validation</h2><p>Compared with vanilla JavaScript, we don’t need to use <code>getElementById</code> to get the HTML elements. The code will be shorter as well. The core logic to do validation is like this:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// Event listeners	</span><br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handleSubmit</span>(<span class="hljs-params">e</span>) </span>&#123;<br> e.preventDefault();<br> <span class="hljs-keyword">if</span> (!checkRequired([[<span class="hljs-string">&quot;username&quot;</span>, username], [<span class="hljs-string">&quot;email&quot;</span>, email], <br>    [<span class="hljs-string">&quot;password&quot;</span>, password], [<span class="hljs-string">&quot;password2&quot;</span>, password2]])) &#123;<br>  checkLength(<span class="hljs-string">&quot;username&quot;</span>, username, <span class="hljs-number">3</span>, <span class="hljs-number">15</span>);<br>  checkLength(<span class="hljs-string">&quot;password&quot;</span>, password, <span class="hljs-number">6</span>, <span class="hljs-number">25</span>);<br>  checkEmail(email);<br>  checkPasswordsMatch(password, password2);<br> &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>To make code shorter, we can use the <code>required</code> attribute to avoid manual checking:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;form-control&quot;</span>&gt;</span><br> <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;username&quot;</span>&gt;</span>Username<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">bind:value</span>=<span class="hljs-string">&#123;username&#125;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;username&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;Enter username&quot;</span> <span class="hljs-attr">required</span>&gt;</span><br> <span class="hljs-tag">&lt;<span class="hljs-name">small</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>...<br><br><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">on:submit</span>=<span class="hljs-string">&#123;handleSubmit&#125;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>The refactor code commit is at <a target="_blank" rel="noopener" href="https://github.com/chenyukang/sveltejs-apps/commit/75ee09f0862d16c158e25ba86cf7b78cfe625736">this</a>.</p>
+<p>That’s all, the whole project is at : <a target="_blank" rel="noopener" href="https://github.com/chenyukang/sveltejs-apps/tree/main/form-validator">form-validator</a> for your reference.</p>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#JavaScript" >
+    <span class="tag-code-index">JavaScript</span>
+  </a>
+
+  <a href="/tags#Svelte" >
+    <span class="tag-code-index">Svelte</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/svelte-demo-movie-seat-booking/">
+        <span class="nav-arrow">← </span>
+        
+          Svelte Demo: Movie Seat Booking
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/fix-missing-header-file-on-linux/">
+            
+                Fix missing header files on Ubuntu
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Bind-values"><span class="toc-nav-text">Bind values</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Validation"><span class="toc-nav-text">Validation</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/svelte-form-validator/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

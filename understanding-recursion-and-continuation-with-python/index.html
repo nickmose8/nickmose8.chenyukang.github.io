@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>Understanding Recursion and Continuation with Python</title>
+
+    
+    
+    <meta name="description" content="
+Recursion, continuation and continuation-passing style are essential ideas for functional programming languages. Have an understanding of them will help much in knowing how programming languag...">
+    <link rel="canonical" href="http://coderscat.com/understanding-recursion-and-continuation-with-python/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Understanding Recursion and Continuation with Python">
+    <meta property="og:description" content="
+Recursion, continuation and continuation-passing style are essential ideas for functional programming languages. Have an understanding of them will help much in knowing how programming languag...">
+    <meta property="og:url" content="http://coderscat.com/understanding-recursion-and-continuation-with-python/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2020-05-09 12:58:00">
+    <meta property="article:modified_time" content="2020-05-09 12:58:00">
+    <meta property="og:updated_time" content="2020-05-09 12:58:00">
+    <meta property="og:image" content="http://coderscat.com/images/photo-1554900773-4dd76725f876.jpeg"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/photo-1554900773-4dd76725f876.jpeg"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Understanding Recursion and Continuation with Python">
+    <meta name="twitter:description" content="
+Recursion, continuation and continuation-passing style are essential ideas for functional programming languages. Have an understanding of them will help much in knowing how programming languag...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/photo-1554900773-4dd76725f876.jpeg"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            Understanding Recursion and Continuation with Python | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Understanding Recursion and Continuation with Python</h2>
+  <p class="post-date">2020-05-09</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <!-- block -->
+<p>Recursion, continuation and continuation-passing style are essential ideas for functional programming languages. Have an understanding of them will help much in knowing how programming languages work.</p>
+<!-- block -->
+
+<p><img src="/images/photo-1554900773-4dd76725f876.jpeg" alt="file:img/photo-1554900773-4dd76725f876.jpeg"></p>
+<p> In the article <a href="https://coderscat.com/learn-programming-languages">How To Learn All Programming Languages</a>, I explained learning programming language concepts is an effective way to master all programming languages.</p>
+<p><strong>Recursion</strong>, <strong>continuation</strong>, and <strong>continuation-passing style</strong> are essential ideas for functional programming languages. Have an understanding of them will help much in knowing how programming languages work; even we don’t use them in daily programming tasks.</p>
+<p> In this post, let’s learn these concepts of programming languages with some short Python programs.</p>
+<h2 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h2><blockquote>
+<p>Recursion in computer science is a method of solving a problem where the solution depends on solutions to smaller instances of the same problem.<br>– Wikipedia</p>
+</blockquote>
+<p>Most modern programming language support recursion by allowing a function to call itself from within its own code. Recursion is the default programming paradigm in many functional programming languages, such as Haskell, OCaml.</p>
+<p> Many daily programming tasks or algorithms could be implemented in recursion more easily. Suppose you want to list all the files and sub-directories of a directory recursively, recursion will be a natural choice for implementation.</p>
+<p> Let’s have a look at this simple recursive Python program:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib_rec</span>(<span class="hljs-params">n</span>):</span><br>    <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">2</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> fib_rec(n - <span class="hljs-number">1</span>) + fib_rec(n - <span class="hljs-number">2</span>)<br><br>print(fib_rec(<span class="hljs-number">5</span>))<br></code></pre></td></tr></table></figure>
+
+<p> It is a naive implementation for computing Fibonacci numbers. A key point of recursion is there must be an exit point, the third line of <code>return 1</code> is the exit point for this program.</p>
+<p> But what is the drawback of recursion?</p>
+<p> Let’s add more debug information for this program, print the call depth at the beginning of the function:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> traceback<br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib_rec</span>(<span class="hljs-params">n</span>):</span><br>    print(<span class="hljs-built_in">len</span>(traceback.extract_stack()) * <span class="hljs-string">&#x27;*&#x27;</span> + <span class="hljs-string">&quot;: &quot;</span> + <span class="hljs-built_in">str</span>(n))<br>    <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">2</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> fib_rec(n - <span class="hljs-number">1</span>) + fib_rec(n - <span class="hljs-number">2</span>)<br><br><br>print(fib_rec(<span class="hljs-number">5</span>))<br></code></pre></td></tr></table></figure>
+
+
+
+<p>The output will be:</p>
+ <img src="/images/2020_05_08_understanding-tail-recursive-and-csp-with-python.org_20200509_125520.png" style="width: 35%; height: 35%">
+
+
+
+<p>The <code>*</code> implies the call depths of the current function call. As we can see from the output, 2 points need to notice:</p>
+<ul>
+<li>There are duplicated computations during the whole progress. fib_rec(3), fib_rec(2), fib_rec(1) are called multiple times.</li>
+</ul>
+<ul>
+<li><p>The call stacks will grow quickly as the input number increase. Stack overflow exception will be thrown out if we want to compute fib_rec(1000).</p>
+<p>How could we fix these general issues of recursion?</p>
+</li>
+</ul>
+<h2 id="Tail-Recursion"><a href="#Tail-Recursion" class="headerlink" title="Tail Recursion"></a>Tail Recursion</h2><p> Tail recursion is a special form of recursion, in which the final action of a procedure calls itself again.  In the above program, the last action is <code>return 1</code> or <code>return fib_rec(n-1) + fib_rec(n-2)</code>, this is not a tail recursion.</p>
+<p> Let’s try to convert above program to tail recursion:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib_tail</span>(<span class="hljs-params">n, acc1=<span class="hljs-number">1</span>, acc2=<span class="hljs-number">1</span></span>):</span><br>    print(<span class="hljs-built_in">len</span>(traceback.extract_stack()) * <span class="hljs-string">&#x27;*&#x27;</span> + <span class="hljs-string">&quot;: &quot;</span> + <span class="hljs-built_in">str</span>(n))<br>    <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">2</span>:<br>        <span class="hljs-keyword">return</span> acc1<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> fib_tail(n - <span class="hljs-number">1</span>, acc1 + acc2, acc1)<br><br>print(fib_tail(<span class="hljs-number">5</span>))<br></code></pre></td></tr></table></figure>
+
+<p> The output is like this:</p>
+ <img src="/images/2020_05_08_understanding-tail-recursive-and-csp-with-python.org_20200509_174510.png" style="width: 25%; height: 25%">
+
+<p> From the result, we could find out we removed some duplicated computations, we solved the issue #1 of the above program.</p>
+<h3 id="Tail-Call-Optimization-TCO"><a href="#Tail-Call-Optimization-TCO" class="headerlink" title="Tail Call Optimization (TCO)"></a>Tail Call Optimization (TCO)</h3><p> There is a technical called <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Tail_call">tail call optimization</a> which could solve the issue #2, and it’s implemented in many programming language’s compilers. But not implemented in Python. Guido explains why he doesn’t want <code>tail call optimization</code> <a target="_blank" rel="noopener" href="http://neopythonic.blogspot.com/2009/04/tail-recursion-elimination.html">in this post</a>.</p>
+<p> Anyway, let’s have an understanding of how <code>tail call optimization</code> works. We know that any call of sub-function will create a new stack frame during the execution. If we treat function call as a black box, we could reuse the same stack frame when the tail function call happens.</p>
+<p> To do this, a compiler with <code>TCO</code> will try to eliminate the last tail call with a jump operation and fix the stack overflow issue.</p>
+<p> Suppose if Python had a <code>goto</code> operation, we could replace the last call of <code>fib_tail</code> with <code>goto</code> and update the related parameters.</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># NOTE!!! This is pseudo-code</span><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib_tail</span>(<span class="hljs-params">n, acc1=<span class="hljs-number">1</span>, acc2=<span class="hljs-number">1</span></span>):</span><br>    START:<br>    <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">2</span>:<br>        <span class="hljs-keyword">return</span> acc1<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-comment">#return fib_tail(n - 1, acc1 + acc2, acc1)</span><br>        n = n - <span class="hljs-number">1</span><br>        tmp = acc1<br>        acc1 = acc1 + acc2<br>        acc2 = tmp<br>        goto START<br></code></pre></td></tr></table></figure>
+
+<p> From the result, the compiler actually could convert a recursive function into an iterative version.</p>
+<p> All iterative functions can be converted to recursion because iteration is just a special case of recursion (tail recursion).</p>
+<p> This is the reason why many FP don’t perform poorly even we write code in recursive style. Compilers do their job!</p>
+<h2 id="Continuation-passing-style"><a href="#Continuation-passing-style" class="headerlink" title="Continuation-passing style"></a>Continuation-passing style</h2><p> And even more, functional programming languages adopt the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Continuation-passing_style">continuation-passing style</a> (CPS), in which control is passed explicitly in the form of a continuation.</p>
+<p> A continuation is an abstract representation of the control state of a program.</p>
+<p> Sounds obscure?</p>
+<p> Let’s say continuation is a data structure that represents the computational process at a given point in the process’s execution, we could save an execution state and continue the computational process latter.</p>
+<p> Seems like <code>lambda function</code> in Python could be used for this since we could pass a lambda function as parameters and call them later.</p>
+<p> Let’s define the simplest continuation, this continuation will return the original value with any parameter:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">end_cont = <span class="hljs-keyword">lambda</span> value: value<br></code></pre></td></tr></table></figure>
+
+<p> Then we try to convert the above fib_tail function into a CPS. We add an extra parameter called <code>cont</code>:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib_cps</span>(<span class="hljs-params">n, cont</span>):</span><br>    print(<span class="hljs-built_in">len</span>(traceback.extract_stack()) * <span class="hljs-string">&#x27;*&#x27;</span> + <span class="hljs-string">&quot;: &quot;</span> + <span class="hljs-built_in">str</span>(n))<br>    <span class="hljs-keyword">if</span> n &lt; <span class="hljs-number">2</span>:<br>        <span class="hljs-keyword">return</span> cont(<span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">lambda</span>: fib_cps(<br>                         n - <span class="hljs-number">1</span>,<br>                         <span class="hljs-keyword">lambda</span> value:<br>                           <span class="hljs-keyword">lambda</span>: fib_cps(<br>                                     n - <span class="hljs-number">2</span>,<br>                                     <span class="hljs-keyword">lambda</span> value2:<br>                                       <span class="hljs-keyword">lambda</span>: cont(value + value2)))<br>print(fib_cps(<span class="hljs-number">5</span>, end_cont))<br></code></pre></td></tr></table></figure>
+
+<p> The output is:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">&lt;function &lt;lambda&gt; at 0x101d52758&gt;<br></code></pre></td></tr></table></figure>
+
+<p> Emm, we only got a lambda function as a result. Remember we could continue to execute a continuation, so we continue to run this lambda function, the returned value is still a continuation …</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">v = fib_cps(<span class="hljs-number">5</span>, end_cont)<br>print(v)<br><br>print(v)<br>v = v()<br>print(v)<br><br>v = v()<br>print(v)<br><br>v = v()<br>print(v)<br><br>....<br><br>**: <span class="hljs-number">5</span><br>&lt;function &lt;<span class="hljs-keyword">lambda</span>&gt; at <span class="hljs-number">0x10d493758</span>&gt;<br>***: <span class="hljs-number">4</span><br>&lt;function &lt;<span class="hljs-keyword">lambda</span>&gt; at <span class="hljs-number">0x10d493848</span>&gt;<br>***: <span class="hljs-number">3</span><br>&lt;function &lt;<span class="hljs-keyword">lambda</span>&gt; at <span class="hljs-number">0x10d4938c0</span>&gt;<br>***: <span class="hljs-number">2</span><br>&lt;function &lt;<span class="hljs-keyword">lambda</span>&gt; at <span class="hljs-number">0x10d493938</span>&gt;<br>***: <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p> Let’s wrap a function to call <code>v</code> repeatedly until we got a real value:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">trampoline</span>(<span class="hljs-params">f, *args</span>):</span><br>    v = f(*args)<br>    <span class="hljs-keyword">while</span> <span class="hljs-built_in">callable</span>(v):<br>        v = v()<br>    <span class="hljs-keyword">return</span> v<br></code></pre></td></tr></table></figure>
+
+<p> Then run it with:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">print(trampoline(fib_cps, <span class="hljs-number">5</span>, end_cont))<br></code></pre></td></tr></table></figure>
+
+ <img src="/images/2020_05_08_understanding-tail-recursive-and-csp-with-python.org_20200509_190057.png" style="width: 15%; height: 15%">
+
+
+
+<p>Woo! The stack depth always keeps the same during the execution procedure. Some compilers of functional programming languages will do CPS-transform automatically.</p>
+<h2 id="Summary-up"><a href="#Summary-up" class="headerlink" title="Summary up"></a>Summary up</h2><p> We just had a little but real experience of tail recursion, tail call optimization, and continuation.</p>
+<p> Continuations are useful for implementing other control mechanisms in programming languages such as exceptions, generators, and coroutines. A good understanding of these concepts helps us to understand programming languages deeper.</p>
+<p> I hope you enjoy it.</p>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Python" >
+    <span class="tag-code-index">Python</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/kmp-string-search-algorithm/">
+        <span class="nav-arrow">← </span>
+        
+          KMP String Search Algorithm
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/cookie-vs-session/">
+            
+                Cookie vs. Session
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Recursion"><span class="toc-nav-text">Recursion</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Tail-Recursion"><span class="toc-nav-text">Tail Recursion</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Tail-Call-Optimization-TCO"><span class="toc-nav-text">Tail Call Optimization (TCO)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Continuation-passing-style"><span class="toc-nav-text">Continuation-passing style</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Summary-up"><span class="toc-nav-text">Summary up</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/understanding-recursion-and-continuation-with-python/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

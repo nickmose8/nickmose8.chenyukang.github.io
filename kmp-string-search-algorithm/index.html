@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>KMP String Search Algorithm</title>
+
+    
+    
+    <meta name="description" content="
+Explaination of Knuth–Morris–Pratt string-searching algorithm (or KMP).
+
+
+ Knuth–Morris–Pratt string-searching algorithm (or KMP algorithm) is a string search algorithm.
+ It’s named with the c...">
+    <link rel="canonical" href="http://coderscat.com/kmp-string-search-algorithm/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="KMP String Search Algorithm">
+    <meta property="og:description" content="
+Explaination of Knuth–Morris–Pratt string-searching algorithm (or KMP).
+
+
+ Knuth–Morris–Pratt string-searching algorithm (or KMP algorithm) is a string search algorithm.
+ It’s named with the c...">
+    <meta property="og:url" content="http://coderscat.com/kmp-string-search-algorithm/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2020-05-10 13:51:00">
+    <meta property="article:modified_time" content="2020-05-10 13:51:00">
+    <meta property="og:updated_time" content="2020-05-10 13:51:00">
+    <meta property="og:image" content="http://coderscat.com/images/2020_05_10_kmp-string-search.org_20200510_135023.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/2020_05_10_kmp-string-search.org_20200510_135023.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KMP String Search Algorithm">
+    <meta name="twitter:description" content="
+Explaination of Knuth–Morris–Pratt string-searching algorithm (or KMP).
+
+
+ Knuth–Morris–Pratt string-searching algorithm (or KMP algorithm) is a string search algorithm.
+ It’s named with the c...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/2020_05_10_kmp-string-search.org_20200510_135023.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            KMP String Search Algorithm | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>KMP String Search Algorithm</h2>
+  <p class="post-date">2020-05-10</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <!-- block -->
+<p>Explaination of Knuth–Morris–Pratt string-searching algorithm (or KMP).</p>
+<!-- block -->
+<p><img src="/images/2020_05_10_kmp-string-search.org_20200510_135023.png" alt="file:img/2020_05_10_kmp-string-search.org_20200510_135023.png"></p>
+<p> Knuth–Morris–Pratt string-searching algorithm (or <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm">KMP algorithm</a>) is a string search algorithm.</p>
+<p> It’s named with the combined names of authors and first published at 1970.</p>
+<p> KMP algorithm is elegant and efficient. Give any text and pattern, the overall time complexity is O(M+N), where M is the length of text and N is the length of pattern.</p>
+<p> To understanding KMP, we need to explain with naive string search algorithm and prefix string.</p>
+<h2 id="Naive-string-search-algorithm"><a href="#Naive-string-search-algorithm" class="headerlink" title="Naive string search algorithm"></a>Naive string search algorithm</h2><p> Naive string search has two loops, we iterate each index from text and check each substring with pattern.</p>
+<p> The overall time complexity is O(M*N).        </p>
+ <figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">naive_search</span><span class="hljs-params">(<span class="hljs-keyword">char</span>* s, <span class="hljs-keyword">char</span>* p)</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> sl = <span class="hljs-built_in">strlen</span>(s);<br>  <span class="hljs-keyword">int</span> pl = <span class="hljs-built_in">strlen</span>(p);<br>  <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">while</span> (i &lt; sl &amp;&amp; j &lt; pl) &#123;<br>    <span class="hljs-keyword">if</span> (s[i] == p[j]) &#123;<br>      i++;<br>      j++;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      i = i - j + <span class="hljs-number">1</span>;<br>      j = <span class="hljs-number">0</span>;  <span class="hljs-comment">// Fallback to the beginning of pattern</span><br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> j == pl ? (i-j) : (<span class="hljs-number">-1</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p> The drawback of naïve algorithm is we fallback to the beginning of pattern every time. It will perform badly for such an input:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">text    : a a a d e d f<br>pattern : a a a c<br><br>loop #1 : a a a c<br>loop #2 :   a a a c<br>loop #3 :     a a a c<br></code></pre></td></tr></table></figure>
+
+<p> Each time we checked almost all the characters of pattern, but the last one is different, and then we restart the checking process from the beginning.</p>
+<p> How to solve this issue?</p>
+<h2 id="Prefix-and-suffix-string-sets"><a href="#Prefix-and-suffix-string-sets" class="headerlink" title="Prefix and suffix string sets"></a>Prefix and suffix string sets</h2><p> To understand how to optimize naive string search, we need to know what is the common prefix and suffix substring.</p>
+<p> Given any string, a prefix string set is a set contains all the prefix substring of it. For example, the pefix string set of “hello” is:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">&#123; &quot;h&quot;, &quot;he&quot;, &quot;hel&quot;, &quot;hell&quot;&#125;<br></code></pre></td></tr></table></figure>
+
+<p> Suffix string set is similar but only contains suffix sub-string, for “hello”:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">&#123; &quot;o&quot;, &quot;lo&quot;, &quot;llo&quot;, &quot;ello&quot;&#125;<br></code></pre></td></tr></table></figure>
+
+<p> With these two sets, we could get the longest length of common string in two sets. For example:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">text: &quot;ababab&quot;<br>Prefix set: &#123; &quot;a&quot;, &quot;ab&quot;, &quot;aba&quot;, &quot;abab&quot;, &quot;ababa&quot; &#125;<br>Suffix set: &#123; &quot;b&quot;, &quot;ab&quot;, &quot;bab&quot;, &quot;abab&quot;, &quot;babab&quot; &#125;<br><br>Longest common string length: length(&quot;abab&quot;) &#x3D;&gt; 4<br></code></pre></td></tr></table></figure>
+
+<p> How to use a common string of prefix and suffix substring to make string search quicker?</p>
+<p> For each index of pattern, we build a table which contains the longest length of current substring.</p>
+<p> For pattern “ccca”, the table is:</p>
+<p> <img src="/images/2020_05_10_kmp-string-search.org_20200510_133533.png" alt="file:img/2020_05_10_kmp-string-search.org_20200510_133533.png"></p>
+<p> With text input text of “ccccccccca”, we can skip some part of pattern:</p>
+<p> file:img/kmp-s1.gif</p>
+<p>We even can skip multiple characters from pattern. Given the text of “ababababca”, let’s search the pattern of “abababca”:</p>
+<p> file:img/kmp-s2.gif</p>
+<h2 id="KMP-algorithm"><a href="#KMP-algorithm" class="headerlink" title="KMP algorithm"></a>KMP algorithm</h2><p> With all above explaination, we can figure out KMP is similar with naive string search algorithm, but with an optimization of <code>next</code> table. We use <code>next</code> table to skip prefix parts of pattern:</p>
+ <figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">getNext</span><span class="hljs-params">(<span class="hljs-keyword">char</span>* p, <span class="hljs-keyword">int</span>* next)</span></span>&#123;<br>  <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">-1</span>;<br>  next[<span class="hljs-number">0</span>] = <span class="hljs-number">-1</span>;<br>  <span class="hljs-keyword">while</span> (i &lt; <span class="hljs-built_in">strlen</span>(p)) &#123;<br>    <span class="hljs-keyword">if</span> (j == <span class="hljs-number">-1</span> || p[i] == p[j]) &#123;<br>      ++i;<br>      ++j;<br>      next[i] = j;<br>    &#125;<br>    <span class="hljs-keyword">else</span> j = next[j];<br>  &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">KMP</span><span class="hljs-params">(<span class="hljs-keyword">char</span>* text, <span class="hljs-keyword">char</span>* pattern)</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> lt = <span class="hljs-built_in">strlen</span>(text);<br>  <span class="hljs-keyword">int</span> lp = <span class="hljs-built_in">strlen</span>(pattern);<br>  <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>;<br><br>  <span class="hljs-keyword">int</span> next[lp + <span class="hljs-number">1</span>];<br>  getNext(pattern, next);<br><br>  <span class="hljs-keyword">while</span> (i &lt; lt &amp;&amp; j &lt; lp) &#123;<br>    <span class="hljs-keyword">if</span> (j == <span class="hljs-number">-1</span> || text[i] == pattern[j]) &#123;<br>      i++;<br>      j++;<br>    &#125;<br>    <span class="hljs-keyword">else</span> j = next[j];<br>  &#125;<br>  <span class="hljs-keyword">if</span> (j == lp) <span class="hljs-keyword">return</span> i - j;<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;<br>&#125;<br><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>  <span class="hljs-keyword">char</span>* text = strdup(<span class="hljs-string">&quot;ababababca&quot;</span>);<br>  <span class="hljs-keyword">char</span>* pattern = strdup(<span class="hljs-string">&quot;abababca&quot;</span>);<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;res: %d\n&quot;</span>, KMP(text, pattern));<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Algorithms" >
+    <span class="tag-code-index">Algorithms</span>
+  </a>
+
+  <a href="/tags#Searching" >
+    <span class="tag-code-index">Searching</span>
+  </a>
+
+  <a href="/tags#String" >
+    <span class="tag-code-index">String</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/validate-binary-search-tree/">
+        <span class="nav-arrow">← </span>
+        
+          Validate Binary Search Tree
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/understanding-recursion-and-continuation-with-python/">
+            
+                Understanding Recursion and Cont...
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Naive-string-search-algorithm"><span class="toc-nav-text">Naive string search algorithm</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Prefix-and-suffix-string-sets"><span class="toc-nav-text">Prefix and suffix string sets</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#KMP-algorithm"><span class="toc-nav-text">KMP algorithm</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/kmp-string-search-algorithm/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

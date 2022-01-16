@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>LeetCode: Divide Two Integers</title>
+
+    
+    
+    <meta name="description" content="Descriptionhttps://leetcode.com/problems/divide-two-integers/
+Given two integers dividend and divisor, divide two integers without using multiplication, division and mod operator.
+ Return the q...">
+    <link rel="canonical" href="http://coderscat.com/leetcode-divide-two-integers/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="LeetCode: Divide Two Integers">
+    <meta property="og:description" content="Descriptionhttps://leetcode.com/problems/divide-two-integers/
+Given two integers dividend and divisor, divide two integers without using multiplication, division and mod operator.
+ Return the q...">
+    <meta property="og:url" content="http://coderscat.com/leetcode-divide-two-integers/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2020-02-02 00:30:00">
+    <meta property="article:modified_time" content="2020-02-02 00:30:00">
+    <meta property="og:updated_time" content="2020-02-02 00:30:00">
+    <meta property="og:image" content="http://coderscat.com/images/logo-show.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/logo-show.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LeetCode: Divide Two Integers">
+    <meta name="twitter:description" content="Descriptionhttps://leetcode.com/problems/divide-two-integers/
+Given two integers dividend and divisor, divide two integers without using multiplication, division and mod operator.
+ Return the q...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/logo-show.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            LeetCode: Divide Two Integers | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>LeetCode: Divide Two Integers</h2>
+  <p class="post-date">2020-02-02</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/divide-two-integers/">https://leetcode.com/problems/divide-two-integers/</a></p>
+<p>Given two integers dividend and divisor, divide two integers without using multiplication, division and mod operator.</p>
+<p> Return the quotient after dividing dividend by divisor. The integer division should truncate toward zero.</p>
+<p> Example 1:<br> <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">Input: dividend &#x3D; 10, divisor &#x3D; 3<br>Output: 3<br></code></pre></td></tr></table></figure></p>
+<p>Example 2:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">Input: dividend &#x3D; 7, divisor &#x3D; -3<br>Output: -2<br></code></pre></td></tr></table></figure>
+
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p> This challenge need to handle corner overflow cases carefully.</p>
+<h3 id="Note-1"><a href="#Note-1" class="headerlink" title="Note #1"></a>Note #1</h3><p> We first notice that when <code>dividend eq MIN_INT</code> and <code>divisor eq -1</code>, the result will overflow since the integer range is [-(2^31), 2^31-1].</p>
+<h3 id="Note-2"><a href="#Note-2" class="headerlink" title="Note #2"></a>Note #2</h3><p> Another corner case is when <code>dividend</code> and <code>divisor</code> is different signed, we need to convert them to <code>abs</code> values.</p>
+<p> According to Note #1, we can not use <code>abs</code> function directly, since <code>abs(MIN_INT)</code> will introduce overflow. So we convert <code>int</code> into <code>long long</code> data type, which will be safe for reversing the negative value into positive value.</p>
+ <figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a = <span class="hljs-built_in">abs</span>((<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>)dividend);<br><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> b = <span class="hljs-built_in">abs</span>((<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>)divisor);<br></code></pre></td></tr></table></figure>
+
+<h3 id="The-naive-algorithm"><a href="#The-naive-algorithm" class="headerlink" title="The naive algorithm"></a>The naive algorithm</h3><p> Without multiplication, division, and mod operator, we could come out with a naive solution, we use <code>add</code> operator to test how many times <code>divisor</code> added into a sum, which less or equal to <code>dividend</code>.</p>
+ <figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> cur = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">int</span> result = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span>(cur + divisor &lt;= dividend) &#123;<br>  cur += divisor;<br>  result++;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p> But this will be very slow, especially when <code>dividend</code> is very large value and <code>divisor</code> is small.</p>
+<h3 id="The-algorithm-with-bits-operation"><a href="#The-algorithm-with-bits-operation" class="headerlink" title="The algorithm with bits operation"></a>The algorithm with bits operation</h3><p> Bits operation could be used to time performance.</p>
+<p> We observe that: when <code>(value&gt;&gt;i) / divisor = cnt</code>, we could get <code>(value/divisor) = (cnt&lt;&lt;i)</code>.</p>
+<p> So we iterate each bits and accumulate to the final result:</p>
+ <figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAX 2147483647</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MIN (-2147483648)</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">divide</span><span class="hljs-params">(<span class="hljs-keyword">int</span> dividend, <span class="hljs-keyword">int</span> divisor)</span> </span>&#123;<br>        assert(divisor != <span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">if</span>(dividend == MIN &amp;&amp; divisor == <span class="hljs-number">-1</span>) <span class="hljs-keyword">return</span> MAX;<br>        <span class="hljs-keyword">bool</span> rev = (dividend &lt; <span class="hljs-number">0</span> &amp;&amp; divisor &gt; <span class="hljs-number">0</span>) || (dividend &gt; <span class="hljs-number">0</span> &amp;&amp; divisor &lt; <span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> a = <span class="hljs-built_in">abs</span>((<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>)dividend);<br>        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> b = <span class="hljs-built_in">abs</span>((<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span>)divisor);<br>        <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> result = <span class="hljs-number">0</span>;<br><br>        <span class="hljs-keyword">while</span>(a &gt;= b) &#123;<br>            <span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> c = b;<br>            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; a &gt;= c; ++i, c &lt;&lt;= <span class="hljs-number">1</span>) &#123;<br>                a -= c;<br>                result += (<span class="hljs-number">1</span> &lt;&lt; i);<br>            &#125;<br>        &#125;<br><br><br>        <span class="hljs-keyword">return</span> rev ? (-result) : (result);<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p> A more understandable logic is, because an integer could be represented in 32 bits.</p>
+ <figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">31</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>  <span class="hljs-keyword">if</span> ((a &gt;&gt; i) &gt;= b) &#123;<br>    a -= (b &lt;&lt; i);<br>    result += (<span class="hljs-number">1</span> &lt;&lt; i);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p> <strong><a target="_blank" rel="noopener" href="https://amzn.to/2BeAeB9">Preparing for an interview? Check out this!</a></strong></p>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#LeetCode" >
+    <span class="tag-code-index">LeetCode</span>
+  </a>
+
+  <a href="/tags#Math" >
+    <span class="tag-code-index">Math</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/leetcode-substring-with-concatenation-of-all-words/">
+        <span class="nav-arrow">← </span>
+        
+          LeetCode: Substring with Concate...
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/leetcode-implement-strstr/">
+            
+                LeetCode: Implement strStr()
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Description"><span class="toc-nav-text">Description</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Solution"><span class="toc-nav-text">Solution</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Note-1"><span class="toc-nav-text">Note #1</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Note-2"><span class="toc-nav-text">Note #2</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#The-naive-algorithm"><span class="toc-nav-text">The naive algorithm</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#The-algorithm-with-bits-operation"><span class="toc-nav-text">The algorithm with bits operation</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/leetcode-divide-two-integers/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

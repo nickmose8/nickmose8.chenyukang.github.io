@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>5 Tricks That Will Help You Debug Python Code</title>
+
+    
+    
+    <meta name="description" content="
+Sharpen your Python debugging skills
+
+
+
+
+Debugging is a fundamental skill for programmers, it’s a craft and we need to practice to be better at it. Here, I summarized the useful tricks and too...">
+    <link rel="canonical" href="http://coderscat.com/5-tricks-that-will-help-you-debug-python-code/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="5 Tricks That Will Help You Debug Python Code">
+    <meta property="og:description" content="
+Sharpen your Python debugging skills
+
+
+
+
+Debugging is a fundamental skill for programmers, it’s a craft and we need to practice to be better at it. Here, I summarized the useful tricks and too...">
+    <meta property="og:url" content="http://coderscat.com/5-tricks-that-will-help-you-debug-python-code/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2020-11-02 17:37:00">
+    <meta property="article:modified_time" content="2020-11-02 17:37:00">
+    <meta property="og:updated_time" content="2020-11-02 17:37:00">
+    <meta property="og:image" content="http://coderscat.com/images/2020_11_08_5-tricks-that-will-help-you-debug-python-code.org_20201108_221650.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/2020_11_08_5-tricks-that-will-help-you-debug-python-code.org_20201108_221650.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="5 Tricks That Will Help You Debug Python Code">
+    <meta name="twitter:description" content="
+Sharpen your Python debugging skills
+
+
+
+
+Debugging is a fundamental skill for programmers, it’s a craft and we need to practice to be better at it. Here, I summarized the useful tricks and too...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/2020_11_08_5-tricks-that-will-help-you-debug-python-code.org_20201108_221650.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            5 Tricks That Will Help You Debug Python Code | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>5 Tricks That Will Help You Debug Python Code</h2>
+  <p class="post-date">2020-11-02</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <!-- block -->
+<p>Sharpen your Python debugging skills</p>
+<!-- block -->
+
+
+<p><img src="/images/2020_11_08_5-tricks-that-will-help-you-debug-python-code.org_20201108_221650.png" alt="file:img/2020_11_08_5-tricks-that-will-help-you-debug-python-code.org_20201108_221650.png"></p>
+<p>Debugging is a fundamental skill for programmers, it’s a craft and we need to practice to be better at it. Here, I summarized the useful tricks and tools for debugging your Python code.</p>
+<h2 id="1-View-The-Source-Code-Of-A-Function-Or-Object"><a href="#1-View-The-Source-Code-Of-A-Function-Or-Object" class="headerlink" title="#1 View The Source Code Of A Function Or Object"></a>#1 View The Source Code Of A Function Or Object</h2><p> Know the details of implementation is critical in debugging. When you are debugging a Python code, you may want to know the source code of a module, class, method, function, traceback, frame, or code object. The inspect module will help you:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> inspect<br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add</span>(<span class="hljs-params">x, y</span>):</span><br>    <span class="hljs-keyword">return</span> x + y<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span>:</span><br>    kind = <span class="hljs-string">&#x27;dog&#x27;</span>        <br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self, name</span>):</span><br>        self.name = name<br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">eat</span>(<span class="hljs-params">food</span>):</span><br>        print(<span class="hljs-string">&quot;eating ...&quot;</span> + food)<br>        <br>print(inspect.getsource(add))            <br>print(inspect.getsource(Dog))<br>print(inspect.getsource(Dog.eat))<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="2-Print-Log-Into-File"><a href="#2-Print-Log-Into-File" class="headerlink" title="#2 Print Log Into File"></a>#2 Print Log Into File</h2><p> The log is the most important clue for us to understanding the runtime of code. Printing out log is a useful way to follow the program’s execution flow.</p>
+<p> However, print in Python only outputs to a terminal. It’s far from ideal for complex troubleshooting, especially for server-side applications.</p>
+<p> The print function in Python 3 is much more powerful because it can take more arguments, and specifying some arguments can output the contents of print to a log file.</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;test.log&#x27;</span>, mode=<span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    print(<span class="hljs-string">&#x27;hello, python&#x27;</span>, file=f, flush=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<p> Another useful and flexible module is logging, we could set the output filename, log format, etc..</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> logging<br>logging.basicConfig(filename=<span class="hljs-string">&#x27;app.log&#x27;</span>, filemode=<span class="hljs-string">&#x27;w&#x27;</span>, <br>  <span class="hljs-built_in">format</span>=<span class="hljs-string">&#x27;%(name)s - %(levelname)s - %(message)s&#x27;</span>)<br>a = <span class="hljs-number">5</span><br>b = <span class="hljs-number">0</span><br><span class="hljs-keyword">try</span>:<br>  c = a / b<br><span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>  logging.exception(<span class="hljs-string">&quot;Exception occurred&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p> For more usage please refer to logging — <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/logging.html">Logging facility for Python — Python 3.9.0 documentation</a>.</p>
+<h2 id="3-Track-The-Execution-Time"><a href="#3-Track-The-Execution-Time" class="headerlink" title="#3 Track The Execution Time"></a>#3 Track The Execution Time</h2><p> For performance issues, we need to calculate the run time of a function. You might achieve it like this:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> timestart = time.time()<br><span class="hljs-comment"># run the function</span><br>end = time.time()<br>print(end-start)<br></code></pre></td></tr></table></figure>
+
+<p> There’s a built-in module called timeit, we could use it to track the time with only one line of code:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> timeit<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run_sleep</span>(<span class="hljs-params">second</span>):</span><br>    print(second)<br>    time.sleep(second)<br><br>print(timeit.timeit(<span class="hljs-keyword">lambda</span> :run_sleep(<span class="hljs-number">2</span>), number=<span class="hljs-number">1</span>))<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="4-Interactive-Debugging"><a href="#4-Interactive-Debugging" class="headerlink" title="#4 Interactive Debugging"></a>#4 Interactive Debugging</h2><p> REPL supports an incremental, interactive development style, and interactive debugging is a more efficient way. The ideal workflow is the repeated process of edit-run.</p>
+<p> To invoke a program with an interactive session, we need to add the -i option:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">python -i demo.py<br></code></pre></td></tr></table></figure>
+
+<p> To make your life easier, importlib.reload(module) is a suitable way to avoid restart the interactive session.</p>
+<p> Let’s take an example, suppose we are run a function called demo, to fix an issue we need to make some changes for this function, then reload(module) will load the modified version of demo without restart our session:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">from</span> importlib <span class="hljs-keyword">import</span> reload<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> demo <span class="hljs-keyword">from</span> module<br><span class="hljs-meta">&gt;&gt;&gt; </span>demo()<br><span class="hljs-string">&quot;The result of demo...&quot;</span><span class="hljs-comment"># Make some changes to &quot;demo&quot;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>demo()<br><span class="hljs-string">&quot;The result of demo...&quot;</span>  <span class="hljs-comment"># The Outdated result</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>reload(module)  <span class="hljs-comment"># Reload &quot;module&quot; after changes made to &quot;demo&quot;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>demo()<br><span class="hljs-string">&quot;This will be the new result...&quot;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-comment"># repeat the circle of fix-and-retry</span><br></code></pre></td></tr></table></figure>
+
+<p> This will save much time for debugging.</p>
+<h2 id="5-Use-Pdb"><a href="#5-Use-Pdb" class="headerlink" title="#5 Use Pdb"></a>#5 Use Pdb</h2><p> Python has a module called pdb to support interactive source code debugger. It supports setting breakpoints, single stepping at the line level. In addition, pdb print inspection of stack frames, values of variables, inspect source code, etc.</p>
+<p> To start a program with a debugger, add -m pdb option for invoking scripts:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">user@coderscat:~/snippets$ python3<span class="hljs-number">.7</span> -m pdb demo.py <br>&gt; /home/user/snippets/demo.py(<span class="hljs-number">1</span>)&lt;module&gt;()<br>-&gt; import inspect<br>(Pdb) l<br>  1  -&gt; import inspect<br>  <span class="hljs-number">2</span>  <br>  <span class="hljs-number">3</span>     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">gcd</span>(<span class="hljs-params">a,b</span>):</span><br>  <span class="hljs-number">4</span>         <span class="hljs-keyword">if</span>(b==<span class="hljs-number">0</span>):<br>  <span class="hljs-number">5</span>             <span class="hljs-keyword">return</span> a<br>  <span class="hljs-number">6</span>         <span class="hljs-keyword">else</span>:<br>  <span class="hljs-number">7</span>             <span class="hljs-keyword">return</span> gcd(b,a%b)<br>  <span class="hljs-number">8</span>  <br>  <span class="hljs-number">9</span>  <br> <span class="hljs-number">10</span>     print(gcd(<span class="hljs-number">34</span>, <span class="hljs-number">34</span>))<br>[EOF]<br>(Pdb) b demo.py:<span class="hljs-number">3</span><br>Breakpoint <span class="hljs-number">1</span> at /home/user/snippets/demo.py:<span class="hljs-number">3</span><br>(Pdb) c<br>&gt; /home/user/snippets/demo.py(<span class="hljs-number">3</span>)&lt;module&gt;()<br>-&gt; def gcd(a,b):<br>(Pdb) step<br>&gt; /home/user/snippets/demo.py(<span class="hljs-number">10</span>)&lt;module&gt;()<br>-&gt; print(gcd(34, 34))<br>(Pdb)<br></code></pre></td></tr></table></figure>
+
+<p> Another typical usage to break into the debugger from a running program is to insert:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pdb; pdb.set_trace()<br></code></pre></td></tr></table></figure>
+
+<p> Here are some useful pdb command</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">list(l): show you the code line the Python interpreter is currently on<br>step(s): continue the execution line by line, step in function<br>next(n) : continue the next line of code<br>break(b) : setup new breakpoint on current line<br>continue(c) : continue execution until next breakpoint<br></code></pre></td></tr></table></figure>
+
+<p> In most cases, we don’t need to follow every step in execution, pdb is the ultimate tool for debugging Python program.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p> When you debug Python code, have a try on these tricks and tools. To improve your skills in debugging, practice makes perfect!</p>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Python" >
+    <span class="tag-code-index">Python</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/javascript-and-css-optimization/">
+        <span class="nav-arrow">← </span>
+        
+          Eliminate render-blocking resour...
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/5-tools-to-boost-your-productivity-on-windows-10/">
+            
+                5 Tools To Boost Your Productivi...
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-View-The-Source-Code-Of-A-Function-Or-Object"><span class="toc-nav-text">#1 View The Source Code Of A Function Or Object</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-Print-Log-Into-File"><span class="toc-nav-text">#2 Print Log Into File</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Track-The-Execution-Time"><span class="toc-nav-text">#3 Track The Execution Time</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-Interactive-Debugging"><span class="toc-nav-text">#4 Interactive Debugging</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-Use-Pdb"><span class="toc-nav-text">#5 Use Pdb</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Conclusion"><span class="toc-nav-text">Conclusion</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/5-tricks-that-will-help-you-debug-python-code/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

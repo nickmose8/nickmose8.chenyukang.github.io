@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>Encapsulation in Python</title>
+
+    
+    
+    <meta name="description" content="Encapsulation is an essential aspect of Object-Oriented Programming.
+ Let’s explain encapsulation in plain words: information hiding. Encapsulation means delimiting the internal interface and a...">
+    <link rel="canonical" href="http://coderscat.com/encapsulation-in-python/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Encapsulation in Python">
+    <meta property="og:description" content="Encapsulation is an essential aspect of Object-Oriented Programming.
+ Let’s explain encapsulation in plain words: information hiding. Encapsulation means delimiting the internal interface and a...">
+    <meta property="og:url" content="http://coderscat.com/encapsulation-in-python/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2020-03-13 00:22:00">
+    <meta property="article:modified_time" content="2020-03-13 00:22:00">
+    <meta property="og:updated_time" content="2020-03-13 00:22:00">
+    <meta property="og:image" content="http://coderscat.com/images/2020_03_11_private-function-in-python.org_20200313_002122.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/2020_03_11_private-function-in-python.org_20200313_002122.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Encapsulation in Python">
+    <meta name="twitter:description" content="Encapsulation is an essential aspect of Object-Oriented Programming.
+ Let’s explain encapsulation in plain words: information hiding. Encapsulation means delimiting the internal interface and a...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/2020_03_11_private-function-in-python.org_20200313_002122.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            Encapsulation in Python | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Encapsulation in Python</h2>
+  <p class="post-date">2020-03-13</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <p>Encapsulation is an essential aspect of <strong>Object-Oriented Programming</strong>.</p>
+<p> Let’s explain encapsulation in plain words: <strong>information hiding</strong>. Encapsulation means delimiting the internal interface and attribute from the external world.</p>
+<p> The benefit of information hiding is <strong>reducing system complexity and increasing robustness</strong>.</p>
+<p> Why? Because encapsulation limits the interdependencies of different software components. Suppose we create a module. Our users could only interact with us through public APIs; they don’t care about the internals of this module. Even when the details of internals implementation changed, the user’s code doesn’t need a corresponding change.</p>
+<p> To implement encapsulation, we need to learn how to define and use private attribute and a private function.</p>
+<p> Enough theory now, let’s talk about how we do this in Python?</p>
+<p> Python is an interpreted programming language and implements <strong>weak encapsulation</strong>. Weak encapsulation implies the programming language will not enforce it but only provide a convention. So there are some differences with Java or C++.</p>
+<h2 id="Protected-attribute-and-method"><a href="#Protected-attribute-and-method" class="headerlink" title="Protected attribute and method"></a>Protected attribute and method</h2><p> If you have read some Python code, you will always find some attribute names with a prefixed underscore. Let’s write a simple Class:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Base</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self</span>):</span><br>        self.name = <span class="hljs-string">&quot;hello&quot;</span><br>        self._protected_name = <span class="hljs-string">&quot;hello_again&quot;</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_protected_print</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">print</span> <span class="hljs-string">&quot;called _protected_print&quot;</span><br><br>b = Base()<br><span class="hljs-built_in">print</span> b.name<br><span class="hljs-built_in">print</span> b._protected_name<br><br>b._protected_name = <span class="hljs-string">&quot;new name&quot;</span><br><span class="hljs-built_in">print</span> b._protected_name<br><br>b._protected_print()<br></code></pre></td></tr></table></figure>
+
+<p> The output will be:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">hello<br>hello_again<br>new name<br>called _protected_print<br></code></pre></td></tr></table></figure>
+
+<p> From the result, an attribute or method with a prefixed underscore acts the same as the normal one.</p>
+<p> So, why we need to add a prefixed underscore for an attribute?</p>
+<p> The prefix underscore is a warning for developers: please be careful about this attribute or method, don’t use it outside of declared Class!</p>
+<p> <code>pylint</code> will report out this kind of bad smell code:</p>
+<p> <img src="/images/2020_03_11_private-function-in-python.org_20200313_002122.png" alt="file:img/2020_03_11_private-function-in-python.org_20200313_002122.png"></p>
+<p>Another benefit of prefix score is: it avoids wildcard importing the internal functions outside of the defined module. Let’s have a look at this code:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs Python"><span class="hljs-comment"># foo module: foo.py</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">func_a</span>():</span><br>    print(<span class="hljs-string">&quot;func_a called!&quot;</span>)<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_func_b</span>():</span><br>    print(<span class="hljs-string">&quot;_func_b called!&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p> Then if we use wildcard import in another part of code:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">from</span> foo <span class="hljs-keyword">import</span> *<br><br>func_a()<br>_func_b()<br></code></pre></td></tr></table></figure>
+
+<p> We will encounter an error:</p>
+<p> <img src="/images/2020_03_11_private-function-in-python.org_20200406_101900.png" alt="file:img/2020_03_11_private-function-in-python.org_20200406_101900.png"></p>
+<p>By the way, <a target="_blank" rel="noopener" href="http://pep8.org/#imports">wildcard import</a> is another bad smell in Python and we should avoid in practice.</p>
+<h2 id="Private-attribute-and-method"><a href="#Private-attribute-and-method" class="headerlink" title="Private attribute and method"></a>Private attribute and method</h2><p> In traditional OOP programming languages, why private attributes and methods can not accessed by derived Class?</p>
+<p> Because it is useful in information hiding. Suppose we declare an attribute with name <code>mood</code>, but in the derived Class we redeclare another attribute of name <code>mood</code>. The second one overrides the previous one in the parent Class and will likely introduce a bug in code.</p>
+<p> So, how to use the private attribute in Python?</p>
+<p> The answer is adding a double prefix underscore in an attribute or method. Let’s run this code snippet:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs Python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Base</span>(<span class="hljs-params"><span class="hljs-built_in">object</span></span>):</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__private</span>(<span class="hljs-params">self</span>):</span><br>        print(<span class="hljs-string">&quot;private value in Base&quot;</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_protected</span>(<span class="hljs-params">self</span>):</span><br>        print(<span class="hljs-string">&quot;protected value in Base&quot;</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">public</span>(<span class="hljs-params">self</span>):</span><br>        print(<span class="hljs-string">&quot;public value in Base&quot;</span>)<br>        self.__private()<br>        self._protected()<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Derived</span>(<span class="hljs-params">Base</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__private</span>(<span class="hljs-params">self</span>):</span><br>        print(<span class="hljs-string">&quot;derived private&quot;</span>)<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_protected</span>(<span class="hljs-params">self</span>):</span><br>        print(<span class="hljs-string">&quot;derived protected&quot;</span>)<br><br>d = Derived()<br>d.public()<br></code></pre></td></tr></table></figure>
+
+<p> The output will be:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">public value in Base<br>private value in Base<br>derived protected<br></code></pre></td></tr></table></figure>
+
+<p> We call the <code>public</code> function from a derived object, which will invoke the <code>public</code> function in Base class. Note this, because <code>__private</code> is a private method, only object its self could use it, there is no naming conflict for a private method.</p>
+<p> If we add another line of code:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs Python">d.__private()<br></code></pre></td></tr></table></figure>
+
+<p> It will trigger another error:</p>
+<p> <img src="/images/2020_03_11_private-function-in-python.org_20200313_224523.png" alt="file:img/2020_03_11_private-function-in-python.org_20200313_224523.png"></p>
+<p> Why?</p>
+<p> Let’s print all the methods of object and find out there a method with name of <code>_Base__private</code>. <img src="/images/2020_03_11_private-function-in-python.org_20200313_224715.png" alt="file:img/2020_03_11_private-function-in-python.org_20200313_224715.png"></p>
+<p> This is called <code>name mangling</code> that the Python interpreter applies. Because the name was added <code>Class</code> prefix name, private methods are protected carefully from getting overridden in derived Class.</p>
+<p> Again, this means we can use <code>d._Base__private</code> to call the private function. Remember, it’s not enforced!</p>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Python" >
+    <span class="tag-code-index">Python</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/how-to-write-readable-code/">
+        <span class="nav-arrow">← </span>
+        
+          How To Write Readable Code
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/tcp-vs-dup/">
+            
+                TCP vs. UDP
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Protected-attribute-and-method"><span class="toc-nav-text">Protected attribute and method</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Private-attribute-and-method"><span class="toc-nav-text">Private attribute and method</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/encapsulation-in-python/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

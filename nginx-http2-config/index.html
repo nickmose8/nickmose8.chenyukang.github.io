@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>How To Config Nginx with HTTP/2</title>
+
+    
+    
+    <meta name="description" content="What is HTTP/2HTTP/2 (Originally named HTTP 2.0) is the second major version of the HTTP protocol, it is the first update to the HTTP protocol since the release of HTTP 1.1 in 1999.
+The Benefit...">
+    <link rel="canonical" href="http://coderscat.com/nginx-http2-config/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="How To Config Nginx with HTTP/2">
+    <meta property="og:description" content="What is HTTP/2HTTP/2 (Originally named HTTP 2.0) is the second major version of the HTTP protocol, it is the first update to the HTTP protocol since the release of HTTP 1.1 in 1999.
+The Benefit...">
+    <meta property="og:url" content="http://coderscat.com/nginx-http2-config/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2020-11-13 23:51:00">
+    <meta property="article:modified_time" content="2020-11-13 23:51:00">
+    <meta property="og:updated_time" content="2020-11-13 23:51:00">
+    <meta property="og:image" content="http://coderscat.com/images/image-20201114000507986.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/image-20201114000507986.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="How To Config Nginx with HTTP/2">
+    <meta name="twitter:description" content="What is HTTP/2HTTP/2 (Originally named HTTP 2.0) is the second major version of the HTTP protocol, it is the first update to the HTTP protocol since the release of HTTP 1.1 in 1999.
+The Benefit...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/image-20201114000507986.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            How To Config Nginx with HTTP/2 | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>How To Config Nginx with HTTP/2</h2>
+  <p class="post-date">2020-11-13</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <h3 id="What-is-HTTP-2"><a href="#What-is-HTTP-2" class="headerlink" title="What is HTTP/2"></a>What is HTTP/2</h3><p><code>HTTP/2</code> (Originally named HTTP 2.0) is the second major version of the HTTP protocol, it is the first update to the HTTP protocol since the release of HTTP 1.1 in 1999.</p>
+<h4 id="The-Benefits-of-HTTP-2"><a href="#The-Benefits-of-HTTP-2" class="headerlink" title="The Benefits of HTTP/2"></a>The Benefits of HTTP/2</h4><ul>
+<li>Transferring data in binary format instead of text format. This binary format offers more possibilities for protocol parsing and optimizations.</li>
+<li>Compressing headers for transmission saves traffic on the network. While <code>HTTP1.1</code> carries a large number of redundant headers for each request, which wasting bandwidth resources.</li>
+<li>Multiplexing, which means that multiple requests are completed concurrently over a single TCP connection, <code>HTTP/2</code> provides truly concurrent requests. Streaming also supports priority and flow control.</li>
+<li>Server push, the server can be faster to push resources to the client. For example, the server can take the initiative to push <code>JS</code> and <code>CSS</code> files to the client. These files will be ready when the client needs them.</li>
+<li>Protects website security.</li>
+</ul>
+<h3 id="Enabling-HTTP-2-on-Nginx"><a href="#Enabling-HTTP-2-on-Nginx" class="headerlink" title="Enabling HTTP/2 on Nginx"></a>Enabling HTTP/2 on Nginx</h3><p>To support <code>HTTP/2</code> on Nginx,  we need Nginx 1.9.5 or later, and you need OpenSSL version 1.0.2 or later.</p>
+<h4 id="How-to-upgrade-OpenSSL"><a href="#How-to-upgrade-OpenSSL" class="headerlink" title="How to upgrade OpenSSL"></a>How to upgrade OpenSSL</h4><p>If  the system’s version of OpenSSL is lower than 1.0.2, we will have to upgrade your OpenSSL version first. </p>
+<ul>
+<li>Checking OpenSSL Versions</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> openssl version</span><br>OpenSSL 1.0.2g 1 Mar 2016<br></code></pre></td></tr></table></figure>
+
+<h4 id="Install-Nginx"><a href="#Install-Nginx" class="headerlink" title="Install Nginx"></a>Install Nginx</h4><ul>
+<li>Download Nginx</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> wget http://nginx.org/download/nginx-1.12.0.tar.gz</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Compile and install Nginx</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> apt-get install libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make build-essential</span><br><span class="hljs-meta">$</span><span class="bash"> tar xzvf nginx-1.12.0.tar.gz</span><br><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> nginx-1.12.0.tar.gz</span><br><span class="hljs-meta">$</span><span class="bash"> . /configure --with-http_ssl_module --with-http_v2_module</span><br><span class="hljs-meta">$</span><span class="bash"> make &amp;&amp; make install</span><br></code></pre></td></tr></table></figure>
+
+<p>If the system OpenSSL version is lower than 1.0.2,  we need to add a  <code>-with-openssl</code> to indicates the location of the source code for the higher version of the OpenSSL library.</p>
+<ul>
+<li>Verifying the Nginx and compiled versions of OpenSSL</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> . /nginx -V</span><br>nginx version: nginx/1.12.0<br>built by gcc 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.4)<br>built with OpenSSL 1.0.2g 1 Mar 2016<br>TLS SNI support enabled<br>configure arguments: --with-http_ssl_module --with-http_v2_module<br></code></pre></td></tr></table></figure>
+
+<h4 id="Modify-Nginx-configuration"><a href="#Modify-Nginx-configuration" class="headerlink" title="Modify Nginx configuration"></a>Modify Nginx configuration</h4><p>Configuring Nginx to enable <code>HTTP/2</code> is particularly easy by adding <code>http2</code> after <code>listen</code> in the <code>server</code> configuration section.</p>
+<p><strong>Note</strong>: <code>HTTP/2</code> has to work under HTTPS! Don’t add  <strong>http2</strong> to the 80 port.</p>
+<p>Even <code>HTTP/2</code> will work under non-HTTPS, there is no browser support for it yet!</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs `nginx">$ vim &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;nginx.conf<br><br>server &#123;<br>  listen 443 ssl http2;<br>  server_name coderscat.com;<br>  ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Restart Nginx and let the configuration take effect.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> <span class="hljs-built_in">cd</span> /usr/<span class="hljs-built_in">local</span>/nginx/sbin</span><br><span class="hljs-meta">$</span><span class="bash"> ./nginx -s reload</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="Verifying-HTTP-2"><a href="#Verifying-HTTP-2" class="headerlink" title="Verifying HTTP/2"></a>Verifying HTTP/2</h4><p>Open the <code>https://tools.keycdn.com/http2-test</code> and enter your domain name to test if <code>HTTP/2</code> is properly supported.</p>
+ <img src="/images/image-20201114000507986.png" width="60%">
+
+<h2 id="Browser-support"><a href="#Browser-support" class="headerlink" title="Browser support"></a>Browser support</h2><p>If <code>HTTP/2</code> is enabled, even a low version of the browser will work! If a client does not support <code>HTTP/2</code>, Nginx is automatically backwards compatible with <code>HTTP 1.1</code>.</p>
+<p>Most browsers currently support <code>HTTP/2</code>:</p>
+<ul>
+<li>Google Chrome, Mozilla Firefox, Microsoft Edge, and Opera have HTTP/2 support and are enabled by default.</li>
+<li>Internet Explorer has supported HTTP/2 since IE 11 and is enabled by default.</li>
+</ul>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Misc" >
+    <span class="tag-code-index">Misc</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/tools-for-programming-languages/">
+        <span class="nav-arrow">← </span>
+        
+          The Tools For Programming Langua...
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/is-c-still-worth-learnning/">
+            
+                Is C Still Worth Learning?
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#What-is-HTTP-2"><span class="toc-nav-text">What is HTTP&#x2F;2</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#The-Benefits-of-HTTP-2"><span class="toc-nav-text">The Benefits of HTTP&#x2F;2</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Enabling-HTTP-2-on-Nginx"><span class="toc-nav-text">Enabling HTTP&#x2F;2 on Nginx</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#How-to-upgrade-OpenSSL"><span class="toc-nav-text">How to upgrade OpenSSL</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Install-Nginx"><span class="toc-nav-text">Install Nginx</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Modify-Nginx-configuration"><span class="toc-nav-text">Modify Nginx configuration</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Verifying-HTTP-2"><span class="toc-nav-text">Verifying HTTP&#x2F;2</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Browser-support"><span class="toc-nav-text">Browser support</span></a>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/nginx-http2-config/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

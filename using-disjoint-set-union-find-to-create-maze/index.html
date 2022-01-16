@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>Using Disjoint Set (Union-Find) to Build a Maze Generator</title>
+
+    
+    
+    <meta name="description" content="When I started to learn data structures many years ago, disjoint-set is the one that gave me a deep impression, it’s so simple, but elegant and useful.
+ In this post, we will learn how disjoint...">
+    <link rel="canonical" href="http://coderscat.com/using-disjoint-set-union-find-to-create-maze/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Using Disjoint Set (Union-Find) to Build a Maze Generator">
+    <meta property="og:description" content="When I started to learn data structures many years ago, disjoint-set is the one that gave me a deep impression, it’s so simple, but elegant and useful.
+ In this post, we will learn how disjoint...">
+    <meta property="og:url" content="http://coderscat.com/using-disjoint-set-union-find-to-create-maze/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2020-01-17 19:30:00">
+    <meta property="article:modified_time" content="2020-01-17 19:30:00">
+    <meta property="og:updated_time" content="2020-01-17 19:30:00">
+    <meta property="og:image" content="http://coderscat.com/images/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200117_190825.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200117_190825.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Using Disjoint Set (Union-Find) to Build a Maze Generator">
+    <meta name="twitter:description" content="When I started to learn data structures many years ago, disjoint-set is the one that gave me a deep impression, it’s so simple, but elegant and useful.
+ In this post, we will learn how disjoint...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200117_190825.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            Using Disjoint Set (Union-Find) to Build a Maze Generator | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Using Disjoint Set (Union-Find) to Build a Maze Generator</h2>
+  <p class="post-date">2020-01-17</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <p>When I started to learn data structures many years ago, <code>disjoint-set</code> is the one that gave me a deep impression, <strong>it’s so simple, but elegant and useful</strong>.</p>
+<p> In this post, we will learn how <code>disjoint-set</code> works, then we implement a maze generator with it. I wish this will help the beginners to find fun of data structures.</p>
+<h2 id="Disjoint-Set-Union-Find-Data-Structure"><a href="#Disjoint-Set-Union-Find-Data-Structure" class="headerlink" title="Disjoint Set (Union-Find) Data Structure"></a>Disjoint Set (Union-Find) Data Structure</h2><p> <code>disjoint-set</code> is a data structure that tracks a set of elements partitioned into a number of disjoint (non-overlapping) subsets. According to the definition, two disjoint sets are sets whose intersection is the empty set.</p>
+<p> <img src="/images/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200117_190825.png" alt="file:img/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200117_190825.png"></p>
+<p> In above image: e1, e2 is in <code>Set1</code> and e3, e4, e5 is in <code>Set2</code>.</p>
+<p> There are two operations for a disjoint-set, <code>union</code> and <code>find</code>, this is the reason why disjoint-set also be called with the name <code>union-find</code>:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">make_set()    &#x3D;&gt; create a disjoin-set<br>union(e1, e2) &#x3D;&gt; link &#39;e1&#39; and &#39;e2&#39; to the same subset<br>find(e)       &#x3D;&gt; return the subset&#39;s root for &#39;e&#39;<br></code></pre></td></tr></table></figure>
+
+<p> If we union any two elements from two different sets, then they will be merged into one larger set.</p>
+<p> For example, if e2 and e3 are unioned, which also means e1 and e5 in the same set.</p>
+<p> <img src="/images/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200117_192216.png" alt="file:img/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200117_192216.png"></p>
+<p> With the result of <code>find</code>, we can test whether two elements belong to the same set. If <code>find(e1)</code> equals <code>find(e2)</code>, this means e1 and e2 are in the same set.</p>
+<p> This is a useful property of disjoin-set, especially for graph algorithms, in which we need to test whether two nodes have connectivity with each other.</p>
+<p> Given the above specs and descriptions, how to implement this data structure by yourself?</p>
+<p> You can spend several minutes trying it out by your hand, this is <a href="https://coderscat.com/how-to-learn-data-structures-and-algorithms">a superior way to study data structures and algorithms</a>.</p>
+<h2 id="Naive-implementation-with-an-array"><a href="#Naive-implementation-with-an-array" class="headerlink" title="Naive implementation with an array"></a>Naive implementation with an array</h2><p> Firstly, we need to find out use which basic data structure in programming languages to store data. If we could store the parent of one element, we could construct a tree-like structure to keep the relationship between elements.</p>
+<p> Let’s take an example, if we finished operations of <code>union(e1, e2)</code>, <code>union(e2, e3)</code>, <code>union(e3, e4)</code>, the constructed tree will be like this(suppose we always set the first parameter as a parent):</p>
+<p> <img src="/images/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200117_224112.png" alt="file:img/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200117_224112.png"></p>
+<p> The function <code>find(e)</code> will be implemented in recursive style, try to find parents from bottom to top, according to the tree.</p>
+ <figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MAX_SIZE 60</span><br><span class="hljs-keyword">int</span> parent[MAX_SIZE];  <span class="hljs-comment">// the parent root for each node</span><br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">make_set</span><span class="hljs-params">()</span> </span>&#123;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i &lt; MAX_SIZE; ++i )<br>    parent[i] = i;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>  <span class="hljs-comment">// recursive find and path compression</span><br>  <span class="hljs-keyword">if</span>(x != parent[x])<br>    <span class="hljs-keyword">return</span> find(parent[x]);<br>  <span class="hljs-keyword">return</span> parent[x];<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">union_set</span><span class="hljs-params">(<span class="hljs-keyword">int</span> e1, <span class="hljs-keyword">int</span> e2)</span> </span>&#123;<br>  <span class="hljs-keyword">if</span>( x == y ) <span class="hljs-keyword">return</span>;<br>  parent[e2] = e1; <span class="hljs-comment">// e1 is always the parent</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p> Ok, we finished the first version of <code>union-find</code> with array!</p>
+<p> Let’s run more test cases for verifying the correctness of our implementation, what happened if we run operations of <code>union(e1, e2)</code>, <code>union(e3, e4)</code>, <code>union(e2, e4)</code> ?</p>
+<p> <img src="/images/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200117_230212.png" alt="file:img/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200117_230212.png"></p>
+<p> Wait! This is not what we expect! According to the definition above, we expect e1, e2, e3, e4 are in the same set. Seems we have a bug in the function of <code>union_set</code>.</p>
+<p> Yes! What we want to do is union two sets, not just the parent relationship of two elements. When we <code>union(e2, e4)</code>, we need to find the root of e2 and e4 and finish it with an operation of <code>union(e1, e3)</code>.</p>
+<p> <img src="/images/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200117_231419.png" alt="file:img/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200117_231419.png"></p>
+<p> Let’s fix the bug in the first version:</p>
+ <figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">union_set</span><span class="hljs-params">(<span class="hljs-keyword">int</span> e1, <span class="hljs-keyword">int</span> e2)</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> root1 = find(e1);<br>  <span class="hljs-keyword">int</span> root2 = find(e2);<br>  <span class="hljs-keyword">if</span>( root1 == root2 ) <span class="hljs-keyword">return</span>;<br>  parent[root2] = root1; <span class="hljs-comment">// e1&#x27;s root is always the parent</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p> Naive implementation’s time complexity is O(N).</p>
+<h2 id="1-Optimization-with-Path-Compression"><a href="#1-Optimization-with-Path-Compression" class="headerlink" title="#1 Optimization with Path Compression"></a>#1 Optimization with Path Compression</h2><p> Let’s try to make it faster. In the naive recursive function of <code>find</code>, if we cached the result in each recursive iteration, the time performance will be much better. This is the caching technique which explained in <a href="https://coderscat.com/caching-from-top-to-bottom">Caching: from bottom to top</a>.</p>
+ <figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>  <span class="hljs-comment">// recursive find with path compression</span><br>  <span class="hljs-keyword">if</span>(x != parent[x])<br>    parent[x] = find(parent[x]);<br>  <span class="hljs-keyword">return</span> parent[x];<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p> After a function call of <code>find</code>, we can make the tree much flatter(the depth is shorter, which speeding up future operations on these elements):</p>
+<p> <img src="/images/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200119_122911.png" alt="file:img/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200119_122911.png"></p>
+<h2 id="2-Optimization-with-Union-by-Rank"><a href="#2-Optimization-with-Union-by-Rank" class="headerlink" title="#2 Optimization with Union by Rank"></a>#2 Optimization with Union by Rank</h2><p> In our first version of <code>union_set</code>, we always set e1’s root as the parent of e2, what will happen after multiple times of union operations?</p>
+<p> The depth of the tree will keep growing. Can we do some optimizations for this? A strategy called union-by-rank will help with this.</p>
+<p> If we use another array to record the rank(the depth of an element’s subtree), then we always try to set the element with larger depth as the parent.</p>
+ <figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">int</span> rank[MAX_SIZE];    <span class="hljs-comment">// the depath rank, initialized with 0 in make_set</span><br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">union_set</span><span class="hljs-params">(<span class="hljs-keyword">int</span> e1, <span class="hljs-keyword">int</span> e2)</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> x = find_set(e1);<br>  <span class="hljs-keyword">int</span> y = find_set(e2);<br>  <span class="hljs-keyword">if</span>( x == y ) <span class="hljs-keyword">return</span>;<br><br>  <span class="hljs-comment">// optimization with rank</span><br>  <span class="hljs-keyword">if</span>(rank[x] &gt; rank[y])<br>    parent[y] = x;<br>  <span class="hljs-keyword">else</span> &#123;<br>    parent[x] = y;<br>    <span class="hljs-keyword">if</span>(rank[x] == rank[y]) ++rank[y];<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p> Let’s take an example to understand this:</p>
+<p> <img src="/images/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200119_154621.png" alt="file:img/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200119_154621.png"></p>
+<p> With the operation of <code>union by rank</code>, when the depth of two roots is not equal, we can keep the depth of tree not to grow!</p>
+<p> There is another strategy called <code>union by size</code>, which always attaches the tree with fewer elements to the root of the tree with more elements.</p>
+<p> The time analysis for the optimized version involves many mathematics tricks.</p>
+<p> Let’s simply come out the conclusion, with path compression and union by rank, the amortized time complexity is only O(α(n)), where α(n) is the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Ackermann_function#Inverse">inverse Ackermann function</a>, α(n) is less than 5 for any practical input size n.</p>
+<p> It’s a really good time performance!</p>
+<h2 id="Random-Maze-Generation"><a href="#Random-Maze-Generation" class="headerlink" title="Random Maze Generation"></a>Random Maze Generation</h2><p> Finishing a small project with the newly learned data structure will do much help for your learning.</p>
+<p> When I read <a target="_blank" rel="noopener" href="https://amzn.to/33NIhBb">Algorithms by Robert Sedgewick</a>, there was an exercise to generate a random maze with disjoin-set.</p>
+<p> It’s a nifty algorithm, the simplified code like this:</p>
+ <figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">void</span> rand_maze &#123;<br>  <span class="hljs-comment">// begin with a rectangular maze of all closed cells</span><br>  <span class="hljs-comment">// numrows = number of rows of cells;</span><br>  <span class="hljs-comment">// numcols = number of columns of cells;</span><br>  start = cell at (<span class="hljs-number">0</span>,<span class="hljs-number">0</span>);<br>  goal  = cell at (numrows<span class="hljs-number">-1</span>, numcols<span class="hljs-number">-1</span>);<br>  numcells = numrows * numcols;<br>  <span class="hljs-function">Partition <span class="hljs-title">p</span><span class="hljs-params">(numcells)</span></span>; <span class="hljs-comment">// p represents the maze components</span><br><br>  <span class="hljs-comment">// goal is not reachable from start</span><br>  <span class="hljs-keyword">while</span> (!p.Find(start, goal)) &#123;<br>    edge = randomly select a wall;<br>    x = edge.x;<br>    y = edge.y;<br>    <span class="hljs-keyword">if</span>(!p.Find(x,y)) &#123;<br>      remove edge;<br>      <span class="hljs-comment">// x and y now in same component</span><br>      p.Union(x,y);<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p> We use disjoin-set to test whether <code>start</code> and <code>goal</code> have been connected with each other, randomly remove an edge in the map until they are connected.</p>
+<p> A generated maze look like this, with start cell at left-up corner and goal at the right-bottom corner:</p>
+<p> <img src="/images/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200119_153556.png" alt="file:img/2020_01_16_disjoint-set-or-union-find-to-create-maze.org_20200119_153556.png"></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p> <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Disjoint-set_data_structure">Wikipedia Disjoint-set_data_structure</a></p>
+<p> <a target="_blank" rel="noopener" href="https://amzn.to/33NIhBb">Algorithms by Robert Sedgewick</a></p>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Algorithms" >
+    <span class="tag-code-index">Algorithms</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/leetcode-merge-k-sorted-lists/">
+        <span class="nav-arrow">← </span>
+        
+          LeetCode: Merge k Sorted Lists
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/how-to-randomize-shuffle-a-javascript-array/">
+            
+                How to randomize (shuffle) a Jav...
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Disjoint-Set-Union-Find-Data-Structure"><span class="toc-nav-text">Disjoint Set (Union-Find) Data Structure</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Naive-implementation-with-an-array"><span class="toc-nav-text">Naive implementation with an array</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-Optimization-with-Path-Compression"><span class="toc-nav-text">#1 Optimization with Path Compression</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-Optimization-with-Union-by-Rank"><span class="toc-nav-text">#2 Optimization with Union by Rank</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Random-Maze-Generation"><span class="toc-nav-text">Random Maze Generation</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Reference"><span class="toc-nav-text">Reference</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/using-disjoint-set-union-find-to-create-maze/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

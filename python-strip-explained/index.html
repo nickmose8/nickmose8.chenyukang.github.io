@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>Python String Strip Explained</title>
+
+    
+    
+    <meta name="description" content="Python Strip UsageIn Python, we usually use these function like strip, lstrip, rstrip for striping chars. In most cases, we use them to remove whitespace and newlines by default.
+s.strip(‘x’) r...">
+    <link rel="canonical" href="http://coderscat.com/python-strip-explained/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Python String Strip Explained">
+    <meta property="og:description" content="Python Strip UsageIn Python, we usually use these function like strip, lstrip, rstrip for striping chars. In most cases, we use them to remove whitespace and newlines by default.
+s.strip(‘x’) r...">
+    <meta property="og:url" content="http://coderscat.com/python-strip-explained/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2019-09-15 12:10:00">
+    <meta property="article:modified_time" content="2019-09-15 12:10:00">
+    <meta property="og:updated_time" content="2019-09-15 12:10:00">
+    <meta property="og:image" content="http://coderscat.com/images/image-20201112153035911.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/image-20201112153035911.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Python String Strip Explained">
+    <meta name="twitter:description" content="Python Strip UsageIn Python, we usually use these function like strip, lstrip, rstrip for striping chars. In most cases, we use them to remove whitespace and newlines by default.
+s.strip(‘x’) r...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/image-20201112153035911.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            Python String Strip Explained | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Python String Strip Explained</h2>
+  <p class="post-date">2019-09-15</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <h3 id="Python-Strip-Usage"><a href="#Python-Strip-Usage" class="headerlink" title="Python Strip Usage"></a>Python Strip Usage</h3><p>In Python, we usually use these function like <strong>strip</strong>, <strong>lstrip</strong>, <strong>rstrip</strong> for striping chars. In most cases, we use them to remove whitespace and newlines by default.</p>
+<p><strong>s.strip(‘x’)</strong> remove prefix and suffix <em>‘<strong>x</strong>‘</em> from a string, the usage is: <code>string.strip([chars]</code></p>
+<p><strong>s.rstrip([chars])</strong> is right-strip, remove the trailing characters.</p>
+<p><strong>s.lstrip([chars])</strong> is left-strip, remove the leading characters.</p>
+<p>Note: </p>
+<p><strong>strip</strong>/<strong>rstrip/lstrip</strong> will remove characters like ‘\n’ ‘\t’ if called without argument. </p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">string = <span class="hljs-string">&quot;coderscat \n\t&quot;</span><br><span class="hljs-built_in">print</span>(string.rstrip()) <span class="hljs-comment"># no argument provided, remove trailing spaces</span><br>=&gt; <span class="hljs-string">&quot;coderscat&quot;</span><br><br>string = <span class="hljs-string">&quot;sscoderscatsss&quot;</span><br><span class="hljs-built_in">print</span>(string.strip(<span class="hljs-string">&#x27;s&#x27;</span>)) <span class="hljs-comment"># remove the prefix and suffix &#x27;s&#x27;</span><br>=&gt; <span class="hljs-string">&quot;coderscat&quot;</span><br><br>string = <span class="hljs-string">&quot;sscoderscatsss&quot;</span><br><span class="hljs-built_in">print</span>(string.strip(<span class="hljs-string">&#x27;st&#x27;</span>)) <span class="hljs-comment"># remove the prefix，suffix &#x27;s&#x27; and &#x27;t&#x27;</span><br>=&gt; <span class="hljs-string">&quot;codersca&quot;</span><br><br>string = <span class="hljs-string">&quot;coderscatssss&quot;</span><br><span class="hljs-built_in">print</span>(string.rstrip(<span class="hljs-string">&#x27;s&#x27;</span>)) <span class="hljs-comment"># remove the trailing &#x27;s&#x27;</span><br>=&gt; <span class="hljs-string">&quot;coderscat&quot;</span><br><br>string = <span class="hljs-string">&quot;coderscat&quot;</span><br><span class="hljs-built_in">print</span>(string.rstrip(<span class="hljs-string">&#x27;s&#x27;</span>)) <span class="hljs-comment"># no trailing &#x27;s&#x27;, original string returned</span><br>=&gt; <span class="hljs-string">&quot;coderscat&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Explanation"><a href="#Explanation" class="headerlink" title="Explanation"></a>Explanation</h3><p>As I elaborated in the previous post: <a target="_blank" rel="noopener" href="https://www.coderscat.com/how-to-learn-data-structures-and-algorithms">How to learn data structures and algorithms</a>, it’s a good opportunity to learn more when we meet a function which we are not familiar with.</p>
+<p>Our followed question should be how this is implemented in Python? What’s the worst complexity for this operation?</p>
+<p>So let’s dig into code.</p>
+<p>First, we need to find the implementation of <strong>rstrip</strong>, search the keyword ‘rstrip’ in Python’s Github repo, it should be implemented in C, so we add a filter with C programming languages:</p>
+<p><img src="/images/image-20201112153035911.png" alt="image-20201112153035911"></p>
+<p>CPython stores strings as sequences of Unicode characters, so we should check the definition in <a target="_blank" rel="noopener" href="https://github.com/python/cpython/blob/279f44678c8b84a183f9eeb85e0b086228154497/Objects/clinic/unicodeobject.c.h">Objects/clinic/unicodeobject.c.h</a>, unicode_rstrip in unicodeobject.c.h is a wrapper function, which will call <strong>unicode_rstrip_impl</strong> to finish strip functionality.</p>
+<p>So we continue to search unicode_rstrip_impl in codebase, it’s located at: Objects/unicodeobject.c, follow the function call flow do_argstrip -&gt; do_strip. </p>
+<p>A good coding style should put all the strip functions’ implementation into one logic unit, and it’s really coded like this. <a target="_blank" rel="noopener" href="https://github.com/python/cpython/blob/master/Objects/unicodeobject.c#L12457">Have a look at do_strip</a>: </p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">static</span> PyObject *<br>do_strip(PyObject *self, <span class="hljs-keyword">int</span> striptype)<br>&#123;<br>    Py_ssize_t len, i, j;<br><br>    <span class="hljs-keyword">if</span> (PyUnicode_READY(self) == <span class="hljs-number">-1</span>)<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;<br><br>    len = PyUnicode_GET_LENGTH(self);<br><br>    <span class="hljs-keyword">if</span> (PyUnicode_IS_ASCII(self)) &#123;<br>        <span class="hljs-comment">// blah blah</span><br>    &#125;<br>    <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">int</span> kind = PyUnicode_KIND(self);<br>        <span class="hljs-keyword">void</span> *data = PyUnicode_DATA(self);<br><br>        i = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">if</span> (striptype != RIGHTSTRIP) &#123;<br>            <span class="hljs-keyword">while</span> (i &lt; len) &#123;<br>                Py_UCS4 ch = PyUnicode_READ(kind, data, i);<br>                <span class="hljs-keyword">if</span> (!Py_UNICODE_ISSPACE(ch))<br>                    <span class="hljs-keyword">break</span>;<br>                i++;<br>            &#125;<br>        &#125;<br><br>        j = len;<br>        <span class="hljs-keyword">if</span> (striptype != LEFTSTRIP) &#123;<br>            j--;<br>            <span class="hljs-keyword">while</span> (j &gt;= i) &#123;<br>                Py_UCS4 ch = PyUnicode_READ(kind, data, j);<br>                <span class="hljs-keyword">if</span> (!Py_UNICODE_ISSPACE(ch))<br>                    <span class="hljs-keyword">break</span>;<br>                j--;<br>            &#125;<br>            j++;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> PyUnicode_Substring(self, i, j);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>lstrip, rstrip, strip all call this <strong><em>do_strip\</em></strong> finally.</p>
+<p>It’s simple and elegant, the worst complexity is O(N), so you learn it! By the way, there are 1.5w lines of code in <strong>unicodeobject.c</strong>, and Github seems don’t index it default. </p>
+<p>Furthermore, if you have time, you can spend more time studying the other string operations in Python, there are located at <a target="_blank" rel="noopener" href="https://github.com/python/cpython/tree/279f44678c8b84a183f9eeb85e0b086228154497">cpython</a>/<a target="_blank" rel="noopener" href="https://github.com/python/cpython/tree/279f44678c8b84a183f9eeb85e0b086228154497/Objects">Objects</a>/stringlib.</p>
+<h3 id="Going-deeper"><a href="#Going-deeper" class="headerlink" title="Going deeper"></a>Going deeper</h3><p>Because of all kinds of optimizations, strings in Python actually are very complex. </p>
+<p>For example, whether a new object is allocated depends on many conditions, if a string’s length is longer than 20 it will not be subject to constant folding. This sometimes leads to not consistent.</p>
+<p>Please have a look at <a target="_blank" rel="noopener" href="https://medium.com/@bdov_/https-medium-com-bdov-python-objects-part-iii-string-interning-625d3c7319de">.</a></p>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Python" >
+    <span class="tag-code-index">Python</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/best-cs-books/">
+        <span class="nav-arrow">← </span>
+        
+          Best Computer Science Books
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/to-be-a-programmer/">
+            
+                To Be A Great Programmer: Mindse...
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Python-Strip-Usage"><span class="toc-nav-text">Python Strip Usage</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Example"><span class="toc-nav-text">Example</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Explanation"><span class="toc-nav-text">Explanation</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Going-deeper"><span class="toc-nav-text">Going deeper</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/python-strip-explained/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

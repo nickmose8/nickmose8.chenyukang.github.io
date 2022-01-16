@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>Swap Caps Lock and Control</title>
+
+    
+    
+    <meta name="description" content="After almost 15 years of programming life, I always want to swap the Control and Caps Lock with my keyboard. I began to do so because I need to use Emacs , and Control is the most used key in m...">
+    <link rel="canonical" href="http://coderscat.com/swap-caps-lock-and-control/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Swap Caps Lock and Control">
+    <meta property="og:description" content="After almost 15 years of programming life, I always want to swap the Control and Caps Lock with my keyboard. I began to do so because I need to use Emacs , and Control is the most used key in m...">
+    <meta property="og:url" content="http://coderscat.com/swap-caps-lock-and-control/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2020-12-09 12:08:00">
+    <meta property="article:modified_time" content="2020-12-09 12:08:00">
+    <meta property="og:updated_time" content="2020-12-09 12:08:00">
+    <meta property="og:image" content="http://coderscat.com/images/IBM_Model_F_AT.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/IBM_Model_F_AT.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Swap Caps Lock and Control">
+    <meta name="twitter:description" content="After almost 15 years of programming life, I always want to swap the Control and Caps Lock with my keyboard. I began to do so because I need to use Emacs , and Control is the most used key in m...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/IBM_Model_F_AT.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            Swap Caps Lock and Control | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Swap Caps Lock and Control</h2>
+  <p class="post-date">2020-12-09</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <p>After almost 15 years of programming life, I always want to swap the <code>Control</code> and <code>Caps Lock</code> with my keyboard. I began to do so because I need to use Emacs , and <code>Control</code> is the most used key in many key bindings in Emacs.  I started to experienced <a target="_blank" rel="noopener" href="https://www.emacswiki.org/emacs?search=%22RepeatedStrainInjury%22">Repeated Strain Injury</a> after several years of working, swap these two keys saved me.</p>
+<p>Not only in Emacs, we actually use <code>Control</code> much much more than <code>Caps Lock</code>, but <code>Caps Lock</code> is usually put in a better position in most keyboard layouts. This standard keyboard layout began almost at 1984,  when <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/IBM_PC_keyboard">IBM PC keyboard</a> introduced <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Model_F_keyboard">Model F</a> (<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/IBM_Personal_Computer/AT">PC/AT</a>).</p>
+<p><img src="/images/IBM_Model_F_AT.png" alt="84-key PC/AT keyboard"></p>
+<p><a target="_blank" rel="noopener" href="https://amzn.to/2VXvsCi">HHKB</a> is an alternative if you want a keyboard with a default layout that prefers to programmers. If you are a Vim/Emacs user, buy one for yourself!</p>
+<p>It’s also easy if you want to swap these two keys.</p>
+<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p>The easiest way is installing <a target="_blank" rel="noopener" href="https://github.com/microsoft/PowerToys">PowerToys</a>, and config it in Keyboard Manager:</p>
+<p><img src="/images/image-20201209144814896.png" alt="image-20201209144814896"></p>
+<p>Remember to keep <code>PowerToys</code> run in administrator mode.</p>
+<p><img src="/images/image-20201209145005272.png" alt="image-20201209145005272"></p>
+<p>There are some other ways such as using <code>regedit</code> to modify, but I haven’t tried it.</p>
+<h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><p>Go to <strong>Apple Menu -&gt; System Preferences… -&gt; Keyboard -&gt; Keyboard Tab -&gt; Modifier Keys</strong> and select <code>Control</code> for <code>Caps Lock</code>.</p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><h3 id="x11"><a href="#x11" class="headerlink" title="x11"></a>x11</h3><p>When running XWindows you need to modify the X11 key map using xmodmap. It is not sufficient to just modify the console keyboard mapping. Use xmodmap to load the following keymap file (save in ~/.Xmodmap):</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">remove Lock &#x3D; Caps_Lock<br>keycode 0x42 &#x3D; Control_L<br>add Control &#x3D; Control_L<br></code></pre></td></tr></table></figure>
+
+<h3 id="make-these-changes-persistent"><a href="#make-these-changes-persistent" class="headerlink" title="make these changes persistent"></a>make these changes persistent</h3><p>These keyboard settings are not persistent after a reboot. Most Linuxes will load your ~/.Xmodmap file when you log in with xdm or gdm. Some don’t. If not then you should add this line to your ~/.xsession and ~/.xinitrc files (after the shebang #!/bin/sh line):</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">[ -f ~&#x2F;.Xmodmap ] &amp;&amp; xmodmap ~&#x2F;.Xmodmap<br></code></pre></td></tr></table></figure>
+
+<h3 id="Gnome"><a href="#Gnome" class="headerlink" title="Gnome"></a>Gnome</h3><p>If you are using GNOME, try to install <strong>Gnome Tweak Tool</strong>:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">sudo apt-get install gnome-tweak-tool<br></code></pre></td></tr></table></figure>
+
+<p><strong>For version 3.30.0 and later:</strong></p>
+<ul>
+<li>Open the tweak-tool and click on the <em>Keyboard &amp; Mouse</em> section in the left menu bar.</li>
+<li>Click on the <em>Additional Layout Options</em> button on the left.</li>
+<li>Under <em>Caps Lock behavior</em> select <em>Caps Lock is also a Ctrl</em>.</li>
+</ul>
+<p><strong>For older versions:</strong></p>
+<ul>
+<li>Open the tweak-tool and click on the <em>typing</em> section in the left column.</li>
+<li>You should now see the line <em>Caps Lock key behavior</em> on the left.</li>
+<li>Choose <em>Make CapsLock an additional Ctrl key</em> instead of <em>Disabled</em> in the drop-down list and you should be good.</li>
+</ul>
+<hr>
+<p>Enjoy your new <code>Control</code>!</p>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Misc" >
+    <span class="tag-code-index">Misc</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/leetcode-check-array-formation-through-concatenation/">
+        <span class="nav-arrow">← </span>
+        
+          LeetCode: Check Array Formation ...
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/leetcode-letter-combinations-of-a-phone-number/">
+            
+                LeetCode: Letter Combinations of...
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Windows"><span class="toc-nav-text">Windows</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Mac"><span class="toc-nav-text">Mac</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Linux"><span class="toc-nav-text">Linux</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#x11"><span class="toc-nav-text">x11</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#make-these-changes-persistent"><span class="toc-nav-text">make these changes persistent</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Gnome"><span class="toc-nav-text">Gnome</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/swap-caps-lock-and-control/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

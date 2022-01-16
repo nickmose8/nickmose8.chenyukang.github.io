@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="All about Programming and Software">
+  <meta name="keyword" content="Programming, Programming Languages, Algorithms, Tools.">
+  <title itemprop="name">Coder&#39;s Cat</title>
+  <meta property="og:title" content="Coder&#39;s Cat">
+  <meta name="twitter:title" content="Coder&#39;s Cat">
+  <meta itemprop="name" content="Coder&#39;s Cat">
+  <meta name="application-name" content="Coder&#39;s Cat">
+  <meta property="og:site_name" content="Coder&#39;s Cat">
+
+  <meta name="description" content="">
+  <meta itemprop="description" content="">
+  <meta property="og:description" content="">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:url" content=""> 
+  <meta property="og:url" content="">
+
+  
+  
+    <link rel="shortcut icon" href="/css/images/nav.png">
+  
+  <title>
+      
+          Coder&#39;s Cat
+      
+  </title>  
+  
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/code.css">
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+
+  <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons" async="async"></script>
+
+  <div style="margin:0 auto;width:0px;height:0px;overflow:hidden;">
+      <img src="/css/images/logo.png" width="400px" height="400px">
+  </div>
+
+  <script id="mcjs">
+   !function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/a1e802d71c0a3abf469a89281/dbcf0a950b5b97427499afa5e.js");
+  </script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-77282254-2');
+</script>
+
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+
+</head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link active">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link mobile-active">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <main class="app-body">
+    
+  
+    <article class="article-card">
+      <h2 class="article-head" font-color="red">
+        <a href="/javascript-and-css-optimization/">Eliminate render-blocking resources: JavaScript, CSS</a>
+      </h2>
+      <p class="article-date">November 11, 2020
+          
+              
+  <a href="/tags#JavaScript" >
+    <span class="tag-code-index">JavaScript</span>
+  </a>
+
+
+          
+      </p>
+      <div class="article-summary">
+        
+        
+            
+                <p>Today I changed my site from WordPress to an static one. The load speed should improve much.</p>
+<p>I checked it with <a href="https://developers.google.com/speed/pagespeed/insights/?hl=en&amp;url=https%3A%2F%2Fcoderscat.com%2F&amp;tab=mobile" target="_blank" rel="noopener">Google PageSpeed Insights</a>,  and do more optimization according  the result.</p>
+<p><img src="/images/image-20201110220330888.png" alt="image-20201110220330888"></p>
+<p>In this Post, I will explain what are inline and differing JavaScript/CSS, and how to use it to improve your page loading speed.</p>
+<p>External files referenced in the page: JavaScript, CSS, etc. often block the browser from rendering the page. </p>
+<p>Front-end performance tuning must eliminate any potential rendering blocking points to allow the browser to render the entire page in the shortest amount of time possible.</p>
+<h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><p>Let’s have a look at this simple HTML:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"page.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>In the above code, when the browser is parsing the <code>script</code> tag, since the browser doesn’t know what <code>page.js</code> will do to the page, the browser needs to stop rendering, download and execute <code>page.js</code> and then continue rendering the rest of the page. Any delay in downloading <code>page.js</code> will also affect the rendering of the entire page.</p>
+<h2 id="Inline-JavaScript"><a href="#Inline-JavaScript" class="headerlink" title="Inline JavaScript"></a>Inline JavaScript</h2><p>If the initial rendering of the page does rely on page.js, we can use inline JavaScript.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    /* content of page.js */</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Delayed-loading"><a href="#Delayed-loading" class="headerlink" title="Delayed loading"></a>Delayed loading</h2><p>If the initial rendering of the page does not depend on <code>page.js</code>, we could delay the loading of <code>page.js</code> and load it after the initial content of the page is rendered.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"page.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Async-Defer-loading"><a href="#Async-Defer-loading" class="headerlink" title="Async/Defer loading"></a>Async/Defer loading</h2><p>There is another two script attribute called <strong>async</strong> and <strong>defer</strong>, which allow us to  reduce the time for downloading the scripts.</p>
+<p>In this case, the browser will render the rest of the page as it downloads <code>page.js</code>.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!doctype html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;page.js&quot; async&gt;&lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;h1&gt;Hello World&lt;/h1&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>There are trivial differences between them, <strong>async</strong> will pause HTML parser to to execute the JS when downloading finished.</p>
+<p><img src="/images/defer-parsing-of-javascript-3.png" alt="JavaScript async vs defer"></p>
+<h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><p>Since CSS determines the style and layout of DOM elements, the browser will wait for the CSS file to load and parse before rendering the page when it encounters it.</p>
+<h2 id="Inline-CSS"><a href="#Inline-CSS" class="headerlink" title="Inline CSS"></a>Inline CSS</h2><p>We can add Inline CSS to the CSS code needed for those page first screen renderings.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">tpe</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    .blue &#123;</span></span><br><span class="line"><span class="undefined">        color: blue;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"blue"</span>&gt;</span></span><br><span class="line">      Hello, world!</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Delay-loading-of-CSS"><a href="#Delay-loading-of-CSS" class="headerlink" title="Delay loading of CSS"></a>Delay loading of CSS</h2><p>For CSS that is not needed for first screen rendering, we can still use the file form and load it after the page content is rendered.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">tpe</span>=<span class="string">"text/css"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    .blue &#123;</span></span><br><span class="line"><span class="undefined">        color: blue;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"blue"</span>&gt;</span></span><br><span class="line">      Hello, world!</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"other.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>The JS and CSS required for the initial rendering of the page can be inserted directly into the <code>&lt;head&gt;</code> tag in code form. All external file references can be placed after the page content, and JS files can also be <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/?utm_source=lighthouse&amp;utm_medium=unknown" target="_blank" rel="noopener">loaded asynchronously</a>.</p>
+
+            
+        
+      </div>
+      
+          <a class="more" href="/javascript-and-css-optimization/#footer">Read More ...</a>
+      
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head" font-color="red">
+        <a href="/5-tricks-that-will-help-you-debug-python-code/">5 Tricks That Will Help You Debug Python Code</a>
+      </h2>
+      <p class="article-date">November 2, 2020
+          
+              
+  <a href="/tags#Python" >
+    <span class="tag-code-index">Python</span>
+  </a>
+
+
+          
+      </p>
+      <div class="article-summary">
+        
+        
+          <p>Sharpen your Python debugging skills<br>
+        
+      </div>
+      
+          <a class="more" href="/5-tricks-that-will-help-you-debug-python-code/">Read More ...</a>
+      
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head" font-color="red">
+        <a href="/5-tools-to-boost-your-productivity-on-windows-10/">5 Tools To Boost Your Productivity On Windows 10</a>
+      </h2>
+      <p class="article-date">October 21, 2020
+          
+              
+  <a href="/tags#Misc" >
+    <span class="tag-code-index">Misc</span>
+  </a>
+
+
+          
+      </p>
+      <div class="article-summary">
+        
+        
+            
+                
+@stadsa on Unsplash
+Microsoft has done great efforts to improve the user experience and build an active ecosystem for developers. Moreover, Mic .....
+            
+        
+      </div>
+      
+          <a class="more" href="/5-tools-to-boost-your-productivity-on-windows-10/">Read More ...</a>
+      
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head" font-color="red">
+        <a href="/5-most-common-unwitting-lies-that-developers-tell/">5 Most Common Lies Developers May Tell</a>
+      </h2>
+      <p class="article-date">September 25, 2020
+          
+              
+  <a href="/tags#Misc" >
+    <span class="tag-code-index">Misc</span>
+  </a>
+
+
+          
+      </p>
+      <div class="article-summary">
+        
+        
+          <p>Keey an eye on the words, promise told by developer!<br>
+        
+      </div>
+      
+          <a class="more" href="/5-most-common-unwitting-lies-that-developers-tell/">Read More ...</a>
+      
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head" font-color="red">
+        <a href="/understanding-mapreduce/">Understanding MapReduce</a>
+      </h2>
+      <p class="article-date">September 18, 2020
+          
+      </p>
+      <div class="article-summary">
+        
+        
+          <p>Understanding MapReduce, from functional programming language to distributed system.<br>
+        
+      </div>
+      
+          <a class="more" href="/understanding-mapreduce/">Read More ...</a>
+      
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head" font-color="red">
+        <a href="/what-i-learned-from-steve-jobs-thoughts-about-technology-and-product/">What I learned from Steve Jobs's thoughts about technology and product</a>
+      </h2>
+      <p class="article-date">August 19, 2020
+          
+              
+  <a href="/tags#Writing" >
+    <span class="tag-code-index">Writing</span>
+  </a>
+
+
+          
+      </p>
+      <div class="article-summary">
+        
+        
+          <p>Learn how Steve Jobs answered the tough question from developers, and his ideas about technology and product.<br>
+        
+      </div>
+      
+          <a class="more" href="/what-i-learned-from-steve-jobs-thoughts-about-technology-and-product/">Read More ...</a>
+      
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head" font-color="red">
+        <a href="/leetcode-longest-consecutive-sequence/">LeetCode: Longest Consecutive Sequence</a>
+      </h2>
+      <p class="article-date">August 2, 2020
+          
+              
+  <a href="/tags#LeetCode" >
+    <span class="tag-code-index">LeetCode</span>
+  </a>
+
+
+          
+      </p>
+      <div class="article-summary">
+        
+        
+          <p>3 Solutions for longest consecutive sequence<br>
+        
+      </div>
+      
+          <a class="more" href="/leetcode-longest-consecutive-sequence/">Read More ...</a>
+      
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head" font-color="red">
+        <a href="/leetcode-serialize-and-deserialize-n-ary-tree/">LeetCode: Serialize and Deserialize N-ary Tree</a>
+      </h2>
+      <p class="article-date">August 1, 2020
+          
+              
+  <a href="/tags#LeetCode" >
+    <span class="tag-code-index">LeetCode</span>
+  </a>
+
+
+          
+      </p>
+      <div class="article-summary">
+        
+        
+          <p>Solution for LeetCode challenge: Serialize and Deserialize N-ary Tree<br>
+        
+      </div>
+      
+          <a class="more" href="/leetcode-serialize-and-deserialize-n-ary-tree/">Read More ...</a>
+      
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head" font-color="red">
+        <a href="/leetcode-unique-paths-ii/">LeetCode: Unique Paths II</a>
+      </h2>
+      <p class="article-date">July 30, 2020
+          
+              
+  <a href="/tags#LeetCode" >
+    <span class="tag-code-index">LeetCode</span>
+  </a>
+
+
+          
+      </p>
+      <div class="article-summary">
+        
+        
+          <p>Solution for LeetCode: Unique Path II, Depth-first-search algorithm with memorization.<br>
+        
+      </div>
+      
+          <a class="more" href="/leetcode-unique-paths-ii/">Read More ...</a>
+      
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head" font-color="red">
+        <a href="/leetcode-add-strings/">LeetCode: Add Strings</a>
+      </h2>
+      <p class="article-date">July 30, 2020
+          
+              
+  <a href="/tags#LeetCode" >
+    <span class="tag-code-index">LeetCode</span>
+  </a>
+
+
+          
+      </p>
+      <div class="article-summary">
+        
+        
+          <p>Solution for LeetCode challenge: Add strings<br>
+        
+      </div>
+      
+          <a class="more" href="/leetcode-add-strings/">Read More ...</a>
+      
+    </article>
+  
+
+  
+    <div class="guide-pager">
+  
+    <a class="unvisible" href="/"><span class="page-arrow">←</span> Prev</a>
+  
+  
+    <a href="/page/2/">Next<span class="page-arrow"> →</span></a>
+  
+</div>
+
+  
+</main>
+
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2020 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'false';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.3.2/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

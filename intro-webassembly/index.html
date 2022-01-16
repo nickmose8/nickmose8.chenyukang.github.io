@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>Gentle Introduction To WebAssembly</title>
+
+    
+    
+    <meta name="description" content="I have a toy project wrote in Rust, then I make it compiled to WebAssembly. To my surprise, it’s not so complicated and everything works perfectly. 
+My computationally intensive application now...">
+    <link rel="canonical" href="http://coderscat.com/intro-webassembly/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Gentle Introduction To WebAssembly">
+    <meta property="og:description" content="I have a toy project wrote in Rust, then I make it compiled to WebAssembly. To my surprise, it’s not so complicated and everything works perfectly. 
+My computationally intensive application now...">
+    <meta property="og:url" content="http://coderscat.com/intro-webassembly/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2021-05-24 12:58:00">
+    <meta property="article:modified_time" content="2021-05-24 12:58:00">
+    <meta property="og:updated_time" content="2021-05-24 12:58:00">
+    <meta property="og:image" content="http://coderscat.com../images/webassembly-js-perf.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com../images/webassembly-js-perf.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gentle Introduction To WebAssembly">
+    <meta name="twitter:description" content="I have a toy project wrote in Rust, then I make it compiled to WebAssembly. To my surprise, it’s not so complicated and everything works perfectly. 
+My computationally intensive application now...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com../images/webassembly-js-perf.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            Gentle Introduction To WebAssembly | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Gentle Introduction To WebAssembly</h2>
+  <p class="post-date">2021-05-24</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <p>I have a toy project wrote in Rust, then I make it compiled to WebAssembly. To my surprise, it’s not so complicated and everything works perfectly. </p>
+<p>My computationally intensive application now running on Web client with a expected performance. This wonderful experience tempted me to learn more about WebAssembly. I will share my understanding about WebAssembly in this article.</p>
+<h2 id="The-history-before-WebAssembly"><a href="#The-history-before-WebAssembly" class="headerlink" title="The history before WebAssembly"></a>The history before WebAssembly</h2><p>Every new technology will be introduced to solve some existing problems. WebAssembly was invented to solve the issues of Web. </p>
+<p>Nowadays, front-end applications become more complicated. In addition to the complexity of logic and the large amount of code, there is another reason for the defects of the language itself.</p>
+<p>Brendan Eich, the author of this interpreted programming language, hurriedly created this widely used language, so that the development history of JavaScript even turned into a history of filling holes in a certain level. </p>
+<p>There are mainly two kinds of issues comes with JavaScript:</p>
+<h3 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h3><p>Similar to other interpreted programming language, JavaScript was slow. At least before 2008, it was very slow. With more and more Web application adapted JavaScript, performance war began between Web browsers. JIT(Just-In-Time compiler) was introduced to solve the performance issues of JavaScript. <a target="_blank" rel="noopener" href="https://v8.dev/">Google’s V8</a> and Microsoft’s <a target="_blank" rel="noopener" href="https://github.com/chakra-core/ChakraCore">ChakraCore</a> both with JIT(even multiple staged JITs).</p>
+<figure style="background-color: white">
+<img src="../images/webassembly-js-perf.png" width="500"> 
+<figcaption>source: https://twitter.com/linclark</figcaption>
+</figure>
+
+<p>Due to its design as a dynamic language, there are several classes of optimizations that are available to other programming languages that are, and will remain, unavailable as options to even the fastest and most modern JavaScript runtime. For instance, the ahead-of-time (AOT) optimizing compilation strategy.</p>
+<h3 id="Robustness-and-maintainability"><a href="#Robustness-and-maintainability" class="headerlink" title="Robustness and maintainability"></a>Robustness and maintainability</h3><p>With a dynamic programming such as JavaScript, we can build things quickly. But it will go to mess when project getting bigger. </p>
+<p>Static typing makes it easier to work with complex system. It helps you catch type mismatches sooner at compile-time and also make it easier to optimizations.</p>
+<p>For example, in dynamically typed programming languages, if you’re not careful with inputs, you can end up doing weird stuff like trying to add a number 1 with the string “2” and you would get the string “12” as a result. But this kind of type error should caught during development stage. In simple words, dynamic typing is the style of “write first, debug later”, static typing is the style of “think first, then write”.</p>
+<p>To add static typing to JavaScript, the tried methods including:</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.typescriptlang.org/">TypeScript</a>: builds on JavaScript, adding static type definitions.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://reasonml.github.io/">Reason</a> and <a target="_blank" rel="noopener" href="https://www.purescript.org/">PureScript</a>: An translator compile other static typing languages(such as OCaml/Haskell) into JavaScript.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://asmjs.org/spec/latest/">asm.js</a> (Deprecated): Define a strict subset of JavaScript that can be used as a low-level, efficient target language for compilers, especially to allow compilers to do ahead-of-time(AOT) optimizing compilation. We can use source-to-source compiler such as <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Emscripten">Emscripten</a> to compile statically-typed languages(such as C) into asm.js.</p>
+</li>
+</ul>
+<h2 id="Introduction-to-WebAssembly"><a href="#Introduction-to-WebAssembly" class="headerlink" title="Introduction to WebAssembly"></a>Introduction to WebAssembly</h2><p>While <strong>asm.js</strong> have performance improvement over original JavaScript, but in essential it is still JavaScript. In some scenarios, the generated file will become too large and introduce a bottle-neck for the code needs frequently transmitted.</p>
+<p>Since asm.js code is mainly used as compilation target and we won’t edit it manually, it is necessary to invent a binary format. This is basically the origin of WebAssembly: </p>
+<blockquote>
+<p>WebAssembly (abbreviated Wasm) is a binary instruction format for a stack-based virtual<br>machine. Wasm is designed as a portable compilation target for programming languages,<br>enabling deployment on the web for client and server applications.</p>
+</blockquote>
+<p>WebAssembly was first released in 2015, and the first demonstration was to run Unity’s <a target="_blank" rel="noopener" href="https://beta.unity3d.com/jonas/AngryBots/">“Angry Robot”</a>. You can play more games deployed on WebAssembly at <a target="_blank" rel="noopener" href="https://www.webassemblygames.com/">webassemblygames</a>. Another classic demo is Mozilla’s <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=TwuIRcpeUWE">Zen Garden (Epic)</a>:</p>
+<style>.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+  }
+  .embed-container iframe, .embed-container object, .embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  </style>
+
+<div class="embed-container"><iframe src="https://www.youtube.com/embed/TwuIRcpeUWE" allowfullscreen frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe></div>
+
+<p>Then, WebAssembly has became the official <a target="_blank" rel="noopener" href="https://www.w3.org/2019/12/pressrelease-wasm-rec.html.en">“fourth language for web”</a> on 5th December 2019, i.e. after HTML, CSS &amp; JavaScript.</p>
+<p>WebAssembly is a different language from JavaScript, but it is not intended as a replacement. Instead, it is designed to complement and work alongside JavaScript, allowing web developers to take advantage of both languages’ strong points.</p>
+<p>We can re-use existing code by targeting WebAssembly, embedded in a larger JavaScript / HTML application. This could be anything from simple helper libraries to compute-oriented task offload.</p>
+<figure style="background-color: white">
+<img src="../images/webass-works.png" width="650"> 
+</figure>
+
+<h2 id="Have-a-Try"><a href="#Have-a-Try" class="headerlink" title="Have a Try"></a>Have a Try</h2><p>In WebAssembly, there are two commonly used file formats:</p>
+<ul>
+<li>.wat : is S-expression-based text format, an intermediate form designed to be exposed in text editors, browser developer tools, etc. Files</li>
+<li>.wasm: is a binary format which can be read and run by virtual machine(or browsers).</li>
+</ul>
+<p>We convert C/C++/Rust or other source code into .wat format, then assemble .wat format to .wasm. </p>
+<p>To have a first try on WebAssembly, you can use <a target="_blank" rel="noopener" href="https://mbebenita.github.io/WasmExplorer/">WasmExplorer</a> to input some code C/C++ code.<br>The compiled WAT and x86 Assembly format content are showed in windows:</p>
+<figure style="background-color: white">
+<img src="../images/webass2.png" width="550"> 
+<figcaption></figcaption>
+</figure>
+
+<p>Currently, WebAssembly is supported by most Web browsers. You can have a try with opening your browser’s console and type a input like this:</p>
+<figure style="background-color: white">
+<img src="../images/webass1.png" width="550"> 
+<figcaption></figcaption>
+</figure>
+
+<p>The best beginner tutorial is <a target="_blank" rel="noopener" href="https://webassembly.org/getting-started/developers-guide/">official guides</a>, choose the programming language you are familiar with and compile it to WASM format.</p>
+<p><a target="_blank" rel="noopener" href="https://wasmer.io/">wasmtime</a> is a standalone runtime for WebAssembly and <a target="_blank" rel="noopener" href="https://github.com/wasmerio/wasmer">wasmer</a> is not only a runtime but enables super lightweight containers.</p>
+<h2 id="WebAssembly-Out-of-Browser"><a href="#WebAssembly-Out-of-Browser" class="headerlink" title="WebAssembly Out of Browser"></a>WebAssembly Out of Browser</h2><p>Because the binary format WASM can be loaded and executed by WASM Virtual Machine, we actually can extend the usage of WebAssembly out of browsers. </p>
+<p>Run WASM everywhere will bring huge benefits. We can reuse code and make legacy code run in different platform. We simply cannot afford the time and money to rewrite software for multiple platforms constantly. </p>
+<p>When Java was introduced, <strong>Write once, run anywhere</strong> was a slogan to illustrate the cross-platform benefits. With WebAssembly, the promising future is <strong>Write once in any programming language, run anywhere</strong>.</p>
+<p>The project <a target="_blank" rel="noopener" href="https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/">WASI</a> is a promising standard to achieve this.</p>
+<p>This is a new powerful weapon if we can make different programming languages interoperate each other seamlessly.</p>
+<figure style="background-color: white">
+<img src="../images/wasi.png" width="550"> 
+<figcaption></figcaption>
+</figure>
+
+<h2 id="The-Future-of-WebAssembly"><a href="#The-Future-of-WebAssembly" class="headerlink" title="The Future of WebAssembly"></a>The Future of WebAssembly</h2><p>There are still many features are under development or in proposal stage.</p>
+<p>Even WebAssembly is not complete right now, or “all ready” yet, I believe WebAssembly will impact the worlds of client-side web development, desktop applications, server-side functionality, legacy modernization, games, serverless and more.</p>
+<p>Hope you will enjoy this new technology as me.</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a target="_blank" rel="noopener" href="https://webassembly.org/">WebAssembly Home</a><br><a target="_blank" rel="noopener" href="https://hacks.mozilla.org/category/code-cartoons/a-cartoon-intro-to-webassembly/">A cartoon intro to WebAssembly Articles</a><br><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=fh9WXPu0hw8">Bringing WebAssembly outside the web with WASI by Lin Clark</a><br><a target="_blank" rel="noopener" href="https://hacks.mozilla.org/2019/03/standardizing-wasi-a-webassembly-system-interface/">WASI: A system interface to run WebAssembly outside the web</a></p>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Programming" >
+    <span class="tag-code-index">Programming</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/5-fancy-shells/">
+        <span class="nav-arrow">← </span>
+        
+          5 Fancy Shells You Should Have A...
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/bloom-filter/">
+            
+                Introduction to Bloom Filter
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#The-history-before-WebAssembly"><span class="toc-nav-text">The history before WebAssembly</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Performance"><span class="toc-nav-text">Performance</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Robustness-and-maintainability"><span class="toc-nav-text">Robustness and maintainability</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Introduction-to-WebAssembly"><span class="toc-nav-text">Introduction to WebAssembly</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Have-a-Try"><span class="toc-nav-text">Have a Try</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#WebAssembly-Out-of-Browser"><span class="toc-nav-text">WebAssembly Out of Browser</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#The-Future-of-WebAssembly"><span class="toc-nav-text">The Future of WebAssembly</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#References"><span class="toc-nav-text">References</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/intro-webassembly/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

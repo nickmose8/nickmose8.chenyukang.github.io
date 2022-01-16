@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>Python: Pros and Cons of Lambda</title>
+
+    
+    
+    <meta name="description" content="
+Basics for lambda lambda is a keyword in Python. We use it to create an anonymous function. So we also call lambda functions as anonymous functions.
+ But what is the anonymous function?
+ A nor...">
+    <link rel="canonical" href="http://coderscat.com/python-pros-and-cons-of-lambda/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Python: Pros and Cons of Lambda">
+    <meta property="og:description" content="
+Basics for lambda lambda is a keyword in Python. We use it to create an anonymous function. So we also call lambda functions as anonymous functions.
+ But what is the anonymous function?
+ A nor...">
+    <meta property="og:url" content="http://coderscat.com/python-pros-and-cons-of-lambda/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2020-03-29 23:36:00">
+    <meta property="article:modified_time" content="2020-03-29 23:36:00">
+    <meta property="og:updated_time" content="2020-03-29 23:36:00">
+    <meta property="og:image" content="http://coderscat.com/images/2020_03_29_python-cons-and-pros-of-lambda.org_20200330_002955.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/2020_03_29_python-cons-and-pros-of-lambda.org_20200330_002955.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Python: Pros and Cons of Lambda">
+    <meta name="twitter:description" content="
+Basics for lambda lambda is a keyword in Python. We use it to create an anonymous function. So we also call lambda functions as anonymous functions.
+ But what is the anonymous function?
+ A nor...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/2020_03_29_python-cons-and-pros-of-lambda.org_20200330_002955.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            Python: Pros and Cons of Lambda | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Python: Pros and Cons of Lambda</h2>
+  <p class="post-date">2020-03-29</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <p><img src="/images/2020_03_29_python-cons-and-pros-of-lambda.org_20200330_002955.png" alt="file:img/2020_03_29_python-cons-and-pros-of-lambda.org_20200330_002955.png"></p>
+<h2 id="Basics-for-lambda"><a href="#Basics-for-lambda" class="headerlink" title="Basics for lambda"></a>Basics for lambda</h2><p> <code>lambda</code> is a keyword in Python. We use it to create an anonymous function. So we also call lambda functions as anonymous functions.</p>
+<p> But what is the anonymous function?</p>
+<p> A normal function defined like this:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sum_two</span>(<span class="hljs-params">x, y</span>):</span><br>    x + y<br><br>print(sum_two)<br>print(<span class="hljs-built_in">type</span>(sum_two))<br><br><span class="hljs-comment">#&lt;function sum_two at 0x10f54eb18&gt;</span><br><span class="hljs-comment">#&lt;type &#x27;function&#x27;&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p> From the result, <strong>sum_two</strong> is the name of the defined function, it’s type is ‘function’.</p>
+<p> Compared to normal function, an anonymous function is a function without a user-defined name.</p>
+<p> Anonymous people sometimes get generic names such as ‘Anonymous’ or ‘Jane Doe’. In CPython, lambda functions get the generic pseudoname ‘<lambda>’, used for repr() and tracebacks:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">print(<span class="hljs-keyword">lambda</span> x, y: x + y)<br>print(<span class="hljs-built_in">type</span>(<span class="hljs-keyword">lambda</span> x, y: x + y))<br><br><span class="hljs-comment">#&lt;function &lt;lambda&gt; at 0x108227f50&gt;</span><br><span class="hljs-comment">#&lt;type &#x27;function&#x27;&gt;</span><br><br>(<span class="hljs-keyword">lambda</span>: <span class="hljs-number">0</span>).__name__<br><span class="hljs-comment"># &#x27;&lt;lambda&gt;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+
+<h2 id="The-benefits-of-lambda"><a href="#The-benefits-of-lambda" class="headerlink" title="The benefits of lambda"></a>The benefits of lambda</h2><p> But why we want to give a generic pseudo-name to some functions?</p>
+<p><strong>Naming is too damn hard</strong>!  Think about how much time you spent on naming(variables, functions, classes) when you are programming.</p>
+<p> Not all functions deserved a user-defined name.</p>
+<p> Some functions are used temporarily, and we won’t need them later. We use a lambda function to saving time for naming and get better readability.</p>
+<p> Suppose we need to add 2 to each element in a list, instead of use normal function:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">add_2</span>(<span class="hljs-params">x</span>):</span><br>    <span class="hljs-keyword">return</span> x + <span class="hljs-number">2</span><br><br>lst = [<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">-4</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-2</span>,<span class="hljs-number">-6</span>]<br><span class="hljs-built_in">map</span>(add_2, lst)<br></code></pre></td></tr></table></figure>
+
+<p> We could use <code>lambda</code> to finish the same computation in one line:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> x: x + <span class="hljs-number">2</span>, lst)<br></code></pre></td></tr></table></figure>
+
+<p> This is simplicity. We can write a lambda function with no hassle.</p>
+<p> There are other functions like <code>filter</code>, <code>reduce</code>, <code>sorted</code>, they receive lambda function as a parameters.</p>
+<h2 id="The-pitfall-of-lambda"><a href="#The-pitfall-of-lambda" class="headerlink" title="The pitfall of lambda"></a>The pitfall of lambda</h2><p> The purpose of <code>lambda function</code> is to improve the code’s readability. So if the logic of a function is not simple, we should not use lambda.</p>
+<p> A simple rule is: <strong>don’t use lambda for the functions whose lengths are more than one line</strong>.</p>
+<p> Think about this code snippet, could you understand this code easily?</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">f = <span class="hljs-keyword">lambda</span> x: [[y <span class="hljs-keyword">for</span> j, y <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(<span class="hljs-built_in">set</span>(x)) <span class="hljs-keyword">if</span> (i &gt;&gt; j) &amp; <span class="hljs-number">1</span>] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>**<span class="hljs-built_in">len</span>(<span class="hljs-built_in">set</span>(x)))]<br></code></pre></td></tr></table></figure>
+
+<p> This code is difficult to understand. The intention of this code is to get all the subsets from a <code>set</code>.</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">a = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;<br>print(f(a))<br><span class="hljs-comment"># [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]</span><br></code></pre></td></tr></table></figure>
+
+<p> In this case, we should use a normal function with a proper name:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">powerset</span>(<span class="hljs-params">s</span>):</span><br>    N = <span class="hljs-built_in">len</span>(s)<br>    result = []<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span> ** N):<br>        combo = []<br>        <span class="hljs-keyword">for</span> j, y <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(s):<br>            <span class="hljs-keyword">if</span> (i &gt;&gt; j) % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>:<br>                combo.append(y)<br>        result.append(combo)<br>    <span class="hljs-keyword">return</span> result<br><br>print(powerset(a))<br></code></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><blockquote>
+<p>Explicit is better than implicit.<br>– <strong>Zen of Python</strong></p>
+</blockquote>
+<p>Remember, if we can’t make code clearer and shorter with lambda functions, then we need to use conventional ways to define functions.</p>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Python" >
+    <span class="tag-code-index">Python</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/3-most-slow-sorting-algorithms/">
+        <span class="nav-arrow">← </span>
+        
+          3 Slowest Sorting Algorithms
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/python-is-and-equal/">
+            
+                Python: Is and ==
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Basics-for-lambda"><span class="toc-nav-text">Basics for lambda</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#The-benefits-of-lambda"><span class="toc-nav-text">The benefits of lambda</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#The-pitfall-of-lambda"><span class="toc-nav-text">The pitfall of lambda</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Conclusion"><span class="toc-nav-text">Conclusion</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/python-pros-and-cons-of-lambda/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

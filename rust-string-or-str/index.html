@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>Rust: the weird but safe string</title>
+
+    
+    
+    <meta name="description" content="
+When you begin to learn programming in Rust, your probably first frustration will be the compilation errors from the string.
+Rust’s string design is somehow different from most programming lan...">
+    <link rel="canonical" href="http://coderscat.com/rust-string-or-str/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Rust: the weird but safe string">
+    <meta property="og:description" content="
+When you begin to learn programming in Rust, your probably first frustration will be the compilation errors from the string.
+Rust’s string design is somehow different from most programming lan...">
+    <meta property="og:url" content="http://coderscat.com/rust-string-or-str/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2021-06-30 22:07:31">
+    <meta property="article:modified_time" content="2021-06-30 22:07:31">
+    <meta property="og:updated_time" content="2021-06-30 22:07:31">
+    <meta property="og:image" content="http://coderscat.com../images/2021-07-02-13-07-29.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com../images/2021-07-02-13-07-29.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rust: the weird but safe string">
+    <meta name="twitter:description" content="
+When you begin to learn programming in Rust, your probably first frustration will be the compilation errors from the string.
+Rust’s string design is somehow different from most programming lan...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com../images/2021-07-02-13-07-29.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            Rust: the weird but safe string | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Rust: the weird but safe string</h2>
+  <p class="post-date">2021-06-30</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <p><img src="../images/2021-07-02-13-07-29.png" alt="Ümit Yıldırım"></p>
+<p>When you begin to learn programming in Rust, your probably first frustration will be the compilation errors from the string.</p>
+<p>Rust’s string design is somehow different from most programming languages that have a single string type. Both the Unicode-safe string design and unique ownership mechanism make string in Rust is somehow counterintuitive for beginners.</p>
+<p>But, don’t freak out!</p>
+<p>Actually, the string data structure is more complicated than most programmers give credit for. And Rust is focused on safety, the compiler will tell you the potential issues about string when you are coding. It’s better to keep safe in development phase, otherwise, you may be lost in debug night. </p>
+<p>So, let’s have a bit dive into string in Rust.</p>
+<h2 id="What-is-String"><a href="#What-is-String" class="headerlink" title="What is String"></a>What is String</h2><p>In Rust, <code>String</code> is simply a vector of <code>u8</code>. We can find its definition in <a target="_blank" rel="noopener" href="https://github.com/rust-lang/rust/blob/master/library/alloc/src/string.rs">source code</a>.</p>
+<p>The <code>String</code> type is provided by Rust’s standard library, it is a growable in size and heap-allocated, mutable, string type. When a <code>String</code> variable goes out of scope, the buffer will be freed automatically.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-meta">#[derive(PartialOrd, Eq, Ord)]</span><br><span class="hljs-keyword">pub</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">String</span></span> &#123;<br>    vec: <span class="hljs-built_in">Vec</span>&lt;<span class="hljs-built_in">u8</span>&gt;,<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>We can create a <code>String</code> in several ways: </p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> s = <span class="hljs-built_in">String</span>::new()         <span class="hljs-comment">// An empty String</span><br><span class="hljs-keyword">let</span> s = <span class="hljs-string">&quot;Hello&quot;</span>.to_string();<br><span class="hljs-keyword">let</span> s = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">&quot;world&quot;</span>);<br><span class="hljs-keyword">let</span> s: <span class="hljs-built_in">String</span> = <span class="hljs-string">&quot;also this&quot;</span>.into();<br></code></pre></td></tr></table></figure>
+
+<p>Rust’s character and string types are designed around Unicode. <code>String</code> is not a sequence of ASCII chars, instead, it is a sequence of Unicode characters. A Rust <code>char</code> type is a 32-bit value holding a Unicode code. <code>String</code> use <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/UTF-8">UTF-8</a> to encode Unicode characters into a vec<u8>.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> hello = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">&quot;こんにちは&quot;</span>);<br><span class="hljs-keyword">let</span> hello = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">&quot;안녕하세요&quot;</span>);<br><span class="hljs-keyword">let</span> hello = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">&quot;你好&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>And <code>.len()</code> method will return the length measured in bytes, not in chars.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-built_in">assert_eq!</span>(<span class="hljs-string">&quot;ಠ_ಠ&quot;</span>.len(), <span class="hljs-number">7</span>);<br><span class="hljs-built_in">assert_eq!</span>(<span class="hljs-string">&quot;ಠ_ಠ&quot;</span>.chars().count(), <span class="hljs-number">3</span>);<br></code></pre></td></tr></table></figure>
+
+<p>The most un-natural of string is <code>indexing</code> related operation. For instance, you can not just use <code>s[i]</code> to fetch the <code>i-th</code> individual char from a string. Rust strings don’t support indexing?</p>
+<p><img src="../images/2021-07-02-09-07-56.png"></p>
+<p>Why?</p>
+<p>Because UTF-8 is a variable-width encoding format, each ASCII character in a string is stored in one byte, while other characters may take up multiple bytes. So, in this format, index into the string’s bytes will not always correlate to a valid Unicode scalar value.</p>
+<p>For a string which contains with ASCII character and non-ASCII character, the <code>s[1]</code> means a invalid value.</p>
+<p><img src="../images/2021-07-02-09-03-54.png"></p>
+<p>Instead, we need to access chars with a iterator.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> v = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">&quot;🗻∈🌏&quot;</span>);<br><span class="hljs-keyword">let</span> c = v.chars().nth(<span class="hljs-number">2</span>);<br><span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;c: &#123;:?&#125;&quot;</span>, c);<br></code></pre></td></tr></table></figure>
+
+<p>But, if you know your string is all ASCII chars, you may use the non-panicking version of <code>get</code> and <code>get_mut</code> to access or modify a part of string in O(1) time. <code>get_mut</code> will return a <code>&amp;mut str</code>, but it still very restrictive, the only operations available on <code>&amp;mut str</code> are <code>make_ascii_uppercase</code> and <code>make_ascii_lowercase</code>, which modify the text in place and affect only single-byte characters.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">test_get_mut</span></span>() &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut</span> v = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">&quot;hello&quot;</span>);<br><br>    <span class="hljs-built_in">assert_eq!</span>(<span class="hljs-literal">Some</span>(<span class="hljs-string">&quot;he&quot;</span>), v.get_mut(<span class="hljs-number">0</span>..<span class="hljs-number">2</span>).map(|v| &amp;*v));<br>    <span class="hljs-keyword">let</span> s = v.get_mut(<span class="hljs-number">0</span>..<span class="hljs-number">2</span>);<br>    <span class="hljs-keyword">let</span> s = s.map(|s| &#123;<br>        s.make_ascii_uppercase();<br>        &amp;*s<br>    &#125;);<br>    <span class="hljs-built_in">assert_eq!</span>(<span class="hljs-literal">Some</span>(<span class="hljs-string">&quot;HE&quot;</span>), s);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>If you want to more freedom to modify specific bytes in a <code>String</code>, you need to convert it to a <code>mut vec&lt;u8&gt;</code>:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">set_char_inplace</span></span>(text: &amp;<span class="hljs-keyword">mut</span> <span class="hljs-built_in">String</span>, index: <span class="hljs-built_in">usize</span>, c: <span class="hljs-built_in">char</span>) &#123;<br>    <span class="hljs-keyword">let</span> bytes = <span class="hljs-keyword">unsafe</span> &#123; text.as_mut_vec() &#125;;<br>    bytes[index] = c <span class="hljs-keyword">as</span> <span class="hljs-built_in">u8</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Ok, we talked about much about <code>String</code> right now. Just remember, strings in Rust are guaranteed to be valid UTF-8, and get more familiar with <code>String</code> API if you are confused. <a target="_blank" rel="noopener" href="https://utf8everywhere.org/">UTF-8 Everywhere</a> is a best reference for you to learn why Rust choose UTF-8 as encoding format for some good reasons.</p>
+<h2 id="What-is-amp-str"><a href="#What-is-amp-str" class="headerlink" title="What is &amp;str"></a>What is &amp;str</h2><p><code>str</code>, on the other hand, is a primitive type for compiler, it is also called <code>string slice</code>.  We usually use it in the borrowed form: <code>&amp;str</code>.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> a: &amp;<span class="hljs-built_in">str</span> = <span class="hljs-string">&quot;hello rust&quot;</span>;<br><span class="hljs-comment">//it is same with below</span><br><span class="hljs-keyword">let</span> a: <span class="hljs-symbol">&#x27;static</span> <span class="hljs-built_in">str</span> = <span class="hljs-string">&quot;hello rust&quot;</span>;<br><span class="hljs-comment">// &#x27;static means this variable will be a reference to this statically allocated string. </span><br><span class="hljs-comment">// &amp;str cannot be modified,</span><br></code></pre></td></tr></table></figure>
+
+<p>Essentially, the compiler treats it as a <code>fat pointer</code>, which means: <code>&amp;str</code> is made up of two components: a pointer to some bytes, and a length.<br>We can use the method <code>as_ptr()</code> to get pointer and <code>len()</code> to get the length of it.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> story = <span class="hljs-string">&quot;Hello world&quot;</span>;<br><br><span class="hljs-keyword">let</span> ptr = story.as_ptr();<br><span class="hljs-keyword">let</span> len = story.len();<br></code></pre></td></tr></table></figure>
+
+<h2 id="String-and-amp-str"><a href="#String-and-amp-str" class="headerlink" title="String and &amp;str"></a>String and &amp;str</h2><p>The relationship between <code>String</code> and <code>&amp;str</code> is like <code>std::string</code> and <code>char*</code> in C++:</p>
+<ul>
+<li>A Rust <code>String</code> is like a <code>std::string</code>, it owns the memory and does all the dirty job of managing memory.</li>
+<li>A Rust <code>&amp;str</code> is like a <code>char*</code> (but with length), it points us to the beginning of a chunk with the contents of <code>std::string</code>.</li>
+</ul>
+<p>Why <code>&amp;str</code> need to store the length, this is because we can use use <code>&amp;str</code> to pointer to specific part of a <code>String</code>. Let’s have a example:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() &#123;<br>    <span class="hljs-keyword">let</span> s: <span class="hljs-built_in">String</span> = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">&quot;hello&quot;</span>);<br>    <span class="hljs-keyword">let</span> a: &amp;<span class="hljs-built_in">str</span> = &amp;s;<br>    <span class="hljs-keyword">let</span> b: &amp;<span class="hljs-built_in">str</span> = &amp;s[<span class="hljs-number">1</span>..<span class="hljs-number">3</span>];<br>    <span class="hljs-keyword">let</span> c = <span class="hljs-string">&quot;beaf&quot;</span>;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;a: &#123;&#125;, len: &#123;&#125;&quot;</span>, a, a.len());<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;b: &#123;&#125;, len: &#123;&#125;&quot;</span>, b, b.len());<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;c: &#123;&#125;, len: &#123;&#125;&quot;</span>, c, c.len());<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>The corresponding diagram is like this:<br><img src="../images/2021-07-01-21-48-32.png"></p>
+<h2 id="String-or-amp-str"><a href="#String-or-amp-str" class="headerlink" title="String or &amp;str?"></a>String or &amp;str?</h2><p>There are two principles to follow:</p>
+<ul>
+<li><p>Use <code>String</code> when you need to own the memory. For example, you created a string in a function and need to return it.</p>
+</li>
+<li><p>Use <code>&amp;str</code> when you want an immutable reference to a String variable (or a string literal in your code).</p>
+</li>
+</ul>
+<p>Remember, Rust will follow <code>move</code> for <code>String</code> when you passing it as parameter to a function:</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">func</span></span>(a: <span class="hljs-built_in">String</span>) &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>, a);<br>&#125;<br><br><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() &#123;<br>    <span class="hljs-keyword">let</span> v = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">&quot;hello&quot;</span>);<br>    func(v);<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;v: &#123;&#125;&quot;</span>, v);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>This program will report out this error message:</p>
+<p><img src="../images/2021-06-30-23-25-08.png" alt="rust-string-error-message"></p>
+<p>This is because <code>v</code> is moved to the function <code>func</code> and we can not read it in the scope of main anymore. The checker follow the rules of Rust ownership. Rust has this super powerful feature called <em>deref coercing</em> which allows it to turn any <code>&amp;String</code> to a <code>&amp;str</code>.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">func</span></span>(a: &amp;<span class="hljs-built_in">str</span>) &#123;<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>, a);<br>&#125;<br><br><span class="hljs-keyword">pub</span> <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() &#123;<br>    <span class="hljs-keyword">let</span> v = <span class="hljs-built_in">String</span>::from(<span class="hljs-string">&quot;hello&quot;</span>);<br>    func(&amp;v);<br>    <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;v: &#123;&#125;&quot;</span>, v);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>So, when you are designing a API which only need to access a string as read-only mode, <code>&amp;str</code> is the best choice.</p>
+<p>But when you need to modify the content of a <code>String</code>, you can not pass a <code>&amp;mut str</code> which you may think is reasonable. <code>&amp;mut str</code> does exists, but it is not very useful, because a slice cannot reallocate its referent. When you need to modify the content of a string, you need to pass <code>&amp;mut String</code> as parameter, like the above <code>set_char_inplace</code> example.</p>
+<p>In the scenario of <code>struct</code>, in most cases, you need to own the string, so <code>String</code> is almost a better choice compared with <code>&amp;str</code>. If you want to use <code>&amp;str</code> as a attribute in <code>struct</code>, you need to handle the lifetime issue.</p>
+<figure class="highlight rust"><table><tr><td class="code"><pre><code class="hljs rust"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span></span>&lt;<span class="hljs-symbol">&#x27;a</span>&gt; &#123;<br>    name: &amp;<span class="hljs-symbol">&#x27;a</span> <span class="hljs-built_in">str</span>,<br>&#125;<br><span class="hljs-keyword">impl</span>&lt;<span class="hljs-symbol">&#x27;a</span>&gt; Person&lt;<span class="hljs-symbol">&#x27;a</span>&gt; &#123;<br>    <span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">greet</span></span>(&amp;<span class="hljs-keyword">self</span>) &#123;<br>        <span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;Hello, my name is &#123;&#125;&quot;</span>, <span class="hljs-keyword">self</span>.name);<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">fn</span> <span class="hljs-title">main</span></span>() &#123;<br>    <span class="hljs-keyword">let</span> person = Person &#123; name: <span class="hljs-string">&quot;Coder&#x27;s Cat&quot;</span> &#125;;<br>    person.greet();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="Other-string-like-things-…"><a href="#Other-string-like-things-…" class="headerlink" title="Other string-like things …"></a>Other string-like things …</h2><p>Except for above two kind of strings, Rust also provide other kinds of string-like types for special scenarios. Please check out the reference about them, and here are some general rules we can follow:</p>
+<ul>
+<li>Stick to <code>String</code> and <code>&amp;str</code> for Unicode text.</li>
+<li>When working with filenames, use <code>std::path::PathBuf</code> and &amp;Path instead.</li>
+<li>When working with binary data that isn’t UTF-8 encoded at all, use <code>Vec&lt;u8&gt;</code> and <code>&amp;[u8]</code> instead.</li>
+<li>When working with environment variable names and command-line arguments in the native form presented by the operating system, use <code>OsString</code> and <code>&amp;OsStr</code>.</li>
+<li>When interoperating with C libraries that use null-terminated strings, use <code>std::ffi::CString</code> and <code>&amp;CStr</code>.</li>
+</ul>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Rust" >
+    <span class="tag-code-index">Rust</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/why-copilot-wont-change-programming/">
+        <span class="nav-arrow">← </span>
+        
+          Why Github Copilot Will Not Chan...
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/teach-kids-to-programming/">
+            
+                Teach Kids To Programming
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#What-is-String"><span class="toc-nav-text">What is String</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#What-is-amp-str"><span class="toc-nav-text">What is &amp;str</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#String-and-amp-str"><span class="toc-nav-text">String and &amp;str</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#String-or-amp-str"><span class="toc-nav-text">String or &amp;str?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Other-string-like-things-%E2%80%A6"><span class="toc-nav-text">Other string-like things …</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/rust-string-or-str/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

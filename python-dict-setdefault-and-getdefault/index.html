@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>Python: Dict setdefault and getdefault</title>
+
+    
+    
+    <meta name="description" content="
+In this post, we will discuss dict’s setdefault and getdefault in Python.
+ These are two handy programming idioms in Python.
+getdefault When we get the value from a dict, if the key does not e...">
+    <link rel="canonical" href="http://coderscat.com/python-dict-setdefault-and-getdefault/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Python: Dict setdefault and getdefault">
+    <meta property="og:description" content="
+In this post, we will discuss dict’s setdefault and getdefault in Python.
+ These are two handy programming idioms in Python.
+getdefault When we get the value from a dict, if the key does not e...">
+    <meta property="og:url" content="http://coderscat.com/python-dict-setdefault-and-getdefault/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2020-03-25 23:53:00">
+    <meta property="article:modified_time" content="2020-03-25 23:53:00">
+    <meta property="og:updated_time" content="2020-03-25 23:53:00">
+    <meta property="og:image" content="http://coderscat.com/images/2020_03_25_python-set-default.org_20200326_000322.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/2020_03_25_python-set-default.org_20200326_000322.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Python: Dict setdefault and getdefault">
+    <meta name="twitter:description" content="
+In this post, we will discuss dict’s setdefault and getdefault in Python.
+ These are two handy programming idioms in Python.
+getdefault When we get the value from a dict, if the key does not e...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/2020_03_25_python-set-default.org_20200326_000322.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            Python: Dict setdefault and getdefault | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Python: Dict setdefault and getdefault</h2>
+  <p class="post-date">2020-03-25</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <p><img src="/images/2020_03_25_python-set-default.org_20200326_000322.png" alt="file:img/2020_03_25_python-set-default.org_20200326_000322.png"></p>
+<p>In this post, we will discuss dict’s <code>setdefault</code> and <code>getdefault</code> in Python.</p>
+<p> These are two handy programming idioms in Python.</p>
+<h2 id="getdefault"><a href="#getdefault" class="headerlink" title="getdefault"></a>getdefault</h2><p> When we get the value from a dict, if the key does not exist in dict, a <code>None</code> will be returned.</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">dict.get(key, default &#x3D; None)<br></code></pre></td></tr></table></figure>
+
+<p> The second parameter for get is the default value. Here is an example:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">dict</span> = &#123; <span class="hljs-string">&#x27;Name&#x27;</span>: <span class="hljs-string">&#x27;Nick&#x27;</span>, <span class="hljs-string">&#x27;Age&#x27;</span>: <span class="hljs-number">23</span> &#125;<br><span class="hljs-built_in">print</span> <span class="hljs-string">&quot;Value : %s&quot;</span> %  <span class="hljs-built_in">dict</span>.get(<span class="hljs-string">&#x27;Age&#x27;</span>)<br><span class="hljs-built_in">print</span> <span class="hljs-string">&quot;Value : %s&quot;</span> %  <span class="hljs-built_in">dict</span>.get(<span class="hljs-string">&#x27;Education&#x27;</span>, <span class="hljs-string">&quot;Master&quot;</span>)<br><br><span class="hljs-comment"># =&gt; Value : 23</span><br><span class="hljs-comment"># =&gt; Value : Master</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="setdefault"><a href="#setdefault" class="headerlink" title="setdefault"></a>setdefault</h2><p> Suppose We have a dict which recording the result of a examination:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">table = &#123; <span class="hljs-string">&quot;Nick&quot;</span> : <span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;Ada&quot;</span> : <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;Mike&quot;</span>: <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;Leo&quot;</span>: <span class="hljs-string">&quot;C&quot;</span>, <span class="hljs-string">&quot;Sandy&quot;</span> : <span class="hljs-string">&quot;D&quot;</span> &#125;<br></code></pre></td></tr></table></figure>
+
+<p> We want to convert it to a dict with <code>grade -&gt; list of names</code> so that we can check how many students in each grade. The result will be:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">&#123; <span class="hljs-string">&quot;A&quot;</span> : [<span class="hljs-string">&quot;Nick&quot;</span>], <span class="hljs-string">&quot;B&quot;</span> : [<span class="hljs-string">&quot;Ada&quot;</span>, <span class="hljs-string">&quot;Mike&quot;</span>], <span class="hljs-string">&quot;C&quot;</span> : [<span class="hljs-string">&quot;Leo&quot;</span>], <span class="hljs-string">&quot;D&quot;</span> : [<span class="hljs-string">&quot;Sandy&quot;</span>] &#125;<br></code></pre></td></tr></table></figure>
+
+<p> A beginner maybe will write the code in this way:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">table = &#123; <span class="hljs-string">&quot;Nick&quot;</span> : <span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;Ada&quot;</span> : <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;Mike&quot;</span>: <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;Leo&quot;</span>: <span class="hljs-string">&quot;C&quot;</span>, <span class="hljs-string">&quot;Sandy&quot;</span> : <span class="hljs-string">&quot;D&quot;</span> &#125;<br>result = &#123;&#125;<br><span class="hljs-keyword">for</span> name, score <span class="hljs-keyword">in</span> table.items():<br>    <span class="hljs-keyword">if</span> score <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> result:<br>        result[score] = [name]<br>    <span class="hljs-keyword">else</span>:<br>        result[score].append(name)<br><br>print(result)<br><br><span class="hljs-comment"># =&gt; &#123;&#x27;A&#x27;: [&#x27;Nick&#x27;], &#x27;C&#x27;: [&#x27;Leo&#x27;], &#x27;B&#x27;: [&#x27;Mike&#x27;, &#x27;Ada&#x27;], &#x27;D&#x27;: [&#x27;Sandy&#x27;]&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p> In each iteration, we need to check whether the new key exists in the result.</p>
+<p> A more pythonic way is using <code>setdefault</code> :</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">table = &#123; <span class="hljs-string">&quot;Nick&quot;</span> : <span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;Ada&quot;</span> : <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;Mike&quot;</span>: <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;Leo&quot;</span>: <span class="hljs-string">&quot;C&quot;</span>, <span class="hljs-string">&quot;Sandy&quot;</span> : <span class="hljs-string">&quot;D&quot;</span> &#125;<br>result = &#123;&#125;<br><span class="hljs-keyword">for</span> name, score <span class="hljs-keyword">in</span> table.items():<br>    g = result.setdefault(score, [])<br>    g.append(name)<br><br>print(result)<br><br><span class="hljs-comment"># =&gt; &#123;&#x27;A&#x27;: [&#x27;Nick&#x27;], &#x27;C&#x27;: [&#x27;Leo&#x27;], &#x27;B&#x27;: [&#x27;Mike&#x27;, &#x27;Ada&#x27;], &#x27;D&#x27;: [&#x27;Sandy&#x27;]&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>The code can be more simpler if we use <code>defaultdict</code>, but the result is an object of defaultdict:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">table = &#123; <span class="hljs-string">&quot;Nick&quot;</span> : <span class="hljs-string">&quot;A&quot;</span>, <span class="hljs-string">&quot;Ada&quot;</span> : <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;Mike&quot;</span>: <span class="hljs-string">&quot;B&quot;</span>, <span class="hljs-string">&quot;Leo&quot;</span>: <span class="hljs-string">&quot;C&quot;</span>, <span class="hljs-string">&quot;Sandy&quot;</span> : <span class="hljs-string">&quot;D&quot;</span> &#125;<br><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict<br><br>result = defaultdict(<span class="hljs-built_in">list</span>)<br><span class="hljs-keyword">for</span> name, score <span class="hljs-keyword">in</span> table.items():<br>    result[score].append(name) <span class="hljs-comment"># all keys have a default already</span><br><br>print(<span class="hljs-built_in">type</span>(result))<br>print(result)<br><br><br><span class="hljs-comment"># =&gt; &lt;type &#x27;collections.defaultdict&#x27;&gt;</span><br><span class="hljs-comment"># =&gt; defaultdict(&lt;type &#x27;list&#x27;&gt;, &#123;&#x27;A&#x27;: [&#x27;Nick&#x27;], &#x27;C&#x27;: [&#x27;Leo&#x27;], &#x27;B&#x27;: [&#x27;Mike&#x27;, &#x27;Ada&#x27;], &#x27;D&#x27;: [&#x27;Sandy&#x27;]&#125;)</span><br></code></pre></td></tr></table></figure>
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Python" >
+    <span class="tag-code-index">Python</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/python-generator-and-yield/">
+        <span class="nav-arrow">← </span>
+        
+          Python: Generator, Yield and Str...
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/how-to-shuffle-a-list-in-python/">
+            
+                Python: Shuffle List
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#getdefault"><span class="toc-nav-text">getdefault</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#setdefault"><span class="toc-nav-text">setdefault</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/python-dict-setdefault-and-getdefault/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

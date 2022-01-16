@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>Python: Generator, Yield and Stream</title>
+
+    
+    
+    <meta name="description" content="
+ Generator and yield are used frequently in Python. In this article, let’s discuss some basics of generator, the benefit for generator, and how we use yield to create a generator.
+ At the same...">
+    <link rel="canonical" href="http://coderscat.com/python-generator-and-yield/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Python: Generator, Yield and Stream">
+    <meta property="og:description" content="
+ Generator and yield are used frequently in Python. In this article, let’s discuss some basics of generator, the benefit for generator, and how we use yield to create a generator.
+ At the same...">
+    <meta property="og:url" content="http://coderscat.com/python-generator-and-yield/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2020-03-26 20:15:00">
+    <meta property="article:modified_time" content="2020-03-26 20:15:00">
+    <meta property="og:updated_time" content="2020-03-26 20:15:00">
+    <meta property="og:image" content="http://coderscat.com/images/2020_03_26_python-generator-and-yield.org_20200326_203548.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/2020_03_26_python-generator-and-yield.org_20200326_203548.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Python: Generator, Yield and Stream">
+    <meta name="twitter:description" content="
+ Generator and yield are used frequently in Python. In this article, let’s discuss some basics of generator, the benefit for generator, and how we use yield to create a generator.
+ At the same...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/2020_03_26_python-generator-and-yield.org_20200326_203548.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            Python: Generator, Yield and Stream | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Python: Generator, Yield and Stream</h2>
+  <p class="post-date">2020-03-26</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <p><img src="/images/2020_03_26_python-generator-and-yield.org_20200326_203548.png" alt="file:img/2020_03_26_python-generator-and-yield.org_20200326_203548.png"></p>
+<p> Generator and yield are used frequently in Python. In this article, let’s discuss some basics of <code>generator</code>, the benefit for generator, and how we use <code>yield</code> to create a generator.</p>
+<p> At the same time, we study two concepts in computer science: lazy evaluation and stream.</p>
+<h2 id="Iterables"><a href="#Iterables" class="headerlink" title="Iterables"></a>Iterables</h2><p> First, we need to know <code>iterables</code> before understanding <code>generator</code>. Because <code>generator</code> is also an iterator in essential.</p>
+<p> In Python, iterable is an object which can be <strong>iterated over</strong>, such as in a for-loop.</p>
+<p> Most collection data structures are <strong>iterables</strong>. Such as list, tuple, set. For example, we create a list and iterate it one by one:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">lst = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> lst:<br>    print(i)<br><br><span class="hljs-comment"># 1</span><br><span class="hljs-comment"># 2</span><br><span class="hljs-comment"># 3</span><br><br>lst = [x+x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">3</span>)]<br><span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> lst:<br>    print(x)<br><span class="hljs-comment"># 0</span><br><span class="hljs-comment"># 2</span><br><span class="hljs-comment"># 4</span><br></code></pre></td></tr></table></figure>
+
+<p> We can also iterate the characters in a string:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">string = <span class="hljs-string">&quot;cat&quot;</span><br><span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> string:<br>    print(c)<br><br><span class="hljs-comment"># c</span><br><span class="hljs-comment"># a</span><br><span class="hljs-comment"># t</span><br></code></pre></td></tr></table></figure>
+
+
+<h3 id="The-limitation-of-iterable"><a href="#The-limitation-of-iterable" class="headerlink" title="The limitation of iterable"></a>The limitation of iterable</h3><p> The limitation of iterable is that we need to store all the values in memory before we begin to iterate over them. This will cost too much memory in some scenarios. A typical scenario is reading lines from a file:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">file_reader</span>(<span class="hljs-params">file_path</span>):</span><br>    fp = <span class="hljs-built_in">open</span>(file_path)<br>    <span class="hljs-keyword">return</span> fp.read().split(<span class="hljs-string">&quot;\n&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p> Think about what will happen if we read a large file, such as a file with a size of 6 GB?</p>
+<p> We need to save all the lines in memory when loading content from the file.</p>
+<p> Actually, in most cases, we only want to iterate line by line to finish some data processing tasks. We maybe break out the loop in advance, loading all lines into memory does not necessary.</p>
+<p> Could we just have a strategy of reading data by need? Python introduced <code>generator</code> to solve this problem.</p>
+<h2 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h2><p> A generator is also iterator, but its key feature is <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Lazy_evaluation">lazy evaluation</a>. Lazy evaluation is a classic concept in computer science and adopted by many programming languages such as Haskell. The core idea of lazy evaluation is <strong>call-by-need</strong>. Lazy evaluation can lead to a reduction in memory footprint.</p>
+<p> A generator is an iterator in the style of iterating by need. We will not calculate and store the values at once, but generate them on the fly when we are iterating.</p>
+<p> We have two ways to create a <code>generator</code>, generator expression and generator function.</p>
+<p> <code>generator expression</code> is similar with list comprehension, except we use <code>()</code>. Since generator is a iterator, we use <code>next</code> function to get the next item:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">g1 = (x*x <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>))<br>print(<span class="hljs-built_in">type</span>(g1))<br>print(<span class="hljs-built_in">next</span>(g1))<br>print(<span class="hljs-built_in">next</span>(g1))<br><br><span class="hljs-comment"># &lt;type &#x27;generator&#x27;&gt;</span><br><span class="hljs-comment"># 0</span><br><span class="hljs-comment"># 1</span><br></code></pre></td></tr></table></figure>
+
+<p> The difference here is we don’t compute all the values when creating the generator. <code>x*x</code> is calculated when we are iterating the generator.</p>
+<p> To understand the difference, let’s run this code snippet:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-keyword">import</span> timeit<br><span class="hljs-meta">&gt;&gt;&gt; </span>timeit.timeit(<span class="hljs-string">&#x27;lst = [time.sleep(1) for x in range(5)]&#x27;</span>, number=<span class="hljs-number">2</span>)<br><span class="hljs-number">10.032547950744629</span><br><br><span class="hljs-meta">&gt;&gt;&gt; </span>timeit.timeit(<span class="hljs-string">&#x27;lst = (time.sleep(1) for x in range(5))&#x27;</span>, number=<span class="hljs-number">2</span>)<br><span class="hljs-number">1.0013580322265625e-05</span><br></code></pre></td></tr></table></figure>
+
+<p> As we can see from the result, when we create an iterable, it costs about 10 seconds. Because we execute the time.sleep(1) 10 times.</p>
+<p> But <strong>time.sleep(1)</strong> actually does not run when we are creating the generator.</p>
+<h2 id="Yield"><a href="#Yield" class="headerlink" title="Yield"></a>Yield</h2><p> Another way to create <code>generator</code> is by using generator function, we use keyword <code>yield</code> to return a generator in a function.</p>
+<p> Let’s check out this <code>fib</code> function which returns a generator with N Fibonacci numbers:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fib</span>(<span class="hljs-params">cnt</span>):</span><br>    n, a, b = <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span><br>    <span class="hljs-keyword">while</span> n &lt; cnt:<br>        <span class="hljs-keyword">yield</span> a<br>        a, b = b, a + b<br>        n = n + <span class="hljs-number">1</span><br><br>g = fib(<span class="hljs-number">10</span>)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>    <span class="hljs-built_in">print</span> g.<span class="hljs-built_in">next</span>(),<br><br><span class="hljs-comment"># 0 1 1 2 3 5 8 13 21 34</span><br></code></pre></td></tr></table></figure>
+
+<p> Let’s use <code>yield</code> to rewrite above file reading program:</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">file_reader</span>(<span class="hljs-params">file_path</span>):</span><br>    <span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> <span class="hljs-built_in">open</span>(file_path, <span class="hljs-string">&quot;r&quot;</span>):<br>        <span class="hljs-keyword">yield</span> row<br><br><span class="hljs-keyword">for</span> row <span class="hljs-keyword">in</span> file_reader(<span class="hljs-string">&#x27;./demo.txt&#x27;</span>):<br>    print(row),<br></code></pre></td></tr></table></figure>
+
+<p> In this way, we won’t load all the content into memory, but loading it by reading the lines.</p>
+<h2 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h2><p> With a generator, we could construct a data structure with infinite items. This kind of sequence of data elements is called <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Stream_(computing)">Stream</a> in computer science. It’s fancy because we could express the <strong>infinite</strong> concept in mathematical.</p>
+<p> Suppose we want a sequence with all the Fibonacci numbers. How to achieve this?</p>
+<p> We only need to remove the count parameter from the above function!</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">all_fib</span>():</span><br>    n, a, b = <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span><br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        <span class="hljs-keyword">yield</span> a<br>        a, b = b, a + b<br>        n = n + <span class="hljs-number">1</span><br><br>all_fib_numbers = all_fib()<br></code></pre></td></tr></table></figure>
+
+<p> Yes! We get a variable which could stand for all the Fibonacci numbers. Let’s write a generic function to take <strong>n</strong> items from any stream.</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">take</span>(<span class="hljs-params">seq, n</span>):</span><br>    result = []<br>    <span class="hljs-keyword">try</span>:<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>            result.append(<span class="hljs-built_in">next</span>(seq))<br>    <span class="hljs-keyword">except</span> StopIteration:<br>        <span class="hljs-keyword">pass</span><br>    <span class="hljs-keyword">return</span> result<br><br></code></pre></td></tr></table></figure>
+
+<p> So, <code>take(all_fib_numbers, 10)</code> will return the first 10 Fibonacci numbers as a result.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p> <code>Generator</code> in Python is a powerful tool for delaying computation and saving both time and space. The core idea of lazy evaluation is: compute the value until you really need it. This also helps us to express the infinite sequence concepts.</p>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Python" >
+    <span class="tag-code-index">Python</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/what-i-learned-from-my-5-months-of-writing/">
+        <span class="nav-arrow">← </span>
+        
+          What I Learned From My 5 Months ...
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/python-dict-setdefault-and-getdefault/">
+            
+                Python: Dict setdefault and getd...
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Iterables"><span class="toc-nav-text">Iterables</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#The-limitation-of-iterable"><span class="toc-nav-text">The limitation of iterable</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Generator"><span class="toc-nav-text">Generator</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Yield"><span class="toc-nav-text">Yield</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Stream"><span class="toc-nav-text">Stream</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Conclusion"><span class="toc-nav-text">Conclusion</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/python-generator-and-yield/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

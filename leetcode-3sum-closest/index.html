@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>LeetCode: 3Sum Closest</title>
+
+    
+    
+    <meta name="description" content="
+Solution for LeetCode 3sum Closet, with Cpp/Java/Python
+
+[latex]
+LeetCode Problemhttps://leetcode.com/problems/3sum-closest/
+Given an array nums of n integers and an integer target, find three...">
+    <link rel="canonical" href="http://coderscat.com/leetcode-3sum-closest/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="LeetCode: 3Sum Closest">
+    <meta property="og:description" content="
+Solution for LeetCode 3sum Closet, with Cpp/Java/Python
+
+[latex]
+LeetCode Problemhttps://leetcode.com/problems/3sum-closest/
+Given an array nums of n integers and an integer target, find three...">
+    <meta property="og:url" content="http://coderscat.com/leetcode-3sum-closest/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2019-10-23 23:16:00">
+    <meta property="article:modified_time" content="2019-10-23 23:16:00">
+    <meta property="og:updated_time" content="2019-10-23 23:16:00">
+    <meta property="og:image" content="http://coderscat.com/images/logo-show.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/logo-show.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LeetCode: 3Sum Closest">
+    <meta name="twitter:description" content="
+Solution for LeetCode 3sum Closet, with Cpp/Java/Python
+
+[latex]
+LeetCode Problemhttps://leetcode.com/problems/3sum-closest/
+Given an array nums of n integers and an integer target, find three...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/logo-show.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            LeetCode: 3Sum Closest | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>LeetCode: 3Sum Closest</h2>
+  <p class="post-date">2019-10-23</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <!-- block -->
+<p>Solution for LeetCode 3sum Closet, with Cpp/Java/Python</p>
+<!-- block -->
+<p></p>
+<h2 id="LeetCode-Problem"><a href="#LeetCode-Problem" class="headerlink" title="LeetCode Problem"></a>LeetCode Problem</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/3sum-closest/">https://leetcode.com/problems/3sum-closest/</a></p>
+<p>Given an array nums of n integers and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume that each input would have exactly one solution.</p>
+<p> Example:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">Given array nums &#x3D; [-1, 2, 1, -4], and target &#x3D; 1.<br><br>The sum that is closest to the target is 2. (-1 + 2 + 1 &#x3D; 2).<br></code></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="Explaination"><a href="#Explaination" class="headerlink" title="Explaination"></a>Explaination</h2><p> Naive solution will enumerate the array with three loop:</p>
+ <figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">diff &#x3D; max_integer<br>for(a &#x3D; 0, a &lt; arr.size(), a++) <br> for(b &#x3D; a+1, b &lt; arr.size() - 1, b++) <br>   for(c &#x3D; b+1, c &lt; arr.size() - 1, c++) <br>     if(abs(target - (a+b+c) &lt; diff) <br>        update diff ...<br></code></pre></td></tr></table></figure>
+
+<p> The time complexity of course should be $O(N^3)$.</p>
+<p> Actually this problem is almost same with previous <a target="_blank" rel="noopener" href="https://www.coderscat.com/leetcode-3sum">LeetCode: 3Sum</a>, except we need to find the closet sum of three elements.</p>
+<p> Sort the array and use the method of fixing head or tail index, according to current sum, the complexity will be $O(N^2)$.</p>
+<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2> <figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> &#123;</span><br><span class="hljs-keyword">public</span>:<br>  <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">threeSumClosest</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt; &amp;num, <span class="hljs-keyword">int</span> target)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> diff = INT_MAX;<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>    sort(num.begin(), num.end());<br><br>    <span class="hljs-keyword">if</span>(num.size() &lt; <span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> ans;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">size_t</span> first = <span class="hljs-number">0</span>; first &lt; num.size(); first++) &#123;<br>      <span class="hljs-keyword">int</span> head = first + <span class="hljs-number">1</span>;<br>      <span class="hljs-keyword">int</span> tail = num.size() - <span class="hljs-number">1</span>;<br>      <span class="hljs-keyword">while</span>(head &lt; tail) &#123;<br>        <span class="hljs-keyword">int</span> sum3 = num[head] + num[tail] + num[first];<br>        <span class="hljs-keyword">int</span> d = <span class="hljs-built_in">abs</span>(sum3 - target);<br>        <span class="hljs-keyword">if</span>(d == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> target;<br>        <span class="hljs-keyword">if</span>(d &lt; diff) &#123;<br>          diff = d;<br>          ans = sum3;<br>        &#125;<br>        <span class="hljs-keyword">if</span>(sum3 &gt; target) tail--;<br>        <span class="hljs-keyword">if</span>(sum3 &lt; target) head++;<br>      &#125;<br>      <span class="hljs-comment">// skip the same elements</span><br>      <span class="hljs-keyword">while</span>(first &lt; num.size()<span class="hljs-number">-1</span> &amp;&amp; num[first+<span class="hljs-number">1</span>] == num[first])<br>        first++;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2> <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">threeSumClosest</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> target)</span> </span>&#123;<br>        Arrays.sort(nums);<br>        <span class="hljs-keyword">int</span> diff =  Integer.MAX_VALUE;<br>        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">if</span>(nums.length &lt; <span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> ans;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> first = <span class="hljs-number">0</span>; first &lt; nums.length; first++) &#123;<br>            <span class="hljs-keyword">int</span> head = first + <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">int</span> tail = nums.length - <span class="hljs-number">1</span>;<br>            <span class="hljs-keyword">while</span>(head &lt; tail) &#123;<br>                <span class="hljs-keyword">int</span> sum3 = nums[head] + nums[tail] + nums[first];<br>                <span class="hljs-keyword">int</span> d = Math.abs(sum3 - target);<br>                <span class="hljs-keyword">if</span>(d == <span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> target;<br>                <span class="hljs-keyword">if</span>(d &lt; diff) &#123;<br>                    diff = d;<br>                    ans = sum3;<br>                &#125;<br>                <span class="hljs-keyword">if</span>(sum3 &gt; target) tail--;<br>                <span class="hljs-keyword">if</span>(sum3 &lt; target) head++;<br>            &#125;<br>            <span class="hljs-comment">// skip the same elements</span><br>            <span class="hljs-keyword">while</span>(first &lt; nums.length-<span class="hljs-number">1</span> &amp;&amp; nums[first+<span class="hljs-number">1</span>] == nums[first])<br>                first++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2> <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">threeSumClosest</span>(<span class="hljs-params">self, nums: List[<span class="hljs-built_in">int</span>], target: <span class="hljs-built_in">int</span></span>) -&gt; int:</span><br>        nums.sort()<br>        ans = <span class="hljs-built_in">sum</span>(nums[:<span class="hljs-number">3</span>])<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(nums)<span class="hljs-number">-2</span>):<br>            k = <span class="hljs-built_in">len</span>(nums)<span class="hljs-number">-1</span><br>            j = i + <span class="hljs-number">1</span><br>            <span class="hljs-keyword">while</span> j &lt; k:<br>                close_sum = nums[i] + nums[j] + nums[k]<br>                <span class="hljs-keyword">if</span> close_sum == target:<br>                    <span class="hljs-keyword">return</span> close_sum<br>                <span class="hljs-keyword">if</span> <span class="hljs-built_in">abs</span>(close_sum - target) &lt; <span class="hljs-built_in">abs</span>(ans - target):<br>                    ans = close_sum<br><br>                <span class="hljs-keyword">if</span> close_sum &lt; target:<br>                    j += <span class="hljs-number">1</span><br>                <span class="hljs-keyword">elif</span> close_sum &gt; target:<br>                    k -= <span class="hljs-number">1</span><br>                <span class="hljs-keyword">else</span>:<br>                    <span class="hljs-keyword">break</span><br>        <span class="hljs-keyword">return</span> ans<br></code></pre></td></tr></table></figure>
+
+
+
+
+<p><strong><a target="_blank" rel="noopener" href="https://amzn.to/2BeAeB9">Preparing for an interview? Check out this!</a></strong></p>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Array" >
+    <span class="tag-code-index">Array</span>
+  </a>
+
+  <a href="/tags#LeetCode" >
+    <span class="tag-code-index">LeetCode</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/learn-from-source-code/">
+        <span class="nav-arrow">← </span>
+        
+          Learn from Source Code (an Effec...
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/how-to-learn-linux/">
+            
+                How to Learn Linux? (from Zero t...
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#LeetCode-Problem"><span class="toc-nav-text">LeetCode Problem</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Explaination"><span class="toc-nav-text">Explaination</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#C"><span class="toc-nav-text">C++</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Java"><span class="toc-nav-text">Java</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Python"><span class="toc-nav-text">Python</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+    
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config" async>
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+      console.log("math .....");
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+    <!-- MathJax support END -->
+  
+
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/leetcode-3sum-closest/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

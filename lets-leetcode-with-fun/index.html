@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>Let&#39;s LeetCode with Fun</title>
+
+    
+    
+    <meta name="description" content="In the recent 4~5 years, LeetCode is becoming more and more popular, especially in the interviewing of Big-N technology companies. Many job seekers take a lot of time on LeetCode to nail the in...">
+    <link rel="canonical" href="http://coderscat.com/lets-leetcode-with-fun/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Let&#39;s LeetCode with Fun">
+    <meta property="og:description" content="In the recent 4~5 years, LeetCode is becoming more and more popular, especially in the interviewing of Big-N technology companies. Many job seekers take a lot of time on LeetCode to nail the in...">
+    <meta property="og:url" content="http://coderscat.com/lets-leetcode-with-fun/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2019-11-09 18:57:00">
+    <meta property="article:modified_time" content="2019-11-09 18:57:00">
+    <meta property="og:updated_time" content="2019-11-09 18:57:00">
+    <meta property="og:image" content="http://coderscat.com/images/2019_11_08_lets-leetcode-with-joy.org_20191110_195838.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/2019_11_08_lets-leetcode-with-joy.org_20191110_195838.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Let&#39;s LeetCode with Fun">
+    <meta name="twitter:description" content="In the recent 4~5 years, LeetCode is becoming more and more popular, especially in the interviewing of Big-N technology companies. Many job seekers take a lot of time on LeetCode to nail the in...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/2019_11_08_lets-leetcode-with-joy.org_20191110_195838.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            Let&#39;s LeetCode with Fun | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Let's LeetCode with Fun</h2>
+  <p class="post-date">2019-11-09</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <p>In the recent 4~5 years, <a target="_blank" rel="noopener" href="https://leetcode.com/">LeetCode</a> is becoming more and more popular, especially in the interviewing of Big-N technology companies. Many job seekers take a lot of time on LeetCode to nail the interview.</p>
+<p> <img src="/images/2019_11_08_lets-leetcode-with-joy.org_20191110_195838.png" alt="file:img/2019_11_08_lets-leetcode-with-joy.org_20191110_195838.png"></p>
+<p> There are debates about the LeetCode style interviewing, someone says it’s a bad style, it makes the interviewing becomes a type of programming contest.</p>
+<p> I think there are both good and bad parts of LeetCode, and we should treat it in an enjoyable way.</p>
+<h2 id="Why-Big-N-use-LeetCode-in-interviewing"><a href="#Why-Big-N-use-LeetCode-in-interviewing" class="headerlink" title="Why Big-N use LeetCode in interviewing"></a>Why Big-N use LeetCode in interviewing</h2><p> Let’s be clear, even today there still a big demand for the positions of software engineers in the job market.</p>
+<p>But the Big-N companies like Facebook/Amazon/Google/Microsoft get too many qualified applicants than they have available positions.</p>
+<p> In the U.S. every year, Google gets more than <a target="_blank" rel="noopener" href="http://theladders.com/career-advice/2-million-job-candidates-google">2 million job applications</a> every year.</p>
+<p> Yes, more than 2 million!</p>
+<p> <img src="/images/2019_11_08_lets-leetcode-with-joy.org_20191109_190545.png" alt="file:img/2019_11_08_lets-leetcode-with-joy.org_20191109_190545.png"></p>
+<p> And only 1 in 130 Google applicants gets an offer, per Forbes. More and more students in colleges go to get a Bachelor’s degree in CS. This means, to get an offer, candidates will face extremely fierce competition.</p>
+<p> From the interviewer’s side, how to pick the right applicants from so many candidates?</p>
+<p> Interviewing software engineers is hard, there is not such a unified and optimal way for it. Different companies have different styles.</p>
+<p> LeetCode is the best way for this? Of course not, but let’s say it is a concise, simple and direct way. Why?</p>
+<ul>
+<li><p>The question and results are clear</p>
+<p>A candidate’s performance for a problem will amost in three types:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><code class="hljs plain">(a) Solved the problem alone, with an optimized solution.<br>(b) Solved the problem with some help from the interviewer.<br>(c) Can not solve it, even with tips and help.<br></code></pre></td></tr></table></figure>
+
+<p>There are some other factors such as whether the candidate uses an optimized solution, how the candidate reacts to difficulties, how about the communications.</p>
+<p>Anyway, it will be a clear result. If a candidate could solve an easy level question, then try a medium or harder one, this kind of investigation has a good distinction.</p>
+<p>This will make fewer differences from different interviewers.</p>
+</li>
+</ul>
+<ul>
+<li><p>To some extent, LeetCode can test a candidate’s programming ability and basic knowledge of computer science.</p>
+<p>If someone sucks at data structures and algorithms, he can not solve the question in such as short time(usually 15 minutes).</p>
+<p><img src="/images/2019_11_08_lets-leetcode-with-joy.org_20191109_192615.png" alt="file:img/2019_11_08_lets-leetcode-with-joy.org_20191109_192615.png"></p>
+<p>On the other side, even a candidate passes all the questions asked in an interviewing does not mean he must be a good programmer. Usually, some other categories of questions will be prompted, such as system design, or questions related to specific domain, even some stupid brain teasers.</p>
+</li>
+</ul>
+<h2 id="LeetCode-Is-Just-a-Game"><a href="#LeetCode-Is-Just-a-Game" class="headerlink" title="LeetCode Is Just a Game"></a>LeetCode Is Just a Game</h2><p> LeetCode is a game, in a normal case, if you put more time and energy in it, you will do better. There are currently above 1000 questions in LeetCode, solving all of them will cost much of time.</p>
+<p> Except for interviewing, if you don’t like to solve this kind of problem, it’s not a big deal, just ignore it. The required skills of a great programmer are much broader.</p>
+<p> Practice through LeetCode is like practicing shooting in basketball.</p>
+<p> Some boys are shooting accurately at a fixed position, but they can’t beat a professional player on the basketball court.</p>
+<p> Suck at solving LeetCode <strong>does not</strong> mean you are a bad programmer, the value of a programmer is proved by his work.</p>
+<p> Creating some software, tools, and service used by massive people, solving the actual problem in the real world, this is a success for a programmer.</p>
+<p> <img src="/images/2019_11_08_lets-leetcode-with-joy.org_20191109_175947.png" alt="file:img/2019_11_08_lets-leetcode-with-joy.org_20191109_175947.png"></p>
+<h2 id="The-Good-parts-of-LeetCode"><a href="#The-Good-parts-of-LeetCode" class="headerlink" title="The Good parts of LeetCode"></a>The Good parts of LeetCode</h2><p> Even I listed many bad parts of LeetCode, but I have fun with it.</p>
+<p> In my college years, I practiced coding with ACM contest problems, even I have not participated in ACM/ICPC contests.</p>
+<p> After solving 500+ problems, I was more confident and proficient in programming and had no fear of data structures and algorithms.</p>
+<p> The programming challenges from online judges are suitable exercises for beginners and intermediate or any programmer who want more proficient at data structures and algorithms.</p>
+<p> The reason is <strong>focus</strong>, close to the principle of deliberate practice.</p>
+<p> <img src="/images/2019_11_08_lets-leetcode-with-joy.org_20191109_185507.png" alt="file:img/2019_11_08_lets-leetcode-with-joy.org_20191109_185507.png"></p>
+<p> We understand the problem, design an algorithm, write the code and test it, given some inputs, verify the answer, optimize it if necessary.</p>
+<p> It is a grand ideal way for programming involved algorithms, no cumbersome details in real-world programming.</p>
+<p> This is the good part of LeetCode.</p>
+<p> If you want to practice other domains, like mathematics, functional programming, and artificial intelligence, have a try of <a target="_blank" rel="noopener" href="https://www.hackerrank.com/">HackerRank</a>.</p>
+<h2 id="How-to-LeetCode-with-Fun"><a href="#How-to-LeetCode-with-Fun" class="headerlink" title="How to LeetCode with Fun"></a>How to LeetCode with Fun</h2><p> Try to treat it as a hobby. I am currently solving <a target="_blank" rel="noopener" href="https://www.coderscat.com/leetcode">LeetCode in a relaxed way</a>, in my spare time. It’s like a snack after dinner.</p>
+<p> There are many kinds of categories of problems, focus on one will save time.</p>
+<p> Comparing the different implementations of different languages also brings some fun, since I am also interested in programming languages.</p>
+<p> For those who are preparing for the interview, my advice is:</p>
+<p><strong>don’t push yourself too hard on this, try to enjoy it</strong>.</p>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#LeetCode" >
+    <span class="tag-code-index">LeetCode</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/caching-from-top-to-bottom/">
+        <span class="nav-arrow">← </span>
+        
+          Caching: From Top To Bottom
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/leetcode-4sum/">
+            
+                LeetCode: 4Sum
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Why-Big-N-use-LeetCode-in-interviewing"><span class="toc-nav-text">Why Big-N use LeetCode in interviewing</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#LeetCode-Is-Just-a-Game"><span class="toc-nav-text">LeetCode Is Just a Game</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#The-Good-parts-of-LeetCode"><span class="toc-nav-text">The Good parts of LeetCode</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#How-to-LeetCode-with-Fun"><span class="toc-nav-text">How to LeetCode with Fun</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/lets-leetcode-with-fun/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

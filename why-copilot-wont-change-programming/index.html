@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>Why Github Copilot Will Not Change Programming</title>
+
+    
+    
+    <meta name="description" content="
+The hottest new tech of last week is Github Copilot. It seems like almost all programmers are playing or waiting to play with this new fancy AI coding assistant.
+Some say this is an innovative...">
+    <link rel="canonical" href="http://coderscat.com/why-copilot-wont-change-programming/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Why Github Copilot Will Not Change Programming">
+    <meta property="og:description" content="
+The hottest new tech of last week is Github Copilot. It seems like almost all programmers are playing or waiting to play with this new fancy AI coding assistant.
+Some say this is an innovative...">
+    <meta property="og:url" content="http://coderscat.com/why-copilot-wont-change-programming/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2021-07-03 07:35:18">
+    <meta property="article:modified_time" content="2021-07-03 07:35:18">
+    <meta property="og:updated_time" content="2021-07-03 07:35:18">
+    <meta property="og:image" content="http://coderscat.com/images/jason-leung-HBGYvOKXu8A-unsplash.jpg"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/jason-leung-HBGYvOKXu8A-unsplash.jpg"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Why Github Copilot Will Not Change Programming">
+    <meta name="twitter:description" content="
+The hottest new tech of last week is Github Copilot. It seems like almost all programmers are playing or waiting to play with this new fancy AI coding assistant.
+Some say this is an innovative...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/jason-leung-HBGYvOKXu8A-unsplash.jpg"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            Why Github Copilot Will Not Change Programming | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Why Github Copilot Will Not Change Programming</h2>
+  <p class="post-date">2021-07-03</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <p><img src="/images/jason-leung-HBGYvOKXu8A-unsplash.jpg" alt="jason-leung @ unsplash.com"></p>
+<p>The hottest new tech of last week is <a target="_blank" rel="noopener" href="https://copilot.github.com/">Github Copilot</a>. It seems like almost all programmers are playing or waiting to play with this new fancy AI coding assistant.</p>
+<p>Some say this is an innovative game-changer that will totally change the world of programming!</p>
+<p>But I am not so optimistic about it. From my perspective as an old-school programmer, this kind of tool looks fancy but is not as helpful as some people claim. Not to mention, it will be no substitute for real programmers.</p>
+<p>Let me explain.</p>
+<h2 id="Coding-Faster-is-Not-a-Big-Deal"><a href="#Coding-Faster-is-Not-a-Big-Deal" class="headerlink" title="Coding Faster is Not a Big Deal"></a>Coding Faster is Not a Big Deal</h2><p>Think about it. How much time do you spend on coding?</p>
+<p>In fact, in most software companies, the time we spend on writing code is not a high proportion of the overall software development cycle — even less than a quarter of it.</p>
+<p>We spend much more time on requirements analysis, technical design, testing, debugging, and team collaboration.</p>
+<p>Software engineering is hard, mostly because of the high complexity of the real world. We can’t change this — over time, abstractions in computing are inevitable. No project ever failed due to slow coding.</p>
+<p><img src="../images/still-is-code.jfif" alt="still code"></p>
+<p>Coding faster will not make you a better programmer. Abstraction, design, and the experience of real-world engineering are what will make you a better software engineer.</p>
+<p>Some older programmers type slowly due to poor eyesight, but they write bug-free code.</p>
+<h2 id="Will-it-Help-Us-to-Code-Faster"><a href="#Will-it-Help-Us-to-Code-Faster" class="headerlink" title="Will it Help Us to Code Faster?"></a>Will it Help Us to Code Faster?</h2><p>Years ago I was fascinated by this kind of programming aid. There’s a popular template system in Emacs called <a target="_blank" rel="noopener" href="https://github.com/joaotavora/yasnippet">snippets</a>. We define our own templates and functions, then a shortcut generates a code template and we just fill in the rest.</p>
+<p>It looks cool, really cool. It makes me into a super programmer, like in the movies!</p>
+<p>But, after I got deep into it, I realized it wasn’t as useful as I thought. Coding speed is not my bottleneck, and I spend less time on coding as my career develops.</p>
+<p><a target="_blank" rel="noopener" href="https://www.tabnine.com/">tabnine</a> is a similar AI programming assistant tool with Copilot, which generates part of the code based on your previous inputs. Copilot will even makes suggestions based on your comments, the name of the function, and so on.</p>
+<p>The problem is, when I’m coding with it, <strong>I need to constantly review whether the auto-completion is right</strong>.</p>
+<p><img src="../images/E5IbxwXWYAUoi3U.png" alt="copilot-funny"></p>
+<p>This is a distraction for me. Imagine you are an experienced and solid programmer — this AI tool that you are pair-coding with is a naïve and occasionally dumb one. No, I don’t want it!</p>
+<p>From my experience, the best way to make me program faster is:</p>
+<ul>
+<li><em>focus, focus, and focus</em>.</li>
+<li>Think clearly before coding</li>
+</ul>
+<p>Shortcuts, variable completion, class attributes, and method names completion are all helpful for coding faster — they will help your typing catch up with thinking.</p>
+<p>But code generation is a different thing. It will distract you, even more than 50% of the completion catches your coding intention, the other nonsense part will slow you down.</p>
+<p>Of course, if the codebase contains a lot of repetitive pieces or logic, this kind of tool can definitely speed up your coding. For example, most front-end programming, and web programming contains lots of similar CRUD logic.</p>
+<p>But I don’t believe this stuff will make a fundamental change to programming. And, at least for me, I won’t be coding faster with it.</p>
+<h2 id="Will-it-Help-With-Learning-Programming"><a href="#Will-it-Help-With-Learning-Programming" class="headerlink" title="Will it Help With Learning Programming?"></a>Will it Help With Learning Programming?</h2><p>Copilot will help to reduce duplicated tasks, like searching code from the Web. As a beginner to learn programming, it may help you, since when you type some keywords, the code snippet will show up in front of you.</p>
+<p>However, let me remind you that copying and making it work is not a good way to improve your coding ability or quality of your work.</p>
+<p>Instant code suggestions may make you happy when coding, but they will not help you in the long term.</p>
+<p><img src="../images/freestocks-p_jg3JF68SQ-unsplash.jpg" alt="Photo by unsplash.com/@freestocks"></p>
+<p>Programming a craft, just like writing and painting. We are writing source code to express ideas. Do you think it’s a good idea to let an AI assist a learner in what the next sentence or paragraph will be?</p>
+<p><em>Word completion will help, but sentence auto-completion will become a burden.</em></p>
+<p>It’s the same as writing. If we want to be better at programming, the only way is to code and read a lot.</p>
+<p><a target="_blank" rel="noopener" href="https://d3dvortex.blogspot.com/2005/07/programming-advice-from-john-carmack-i.html">John Carmack</a>, when talking about learning programming says:</p>
+<blockquote>
+<p>Avoid “cookbook programming”, where you copy and paste bits of code that you have found to make something work. Make sure you fully understand what everything it actually doing, and that you are comfortable applying the techniques in other situations.</p>
+</blockquote>
+<h2 id="The-Potential-Risks"><a href="#The-Potential-Risks" class="headerlink" title="The Potential Risks"></a>The Potential Risks</h2><p>There are several extra risks come with AI coding assistance:</p>
+<ul>
+<li><p>Potential bugs. If the user didn’t pay attention to review the generated code, it will be a nightmare.</p>
+</li>
+<li><p>The copyright and ownership issue of code. If a code snippet is <a target="_blank" rel="noopener" href="https://twitter.com/mitsuhiko/status/1410886329924194309">generated from GPL authorized code</a> base and is adapted by a commercial company. Whose fault is it if it does not work? And who is the owner when the code is generated?</p>
+</li>
+<li><p>Security. Is it possible for hackers to train some code snippets intensively and induce attacking code to users?</p>
+</li>
+</ul>
+<h2 id="The-Potential-Benefits"><a href="#The-Potential-Benefits" class="headerlink" title="The Potential Benefits"></a>The Potential Benefits</h2><p>Of course, as a new thing, Copilot may also bring some benefits in some scenarios.</p>
+<ul>
+<li><p>To make this tool more useful, we may trend towards writing more meaningful names and better documents.</p>
+</li>
+<li><p>Interviewing may be easier, if we are allowed to use it.</p>
+</li>
+<li><p>It may give you a feeling that someone is always there for you and you are not so alone when programming. Maybe it’s a better feeling than a little yellow duck!</p>
+</li>
+</ul>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#Writing" >
+    <span class="tag-code-index">Writing</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/the-great-quotes-of-programming/">
+        <span class="nav-arrow">← </span>
+        
+          The Great Programming Quotes
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/rust-string-or-str/">
+            
+                Rust: the weird but safe string
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Coding-Faster-is-Not-a-Big-Deal"><span class="toc-nav-text">Coding Faster is Not a Big Deal</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Will-it-Help-Us-to-Code-Faster"><span class="toc-nav-text">Will it Help Us to Code Faster?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Will-it-Help-With-Learning-Programming"><span class="toc-nav-text">Will it Help With Learning Programming?</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#The-Potential-Risks"><span class="toc-nav-text">The Potential Risks</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#The-Potential-Benefits"><span class="toc-nav-text">The Potential Benefits</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/why-copilot-wont-change-programming/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

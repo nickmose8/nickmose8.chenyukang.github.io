@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>Caching: From Top To Bottom</title>
+
+    
+    
+    <meta name="description" content="[mathjax]
+ Every programmer will encounter this computing concept: Caching.
+ It is a core and broad concept that every programmer should have a deep understanding of, it’s extremely important f...">
+    <link rel="canonical" href="http://coderscat.com/caching-from-top-to-bottom/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Caching: From Top To Bottom">
+    <meta property="og:description" content="[mathjax]
+ Every programmer will encounter this computing concept: Caching.
+ It is a core and broad concept that every programmer should have a deep understanding of, it’s extremely important f...">
+    <meta property="og:url" content="http://coderscat.com/caching-from-top-to-bottom/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2019-11-22 20:32:00">
+    <meta property="article:modified_time" content="2019-11-22 20:32:00">
+    <meta property="og:updated_time" content="2019-11-22 20:32:00">
+    <meta property="og:image" content="http://coderscat.com/images/cache-top-to-bottom/image9.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/cache-top-to-bottom/image9.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Caching: From Top To Bottom">
+    <meta name="twitter:description" content="[mathjax]
+ Every programmer will encounter this computing concept: Caching.
+ It is a core and broad concept that every programmer should have a deep understanding of, it’s extremely important f...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/cache-top-to-bottom/image9.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            Caching: From Top To Bottom | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Caching: From Top To Bottom</h2>
+  <p class="post-date">2019-11-22</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <p></p>
+<p> Every programmer will encounter this computing concept: Caching.</p>
+<p> It is a core and broad concept that every programmer should have a deep understanding of, it’s extremely important for system design and performance-critical programs.</p>
+<blockquote>
+<p>There are only two hard things in Computer Science:<br>cache invalidation and naming things.<br>– Phil Karlton</p>
+</blockquote>
+<p><strong>Technologies come and faded, but the principle tends to remain more constant.</strong></p>
+<p> In the computing world, ubiquitous technologies originated from the concept of Caching. Caching is designed and implemented in multiple abstraction layers, ranging from CDN, web browser, operating system, CPU and algorithm design.</p>
+<p> <img src="/images/cache-top-to-bottom/image9.png" alt="file:img/cache-top-to-bottom/image9.png"></p>
+<h2 id="What’s-Caching"><a href="#What’s-Caching" class="headerlink" title="What’s Caching"></a>What’s Caching</h2><p> <a target="_blank" rel="noopener" href="https://cachingexplained.com/#caching-explained">cachingexplained.com</a> will give you the best and lively explanation of Caching.</p>
+<p> From Wikipedia: “A cache is a hardware or software component that stores data so that future requests for that data can be served faster; the data stored in a cache might be the result of an earlier computation or a copy of data stored elsewhere.“</p>
+<blockquote>
+<p>The essential idea of Caching is to use space for time optimization, it’s a trade-off between size and speed.</p>
+</blockquote>
+<p> Caching is used in scenarios like:</p>
+<ul>
+<li><p>Read operations outnumber write operation.</p>
+</li>
+<li><p>The operations go with the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Locality_of_reference">principle of locality</a>.</p>
+<p>The benefits of Caching include increasing read throughput and reducing the system load on the backend.</p>
+<p>Here are some key aspects related to Caching:</p>
+</li>
+</ul>
+<ul>
+<li><p>The hit ratio</p>
+<p>$$ \frac{ N(hit) } { N(hit) + N(mishit) } $$</p>
+<p>A mis-hit means, the fetched content is not in Cache, and an additional request will be made to fetch it. Apparently, A higher hit rate means more efficiently the cache works.</p>
+</li>
+</ul>
+<ul>
+<li><p>The cache data accessing and updating strategy</p>
+<p>There are multiple <a target="_blank" rel="noopener" href="https://codeahoy.com/2017/08/11/caching-strategies-and-how-to-choose-the-right-one/">Caching Strategies</a>, we should choose the suitable one according to the data access pattern, that is to say, how the data is read and written.</p>
+<p>Furthermore, a usual cache is implemented with limited size. When the cache is full, we need to choose which cached content to be evicted (or replaced with new data), there are several normal strategies here:</p>
+</li>
+</ul>
+<ul>
+<li><p>Least recently used (LRU)</p>
+</li>
+<li><p>Least frequently used (LFU)</p>
+</li>
+<li><p>Most recently used (MRU)</p>
+</li>
+<li><p>First in, first out (FIFO)</p>
+<p>Meanwhile, caching may introduce some other issues, such as data inconsistency.</p>
+</li>
+</ul>
+<ul>
+<li><p>Single or distributed caching.</p>
+<p>Distributed caching is suitable for high traffic sites; it will be much more complicated in a distributed context.</p>
+<p>Let’s discuss some classic usages of Caching.</p>
+</li>
+</ul>
+<h2 id="CDN"><a href="#CDN" class="headerlink" title="CDN"></a>CDN</h2><p> <a target="_blank" rel="noopener" href="https://www.globaldots.com/content-delivery-network-explained">CDN</a>(Content Delivery Networking) is the crucial Internet infrastructure, implementing the concept of Caching.</p>
+<p> CDN improves the loading time of web pages and speeds up on-demand video downloads and streaming. When we are streaming videos of Netflix, instead of fetching the video directly from the central server, the client downloads the video from the CDN node, which geographically closes to us, shortening the loading time.</p>
+<p><img src="/images/cache-top-to-bottom/image6.png" alt="file:img/cache-top-to-bottom/image6.png"></p>
+<p> A typical CDN workflow is:</p>
+<p> When the client requests data from the CDN node, the CDN node checks whether the cached data is out of date.</p>
+<ul>
+<li><p>If the cached data has not expired, the cached data is directly returned to the client.</p>
+</li>
+<li><p>Otherwise, the CDN node sends a request to the Origin Server. Pull the latest data from the Origin Server, update the local cache, and then return the latest data to the client.</p>
+<p>The trade-off here is how long will the CDN node cache content, which has a direct impact on the “hit ratio”.</p>
+<p>If the CDN cache time is short, the data on the CDN edge node is most likely to be outdated, resulting in frequent requests to the Origin Server, which increases the system load of source servers and delays the user’s access. If CDN cache time is too long, expired data may be served to the client.</p>
+<p>Follow up question: How a CDN server checks whether a client has the latest cached content?</p>
+<p>The answer is referring to the HTTP caching methodology.</p>
+</li>
+</ul>
+<h2 id="HTTP-Caching"><a href="#HTTP-Caching" class="headerlink" title="HTTP Caching"></a>HTTP Caching</h2><p> In the context of the Web, users read more frequently than write.</p>
+<p> Fetching data over the network is both slow and expensive, thus the ability to cache and reuse previously fetched resources is critical for optimizing performance.</p>
+<p>There are a bunch of cache schemas used in the context of HTTP.  The most important cache header is cache-control.</p>
+<p> <img src="/images/cache-top-to-bottom/image1.png" alt="file:img/cache-top-to-bottom/image1.png"></p>
+<ul>
+<li>Cache-Control: no-store The cache should not store anything about the client request or server response. A request is sent to the server and a full response is downloaded each and every time.</li>
+</ul>
+<ul>
+<li>Cache-Control: no-cache A cache will send the request to the origin server for validation before releasing a cached copy.</li>
+</ul>
+<ul>
+<li>Cache-Control: private “private” indicates that the response is intended for a single user only and must not be stored by a shared cache. A private browser cache may store the response in this case.</li>
+</ul>
+<ul>
+<li>Cache-Control: public The “public” directive indicates that the response may be cached by any cache. If content needs to be cached in CDN, “public” is required.</li>
+</ul>
+<p><strong>But how we resolve the stale data issue?</strong></p>
+<p> The answer is Etags/Last-Modified, the server will check these headers to determine whether the local cache of the client is validated.</p>
+<p> <img src="/images/cache-top-to-bottom/image-http-caching2.png" alt="file:img/cache-top-to-bottom/image-http-caching2.png"></p>
+<p> An HTTP response with 304 will be sent if it’s validated, otherwise response 200 with the newest content.</p>
+<p> Another solution for expired data is generating a new unique URL for resources, in normal cases, the files of stylesheet files, images in HTML pages, Javascript files will embed a fingerprint in the filename. So that the clients will fetch from the new URL if the server updated content.</p>
+<p> Combining the usages of cache-control, Etags, and unique URLs, we can achieve the best: long-lived expiration times, control over where the response can be cached, and on-demand updates.</p>
+<h2 id="Nginx-Caching"><a href="#Nginx-Caching" class="headerlink" title="Nginx Caching"></a>Nginx Caching</h2><p> <img src="/images/cache-top-to-bottom/image10.png" alt="file:img/cache-top-to-bottom/image10.png"></p>
+<p>In practice, Nginx generally used as a reverse proxy or load balancer in front of applications,  it can also act like a cache server. A simple configuration for Nginx caching is:</p>
+ <figure class="highlight nginx"><table><tr><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> &#123;<br>    <span class="hljs-comment"># Note that it&#x27;s listening on port 9000</span><br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">9000</span> default_server;<br>    <span class="hljs-attribute">root</span> /var/www/;<br>    <span class="hljs-attribute">index</span> index.html index.htm;<br><br>    <span class="hljs-attribute">server_name</span> example.com www.example.com;<br><br>    <span class="hljs-attribute">charset</span> utf-<span class="hljs-number">8</span>;<br>    <span class="hljs-attribute">include</span> h5bp/basic.conf;<br><br>    <span class="hljs-attribute">location</span> / &#123;<br>        <span class="hljs-attribute">try_files</span> <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ =<span class="hljs-number">404</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p> It’s a transparent cache layer for almost any backend application, which means concise architecture.</p>
+<p> Another point that needs to be noticed here is that we set the size of memory space(for cache keys) to 10m, the cached value is stored in disk with path /tmp/nginx.</p>
+<p> The option of <strong>inactive=60m</strong> used to specify how long an item can remain in the cache without being accessed.</p>
+<p> Except for better performance, Nginx cache could also improve the availability of sites, we could use <strong>proxy_cache_use_stale</strong> options for delivering cached content when the origin is down.</p>
+<p> Nginx has other rich features like traffic limiting, content compression, etc. If you are interested in high-performance tunning, I strongly recommend you to read: <a target="_blank" rel="noopener" href="https://www.nginx.com/blog/nginx-high-performance-caching/#HowItWorks">Nginx High-Performance Caching</a></p>
+<h2 id="Linux-System-Caching"><a href="#Linux-System-Caching" class="headerlink" title="Linux System Caching"></a>Linux System Caching</h2><p> Keep in mind, system-call is expensive and data operation on disk(read/write) is much slower than operation on memory. Linux will maximize the use of a computer’s memory for the best performance.</p>
+<p> Let’s check command ‘free’:</p>
+<p> <img src="/images/cache-top-to-bottom/image11.png" alt="file:img/cache-top-to-bottom/image11.png"></p>
+<p> As we can see, there is not much <strong>free</strong> memory. Even we did not run many applications currently.</p>
+<p> Don’t worry, Linux is not <a target="_blank" rel="noopener" href="https://www.linuxatemyram.com/">eating your memory</a>. The system is just borrowing <strong>unused memory</strong> for disk caching. This makes it looks like you are low on memory.</p>
+<p> When data is written, Linux first writes it to a Page Cache (in memory) and mark the page to Dirty, the content of these dirty pages is periodically transferred (as well as with the system calls sync or fsync) to the underlying storage device.</p>
+<p> Let’s run some commands to verify it:</p>
+<p> <img src="/images/cache-top-to-bottom/image7.png" alt="file:img/cache-top-to-bottom/image7.png"></p>
+<p> From the output, we could find out after a data writing of 200MB, the Dirty pages in the system grows.</p>
+<p> Then if we run the command <strong>sync</strong>,  it will shrink because data in Dirty pages have already synced into the disk.</p>
+<p> File blocks are written to the Page Cache not just during writing, but also when reading files.</p>
+<p> For instance, when you read a 100-megabyte file twice, once after the other, the second access will be quicker, because the file blocks come from the Page Cache in memory directly and do not have to be read from the hard disk again.</p>
+<h2 id="CPU-Caching"><a href="#CPU-Caching" class="headerlink" title="CPU Caching"></a>CPU Caching</h2><p> CPU caching was invented to bridge the speed gap between the CPU and main memory.</p>
+<p><img src="/images/cache-top-to-bottom/image4.png" alt="file:img/cache-top-to-bottom/image4.png"></p>
+<p>CPU caches are small pools of memory that store information the CPU is most likely to need next. All modern CPUs have multiple levels of CPU caches. Access times vary greatly between each Cache level, the faster level’s cost per byte is higher than slower one’s, also with smaller capacity. Cache L1 is faster than Cache L2, and Cache L2 is faster than RAM.</p>
+<p> <img src="/images/cache-top-to-bottom/image8.png" alt="file:img/cache-top-to-bottom/image8.png"></p>
+<p> According to the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Locality_of_reference#cite_note-1">principle of locality</a>,  most of the time spent by a program focuses on core operations, and CPU is likely to access the same set of memory locations repetitively over a short period of time.</p>
+<p>It’s critical to follow this principle because a high mis-hit ratio on Cache could introduce a performance penalty on the program.</p>
+<p> Let’s have a check with these two C functions, what are the differences between them?</p>
+<p> Why the first function is almost 2 times faster than the latter one?</p>
+ <figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">array_sum_row</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a[M][N])</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> i,j,sum=<span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; M; i++)<br>    <span class="hljs-keyword">for</span>(j = <span class="hljs-number">0</span>; j &lt; N; j++)<br>      sum += a[i][j];<br>  <span class="hljs-keyword">return</span> sum;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">array_sum_col</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a[M][N])</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> i,j,sum=<span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>    <span class="hljs-keyword">for</span>(j = <span class="hljs-number">0</span>; j &lt; M; j++)<br>      sum += a[j][i];<br>  <span class="hljs-keyword">return</span> sum;<br>&#125; <br><br></code></pre></td></tr></table></figure>
+
+<p> Because row-major layout in memory is used by C/C++ compilers, when the data in a[i][0] is accessed,  the nearby data a[i][1] ~ a[i][K] will likely be loaded into to Cache.</p>
+<p> According to the iteration order, because elements nearby have been cached,  we will get a high hit ratio on the cache.</p>
+<p> But if we reverse the iteration order into col-major, since the loaded data is not accessed afterward and most data is not fetched from cache, it will trigger a high mis-hit ratio issue and bad performance on running time.</p>
+<h2 id="Caching-in-Algorithms"><a href="#Caching-in-Algorithms" class="headerlink" title="Caching in Algorithms"></a>Caching in Algorithms</h2><p> In algorithms design, we commonly store the computed result in a cache for time performance. Let’s have a dig on the classic recursive version of Fibonacci algorithm：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fib</span>(<span class="hljs-params">n</span>) </span>&#123;<br> <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">2</span>) &#123;<br>   <span class="hljs-keyword">return</span> n<br> &#125;<br> <span class="hljs-keyword">return</span> fib(n - <span class="hljs-number">1</span>) + fib(n - <span class="hljs-number">2</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p> If we analyze the computing process in visualization, we will found out there are some duplicated parts during the computation. Its complexity in Big O notation is $O(2^n)$.</p>
+<p> <img src="/images/cache-top-to-bottom/image12.png" alt="file:img/cache-top-to-bottom/image12.png"></p>
+<p> Memoization (top-down cache filling) can be used to optimizing the performance, we use an array to store the computed result:</p>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-title">memFib</span>(<span class="hljs-params">n</span>)</span> &#123;<br>   <span class="hljs-keyword">if</span> (mem[n] is <span class="hljs-literal">undefined</span>)<br>       <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">2</span>) result = n<br>       <span class="hljs-keyword">else</span> result = memFib(n-<span class="hljs-number">2</span>) + memFib(n-<span class="hljs-number">1</span>)<br>       mem[n] = result<br>   <span class="hljs-keyword">return</span> mem[n]<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p> Or we can use the bottom-top caching filling, which will produce an iterative version program:</p>
+ <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-title">tabFib</span>(<span class="hljs-params">n</span>)</span> &#123;<br>   mem[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span><br>   mem[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span><br>   <span class="hljs-keyword">for</span> i = <span class="hljs-number">2.</span>..n<br>       mem[i] = mem[i-<span class="hljs-number">2</span>] + mem[i-<span class="hljs-number">1</span>]<br>   <span class="hljs-keyword">return</span> mem[n]<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p> The idea of reducing duplicated computing is also applied in <strong><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Dynamic_programming">Dynamic Programming</a>(DP)</strong>, the key observation for DP problem is finding the overlapping subproblems, and use cache to store overlapping results.</p>
+<h2 id="Summary-up"><a href="#Summary-up" class="headerlink" title="Summary up"></a>Summary up</h2><p> We have a study on the Caching technique at different layers. Caching is not only a method for architecture and design, but it’s also a general idea for solving problems.</p>
+<p> The essential principle is:</p>
+<ul>
+<li><p>store duplicated data on a quicker component if needed(cases in CDN, Memory Cache)</p>
+</li>
+<li><p>use cache to reduce duplicate in computing(case in Fibonacci/DP).</p>
+<p><img src="/images/cache-top-to-bottom/image5.png" alt="file:img/cache-top-to-bottom/image5.png"></p>
+<p>In most cases, Cache is the abstraction layer we needed when solving performance problems and Caching techniques deserves serious study for <a target="_blank" rel="noopener" href="https://www.coderscat.com/to-be-a-programmer">an aspiring programmer</a>.</p>
+</li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li>CDN: <a target="_blank" rel="noopener" href="https://www.globaldots.com/content-delivery-network-explained">https://www.globaldots.com</a></li>
+<li>CDN-Caching: <a target="_blank" rel="noopener" href="https://support.stackpath.com/hc/en-us/articles/360001212783-CDN-Caching-Explained">https://support.stackpath.com</a></li>
+<li>HTTP Caching[1]: <a target="_blank" rel="noopener" href="https://tools.ietf.org/html/rfc7234">https://tools.ietf.org</a></li>
+<li>HTTP Caching[2]: <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching">https://developer.mozilla.org</a></li>
+<li>Nginx Caching: <a target="_blank" rel="noopener" href="https://docs.nginx.com/nginx/admin-guide/content-cache/content-caching/#enable">https://docs.nginx.com</a></li>
+<li>CPU Caching: <a target="_blank" rel="noopener" href="https://www.extremetech.com/extreme/188776-how-l1-and-l2-cpu-caches-work-and-why-theyre-an-essential-part-of-modern-chips">https://www.extremetech.com</a></li>
+</ul>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#System" >
+    <span class="tag-code-index">System</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/awesome-linux-command-line-tips/">
+        <span class="nav-arrow">← </span>
+        
+          Awesome Command-line tips to 10x...
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/lets-leetcode-with-fun/">
+            
+                Let&#39;s LeetCode with Fun
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#What%E2%80%99s-Caching"><span class="toc-nav-text">What’s Caching</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#CDN"><span class="toc-nav-text">CDN</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#HTTP-Caching"><span class="toc-nav-text">HTTP Caching</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Nginx-Caching"><span class="toc-nav-text">Nginx Caching</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Linux-System-Caching"><span class="toc-nav-text">Linux System Caching</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#CPU-Caching"><span class="toc-nav-text">CPU Caching</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Caching-in-Algorithms"><span class="toc-nav-text">Caching in Algorithms</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Summary-up"><span class="toc-nav-text">Summary up</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#References"><span class="toc-nav-text">References</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+    
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config" async>
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+      console.log("math .....");
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+    <!-- MathJax support END -->
+  
+
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/caching-from-top-to-bottom/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <title>LeetCode: LRU Cache</title>
+
+    
+    
+    <meta name="description" content="[latex]
+Challenge Description Design and implement a data structure for Recently Used (LRU) cache. It should support the following operations: get and put.
+ get(key) - Get the value (will alway...">
+    <link rel="canonical" href="http://coderscat.com/leetcode-lru-cache/" />
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="LeetCode: LRU Cache">
+    <meta property="og:description" content="[latex]
+Challenge Description Design and implement a data structure for Recently Used (LRU) cache. It should support the following operations: get and put.
+ get(key) - Get the value (will alway...">
+    <meta property="og:url" content="http://coderscat.com/leetcode-lru-cache/" />
+    <meta property="og:site_name" content="Coder's Cat">
+    <meta property="article:publisher" content="https://www.facebook.com/coderscat">
+    <meta property="article:tag" content="">
+    <meta property="article:section" content="">
+    <meta property="article:published_time" content="2020-02-06 12:51:00">
+    <meta property="article:modified_time" content="2020-02-06 12:51:00">
+    <meta property="og:updated_time" content="2020-02-06 12:51:00">
+    <meta property="og:image" content="http://coderscat.com/images/CAPTURE-2020_02_05_leetcode-lru-cache.org_20200206_125019.png"/>
+    <meta property="og:image:secure_url" content="http://coderscat.com/images/CAPTURE-2020_02_05_leetcode-lru-cache.org_20200206_125019.png"/>
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="CodersCat">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LeetCode: LRU Cache">
+    <meta name="twitter:description" content="[latex]
+Challenge Description Design and implement a data structure for Recently Used (LRU) cache. It should support the following operations: get and put.
+ get(key) - Get the value (will alway...">
+    <meta name="twitter:site" content="@coderscat">
+    <meta name="twitter:creator" content="@coderscat">
+    <meta name="twitter:image" content="http://coderscat.com/images/CAPTURE-2020_02_05_leetcode-lru-cache.org_20200206_125019.png"/>
+
+
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/css/images/favicon-32x32.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/css/images/favicon-16x16.ico">
+
+    <title>
+        
+            LeetCode: LRU Cache | Coder&#39;s Cat
+        
+    </title>  
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/fonts.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/code.css">
+
+    
+<link rel="stylesheet" href="/css/plugins/nprogress.min.css">
+
+    <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    
+<script src="/js/jquery.min.js"></script>
+
+  <script type="text/javascript" src="/js/geopattern.min.js"></script>
+  <script type="text/javascript" src="/js/nprogress.min.js"></script>
+
+
+  <script type="text/javascript" async src="https://platform-api.sharethis.com/js/sharethis.js#property=5fa8f493be36290012aa2a0d&product=inline-share-buttons"></script>
+
+  <div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+      <img src="/css/images/logo.png" width='400px' height='400px'/>
+  </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-77282254-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-77282254-2');
+</script>
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>Coder's Cat</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/data-structures/" class="item-link">D&S</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/algorithms/" class="item-link">Algo</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/programming-languages/" class="item-link">PL</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/system/" class="item-link">System</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tools/" class="item-link">Tools</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/tags/" class="item-link">Tags</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+      <li class="list-item" style="margin: 0">
+       <a class="icon-small" href="/search">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-search fa-stack-1x fa-inverse"></i>
+        </span>
+       </a>
+      </li>
+
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/data-structures/" class="menu-link">D&S</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/algorithms/" class="menu-link">Algo</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/programming-languages/" class="menu-link">PL</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/system/" class="menu-link">System</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tools/" class="menu-link">Tools</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tags/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+
+
+        <li class="list-item" style="margin: 0">
+          <a class="icon-small" href="/search">
+           <span class="fa-stack">
+             <i class="fa fa-search"></i>
+           </span>
+          </a>
+         </li>
+
+         
+      <li class="list-item" style="margin: 0">
+        <a class="icon-small" href="/atom.xml">
+         <span class="fa-stack fa-lg">
+           <i id="rss-icon" class="fa fa-rss fa-inverse"></i>
+         </span>
+        </a>
+       </li>
+
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>LeetCode: LRU Cache</h2>
+  <p class="post-date">2020-02-06</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content">
+      <p></p>
+<h2 id="Challenge-Description"><a href="#Challenge-Description" class="headerlink" title="Challenge Description"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/lru-cache/">Challenge Description</a></h2><p> Design and implement a data structure for <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Cache_replacement_policies#LRULeast">Recently Used (LRU)</a> cache. It should support the following operations: get and put.</p>
+<p> <code>get(key)</code> - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.</p>
+<p> <code>put(key, value)</code> - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.</p>
+<p> The cache is initialized with a positive capacity.</p>
+<p> Follow up:</p>
+<p> Could you do both operations in O(1) time complexity? Example:</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c">LRUCache cache = <span class="hljs-keyword">new</span> LRUCache( <span class="hljs-number">2</span> <span class="hljs-comment">/* capacity */</span> );<br><br>cache.put(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>);<br>cache.put(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>);<br>cache.get(<span class="hljs-number">1</span>);       <span class="hljs-comment">// returns 1</span><br>cache.put(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>);    <span class="hljs-comment">// evicts key 2</span><br>cache.get(<span class="hljs-number">2</span>);       <span class="hljs-comment">// returns -1 (not found)</span><br>cache.put(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>);    <span class="hljs-comment">// evicts key 1</span><br>cache.get(<span class="hljs-number">1</span>);       <span class="hljs-comment">// returns -1 (not found)</span><br>cache.get(<span class="hljs-number">3</span>);       <span class="hljs-comment">// returns 3</span><br>cache.get(<span class="hljs-number">4</span>);       <span class="hljs-comment">// returns 4</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p> For quick query operation, it’s easy to figure out to use <code>map</code> to store key and value.</p>
+<p> How we could keep which node is least recently used node?</p>
+<p> <img src="/images/CAPTURE-2020_02_05_leetcode-lru-cache.org_20200206_125019.png" alt="file:img/CAPTURE-2020_02_05_leetcode-lru-cache.org_20200206_125019.png"></p>
+<p> A clever approach is using <code>double-linked-list</code>, whenever we visiting a node, move the node to head. The least recently visited node is the tail of link list.</p>
+<p> Another trivial optimization in my code is, when the cache is full, we use the in-place policy to set the least recently used node’s value to new value.</p>
+<p> <img src="/images/CAPTURE-2020_02_05_leetcode-lru-cache.org_20200206_122541.png" alt="file:img/CAPTURE-2020_02_05_leetcode-lru-cache.org_20200206_122541.png"></p>
+ <figure class="highlight cpp"><table><tr><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;unordered_map&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">LRUNode</span> &#123;</span><br>  <span class="hljs-keyword">int</span> key, val;<br>  LRUNode *prev, *next;<br>  LRUNode(<span class="hljs-keyword">int</span> k, <span class="hljs-keyword">int</span> v) : key(k), val(v), prev(<span class="hljs-literal">NULL</span>), next(<span class="hljs-literal">NULL</span>) &#123;&#125;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LRUCache</span> &#123;</span><br><span class="hljs-keyword">private</span>:<br>  <span class="hljs-keyword">size_t</span> capaty;<br>  LRUNode* lruList;<br>  <span class="hljs-built_in">unordered_map</span>&lt;<span class="hljs-keyword">int</span>, LRUNode*&gt; table;<br><br>  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">set_head</span><span class="hljs-params">(LRUNode* node)</span> </span>&#123;<br>    node-&gt;next = lruList;<br>    node-&gt;prev = lruList-&gt;prev;<br>    lruList-&gt;prev-&gt;next = node;<br>    lruList-&gt;prev = node;<br>    lruList = node;<br>  &#125;<br><br>  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">visit</span><span class="hljs-params">(LRUNode* node)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>(lruList != node) &#123;<br>      node-&gt;prev-&gt;next = node-&gt;next;<br>      node-&gt;next-&gt;prev = node-&gt;prev;<br>      set_head(node);<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(LRUNode* node)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>(lruList == <span class="hljs-literal">NULL</span>) &#123;<br>      lruList = node;<br>      node-&gt;next = node;<br>      node-&gt;prev = node;<br>    &#125; <span class="hljs-keyword">else</span> set_head(node);<br>  &#125;<br><br>  <span class="hljs-function">LRUNode* <span class="hljs-title">get_and_visit</span><span class="hljs-params">(<span class="hljs-keyword">int</span> key)</span> </span>&#123;<br>    <span class="hljs-built_in">unordered_map</span>&lt;<span class="hljs-keyword">int</span>, LRUNode*&gt;::iterator it = table.find(key);<br>    <span class="hljs-keyword">if</span>(it != table.end()) visit(it-&gt;second);<br>    <span class="hljs-keyword">return</span> it != table.end() ? it-&gt;second : <span class="hljs-literal">NULL</span>;<br>  &#125;<br><br><span class="hljs-keyword">public</span>:<br>  LRUCache(<span class="hljs-keyword">int</span> capacity) : capaty(capacity), lruList(<span class="hljs-literal">NULL</span>) &#123; &#125;<br><br>  ~LRUCache() &#123;<br>    LRUNode* p = lruList;<br>    LRUNode* t = p;<br>    LRUNode* n = <span class="hljs-literal">NULL</span>;<br>    <span class="hljs-keyword">while</span>(t) &#123;<br>      n = t-&gt;next;<br>      <span class="hljs-keyword">delete</span> t;<br>      <span class="hljs-keyword">if</span>(n == p) <span class="hljs-keyword">break</span>;<br>      t = n;<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> key)</span> </span>&#123;<br>    LRUNode* n = get_and_visit(key);<br>    <span class="hljs-keyword">return</span> n == <span class="hljs-literal">NULL</span> ? <span class="hljs-number">-1</span> : n-&gt;val;<br>  &#125;<br><br>  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">put</span><span class="hljs-params">(<span class="hljs-keyword">int</span> key, <span class="hljs-keyword">int</span> value)</span> </span>&#123;<br>    LRUNode* node = get_and_visit(key);<br>    <span class="hljs-keyword">if</span>(node != <span class="hljs-literal">NULL</span>)<br>      node-&gt;val = value;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(table.size() &lt; capaty) &#123;<br>      <span class="hljs-comment">// allocate new node</span><br>      node = <span class="hljs-keyword">new</span> LRUNode(key, value);<br>      table[key] = node;<br>      add(node);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">// use in-place policy, replace lru-node wit new key and value.</span><br>      node = lruList-&gt;prev;<br>      table.erase(node-&gt;key);<br>      node-&gt;key = key;<br>      node-&gt;val = value;<br>      table[key] = node;<br>      visit(node);<br>    &#125;<br>  &#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p><strong><a target="_blank" rel="noopener" href="https://amzn.to/2BeAeB9">Preparing for an interview? Checkout this!</a></strong></p>
+
+    </section>
+
+     <div>
+          <p style="text-align:center; color: #12472d; margin-left: 2%; margin-right: 2%;"><b>Join my <a target="_blank" rel="noopener" href="http://codercat.substack.com">Email List</a> for more insights, It's Free!&#128523;	</b></p>
+          <iframe src="https://codercat.substack.com/embed" width="96%" height="350" style="border:2px solid #EEE; background:rgb(248, 244, 244); margin-left: 2%; margin-right: 2%;" frameborder="1" scrolling="no"></iframe>
+      </div>
+    
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tags#LeetCode" >
+    <span class="tag-code-index">LeetCode</span>
+  </a>
+
+  <a href="/tags#LRU" >
+    <span class="tag-code-index">LRU</span>
+  </a>
+
+
+      </div>
+    
+
+    <div class="sharethis-inline-share-buttons"></div>
+
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/leetcode-majority-element/">
+        <span class="nav-arrow">← </span>
+        
+          LeetCode: Majority Element
+        
+      </a>
+    
+    
+        <a class="nav-right" href="/leetcode-powx-n/">
+            
+                LeetCode: Pow(x, n)
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+
+    <!-- NAV END -->
+
+    <script src="https://utteranc.es/client.js"
+            repo="nickmose8/coderscat-comments"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+      <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title"></strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Challenge-Description"><span class="toc-nav-text">Challenge Description</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Solution"><span class="toc-nav-text">Solution</span></a></li></ol>
+    
+  </div>
+</aside>
+
+  
+  <!-- Catalog END -->
+
+</main>
+
+
+    
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config" async>
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+      console.log("math .....");
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML" async></script>
+    <!-- MathJax support END -->
+  
+
+
+
+
+
+<script>
+  (function () {
+    var url = 'http://coderscat.com/leetcode-lru-cache/';
+    var banner = ''
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer" id="footer">
+    <p class="copyright">
+        &copy; 2022 | CodersCat
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+ var hasLine = 'false';
+ async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+     $('figure pre').each(function(i, block) {
+         var figure = $(this).parents('figure');
+         if (hasLine === 'false') {
+             figure.find('.gutter').hide();
+         }
+         var lang = figure.attr('class').split(' ')[1] || 'code';
+         var codeHtml = $(this).html();
+         var codeTag = document.createElement('code');
+         codeTag.className = lang;
+         codeTag.innerHTML = codeHtml;
+         $(this).attr('class', '').empty().html(codeTag);
+         figure.attr('data-lang', lang.toUpperCase());
+     });
+ })
+</script>
+
+<script src="/js/script.js"></script>
+
+
+  </body>
+</html>
