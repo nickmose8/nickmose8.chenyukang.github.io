@@ -10,44 +10,8 @@
     
     
     <url>
-        <loc>http://coderscat.com/web/</loc>
-        <lastmod>2022-01-16T06:44:38.396Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    
-    
-    <url>
-        <loc>http://coderscat.com/tools/</loc>
-        <lastmod>2022-01-16T06:44:38.365Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    
-    
-    <url>
-        <loc>http://coderscat.com/tags/</loc>
-        <lastmod>2022-01-16T06:44:38.318Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    
-    
-    <url>
-        <loc>http://coderscat.com/system/</loc>
-        <lastmod>2022-01-16T06:44:38.287Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    
-    
-    <url>
-        <loc>http://coderscat.com/search/</loc>
-        <lastmod>2022-01-16T06:44:38.256Z</lastmod>
+        <loc>http://coderscat.com/programming-languages/</loc>
+        <lastmod>2022-01-17T17:16:32.082Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -56,7 +20,7 @@
     
     <url>
         <loc>http://coderscat.com/project/</loc>
-        <lastmod>2022-01-16T06:44:38.209Z</lastmod>
+        <lastmod>2022-01-17T17:16:32.082Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -64,8 +28,8 @@
     
     
     <url>
-        <loc>http://coderscat.com/programming-languages/</loc>
-        <lastmod>2022-01-16T06:44:38.162Z</lastmod>
+        <loc>http://coderscat.com/search/</loc>
+        <lastmod>2022-01-17T17:16:32.082Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -73,8 +37,8 @@
     
     
     <url>
-        <loc>http://coderscat.com/data-structures/</loc>
-        <lastmod>2022-01-16T06:44:26.161Z</lastmod>
+        <loc>http://coderscat.com/system/</loc>
+        <lastmod>2022-01-17T17:16:32.082Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -82,8 +46,26 @@
     
     
     <url>
-        <loc>http://coderscat.com/algorithms/</loc>
-        <lastmod>2022-01-16T06:44:26.098Z</lastmod>
+        <loc>http://coderscat.com/tags/</loc>
+        <lastmod>2022-01-17T17:16:32.082Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    
+    
+    <url>
+        <loc>http://coderscat.com/tools/</loc>
+        <lastmod>2022-01-17T17:16:32.082Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    
+    
+    <url>
+        <loc>http://coderscat.com/web/</loc>
+        <lastmod>2022-01-17T17:16:32.082Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -92,7 +74,25 @@
     
     <url>
         <loc>http://coderscat.com/about/</loc>
-        <lastmod>2022-01-16T06:44:26.020Z</lastmod>
+        <lastmod>2022-01-17T17:16:31.662Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    
+    
+    <url>
+        <loc>http://coderscat.com/algorithms/</loc>
+        <lastmod>2022-01-17T17:16:31.662Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    
+    
+    <url>
+        <loc>http://coderscat.com/data-structures/</loc>
+        <lastmod>2022-01-17T17:16:31.662Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
