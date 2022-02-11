@@ -9,128 +9,8 @@
 
 
     <url>
-        <loc>http://coderscat.com/swap-caps-lock-and-control/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/tcp-3-way-handshake-in-detail/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/tcp-vs-dup/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/teach-kids-to-programming/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/the-great-quotes-of-programming/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/the-way-to-learn-frontend/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/to-be-a-programmer/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/tools-for-programming-languages/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/understanding-mapreduce/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/understanding-recursion-and-continuation-with-python/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/using-disjoint-set-union-find-to-create-maze/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/validate-binary-search-tree/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/what-i-learned-from-my-5-months-of-writing/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/what-i-learned-from-steve-jobs-thoughts-about-technology-and-product/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/why-copilot-wont-change-programming/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>http://coderscat.com/why-redis-is-single-threaded/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.199Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -138,79 +18,7 @@
 
     <url>
         <loc>http://coderscat.com/wsl-tips/</loc>
-        <lastmod>2022-02-11T04:03:41.339Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/learn-programming-languages/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/leetcode-3sum-closest/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/leetcode-3sum/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/leetcode-4sum/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/leetcode-add-strings/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/leetcode-add-two-numbers/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/leetcode-check-array-formation-through-concatenation/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/leetcode-clone-binary-tree-with-random-pointer/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://coderscat.com/leetcode-coin-change/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.199Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -218,7 +26,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-combination-sum-ii/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -226,7 +34,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-combination-sum/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -234,7 +42,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-container-with-most-water/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -242,7 +50,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-defuse-the-bomb/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -250,7 +58,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-divide-two-integers/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -258,7 +66,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-divisor-game/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -266,7 +74,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-fibonacci-number/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -274,7 +82,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-find-first-and-last-position-of-element-in-sorted-array/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -282,7 +90,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-find-peak-element/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -290,7 +98,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-find-positive-integer-solution-for-a-given-equation/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -298,7 +106,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-generate-parentheses/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -306,7 +114,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-groups-of-special-equivalent-strings/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -314,7 +122,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-implement-strstr/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -322,7 +130,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-increasing-order-search-tree/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -330,7 +138,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-intersection-of-two-linked-lists/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -338,7 +146,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-island-perimeter/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -346,7 +154,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-letter-combinations-of-a-phone-number/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -354,7 +162,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-longest-common-prefix/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -362,7 +170,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-longest-consecutive-sequence/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -370,7 +178,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-longest-substring-without-repeating-characters/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -378,7 +186,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-longest-uncommon-subsequence-i/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -386,7 +194,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-longest-valid-parentheses/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -394,7 +202,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-lru-cache/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -402,7 +210,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-majority-element/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -410,7 +218,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-max-consecutive-ones-ii/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -418,7 +226,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-max-consecutive-ones-iii/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -426,7 +234,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-max-consecutive-ones/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -434,7 +242,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-maximum-product-subarray/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -442,7 +250,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-maximum-subarray/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -450,7 +258,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-median-of-two-sorted-arrays/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -458,7 +266,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-merge-k-sorted-lists/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -466,7 +274,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-merge-sorted-array/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -474,7 +282,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-merge-two-sorted-lists/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -482,7 +290,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-min-stack/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -490,7 +298,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-multiply-strings/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -498,7 +306,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-palindrome-number/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -506,7 +314,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-permutations-ii/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -514,7 +322,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-permutations/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -522,7 +330,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-populating-next-right-pointers-in-each-node/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -530,7 +338,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-powx-n/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -538,7 +346,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-problems-for-beginners/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -546,7 +354,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-regular-expression-matching/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -554,7 +362,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-relative-sort-array/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -562,7 +370,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-remove-duplicate-node-lcci/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -570,7 +378,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-remove-duplicates-from-sorted-array/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -578,7 +386,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-remove-element/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -586,7 +394,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-remove-nth-node-from-end-of-list/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -594,7 +402,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-reverse-integer/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -602,7 +410,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-reverse-words-in-a-string-iii/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -610,7 +418,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-search-insert-position/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -618,7 +426,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-serialize-and-deserialize-n-ary-tree/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -626,7 +434,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-sort-array-by-increasing-frequency/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -634,7 +442,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-sort-array-by-parity-ii/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -642,7 +450,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-sqrtx/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -650,7 +458,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-string-to-integer-atoi/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -658,7 +466,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-substring-with-concatenation-of-all-words/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -666,7 +474,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-swap-nodes-in-pairs/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -674,7 +482,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-two-sum-ii-input-array-is-sorted/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -682,7 +490,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-two-sum/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -690,7 +498,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-unique-binary-search-trees-ii/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -698,7 +506,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-unique-paths-ii/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -706,7 +514,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-valid-parentheses/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -714,7 +522,7 @@
 
     <url>
         <loc>http://coderscat.com/leetcode-word-search/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -722,7 +530,7 @@
 
     <url>
         <loc>http://coderscat.com/lets-leetcode-with-fun/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -730,7 +538,7 @@
 
     <url>
         <loc>http://coderscat.com/lowest-common-ancestor-of-a-binary-search-tree/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -738,7 +546,7 @@
 
     <url>
         <loc>http://coderscat.com/lowest-common-ancestor-of-a-binary-tree/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -746,7 +554,7 @@
 
     <url>
         <loc>http://coderscat.com/my-favorite-tech-blogs/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -754,7 +562,7 @@
 
     <url>
         <loc>http://coderscat.com/nginx-http2-config/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -762,7 +570,7 @@
 
     <url>
         <loc>http://coderscat.com/python-dict-setdefault-and-getdefault/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -770,7 +578,7 @@
 
     <url>
         <loc>http://coderscat.com/python-generator-and-yield/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -778,7 +586,7 @@
 
     <url>
         <loc>http://coderscat.com/python-is-and-equal/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -786,7 +594,7 @@
 
     <url>
         <loc>http://coderscat.com/python-pros-and-cons-of-lambda/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -794,7 +602,7 @@
 
     <url>
         <loc>http://coderscat.com/python-strip-explained/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -802,7 +610,7 @@
 
     <url>
         <loc>http://coderscat.com/quicksort-history-and-impls/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -810,7 +618,7 @@
 
     <url>
         <loc>http://coderscat.com/random-number-and-card-shuffling-algorithm/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -818,7 +626,7 @@
 
     <url>
         <loc>http://coderscat.com/redis-vs-memcached/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -826,7 +634,7 @@
 
     <url>
         <loc>http://coderscat.com/ruby-change-current-working-directory/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -834,7 +642,7 @@
 
     <url>
         <loc>http://coderscat.com/ruby-how-to-check-a-string-contains-another-string/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -842,7 +650,7 @@
 
     <url>
         <loc>http://coderscat.com/ruby-how-to-read-file-in-lines/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -850,7 +658,7 @@
 
     <url>
         <loc>http://coderscat.com/rust-string-or-str/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -858,7 +666,7 @@
 
     <url>
         <loc>http://coderscat.com/rust-warp-use-cookie-for-authorization/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -866,7 +674,7 @@
 
     <url>
         <loc>http://coderscat.com/shell-commands-which-make-you-have-a-smile/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -874,7 +682,7 @@
 
     <url>
         <loc>http://coderscat.com/svelte-demo-movie-seat-booking/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -882,7 +690,135 @@
 
     <url>
         <loc>http://coderscat.com/svelte-form-validator/</loc>
-        <lastmod>2022-02-11T04:03:41.335Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/swap-caps-lock-and-control/</loc>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/tcp-3-way-handshake-in-detail/</loc>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/tcp-vs-dup/</loc>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/teach-kids-to-programming/</loc>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/the-great-quotes-of-programming/</loc>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/the-way-to-learn-frontend/</loc>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/things-learned-from-github-and-opensource/</loc>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/to-be-a-programmer/</loc>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/tools-for-programming-languages/</loc>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/understanding-mapreduce/</loc>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/understanding-recursion-and-continuation-with-python/</loc>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/using-disjoint-set-union-find-to-create-maze/</loc>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/validate-binary-search-tree/</loc>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/what-i-learned-from-my-5-months-of-writing/</loc>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/what-i-learned-from-steve-jobs-thoughts-about-technology-and-product/</loc>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/why-copilot-wont-change-programming/</loc>
+        <lastmod>2022-02-11T06:36:12.195Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -890,7 +826,7 @@
 
     <url>
         <loc>http://coderscat.com/3-most-slow-sorting-algorithms/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -898,7 +834,7 @@
 
     <url>
         <loc>http://coderscat.com/5-advice-for-learning-emacs/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -906,7 +842,7 @@
 
     <url>
         <loc>http://coderscat.com/5-best-practices-to-keep-you-from-git-leaks/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -914,7 +850,7 @@
 
     <url>
         <loc>http://coderscat.com/5-fancy-shells/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -922,7 +858,7 @@
 
     <url>
         <loc>http://coderscat.com/5-most-common-unwitting-lies-that-developers-tell/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -930,7 +866,7 @@
 
     <url>
         <loc>http://coderscat.com/5-things-i-learned-from-teslas-anti-handbook/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -938,7 +874,7 @@
 
     <url>
         <loc>http://coderscat.com/5-tips-for-tech-interview/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -946,7 +882,7 @@
 
     <url>
         <loc>http://coderscat.com/5-tools-to-boost-your-productivity-on-windows-10/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -954,7 +890,7 @@
 
     <url>
         <loc>http://coderscat.com/5-tricks-that-will-help-you-debug-python-code/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -962,7 +898,7 @@
 
     <url>
         <loc>http://coderscat.com/awesome-books-for-python-programming/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -970,7 +906,7 @@
 
     <url>
         <loc>http://coderscat.com/awesome-linux-command-line-tips/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -978,7 +914,7 @@
 
     <url>
         <loc>http://coderscat.com/awesome-vscode-extensions-for-markdown/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -986,7 +922,7 @@
 
     <url>
         <loc>http://coderscat.com/basic-networking-tool-netcat/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -994,7 +930,7 @@
 
     <url>
         <loc>http://coderscat.com/basic-networking-tool-netstat/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1002,7 +938,7 @@
 
     <url>
         <loc>http://coderscat.com/basic-networking-tools-telnet/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1010,7 +946,7 @@
 
     <url>
         <loc>http://coderscat.com/best-cs-books/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1018,7 +954,7 @@
 
     <url>
         <loc>http://coderscat.com/binary-search/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1026,7 +962,7 @@
 
     <url>
         <loc>http://coderscat.com/blogging-with-emacs-and-wordpress/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1034,7 +970,7 @@
 
     <url>
         <loc>http://coderscat.com/bloom-filter/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1042,7 +978,7 @@
 
     <url>
         <loc>http://coderscat.com/breadth-first-searchbfs-explained-with-visualization/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1050,7 +986,7 @@
 
     <url>
         <loc>http://coderscat.com/caching-from-top-to-bottom/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1058,7 +994,7 @@
 
     <url>
         <loc>http://coderscat.com/code-scan-in-git-repos/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1066,7 +1002,7 @@
 
     <url>
         <loc>http://coderscat.com/command-line-to-list-size-of-directory-macos-linux/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1074,7 +1010,7 @@
 
     <url>
         <loc>http://coderscat.com/config-nginx-for-security/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1082,7 +1018,7 @@
 
     <url>
         <loc>http://coderscat.com/cookie-vs-session/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1090,7 +1026,7 @@
 
     <url>
         <loc>http://coderscat.com/depth-first-searchdfs-explained-with-visualization/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1098,7 +1034,7 @@
 
     <url>
         <loc>http://coderscat.com/encapsulation-in-python/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1106,7 +1042,7 @@
 
     <url>
         <loc>http://coderscat.com/excel-sheet-column-title/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1114,7 +1050,7 @@
 
     <url>
         <loc>http://coderscat.com/fix-missing-header-file-on-linux/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1122,7 +1058,7 @@
 
     <url>
         <loc>http://coderscat.com/how-redis-expire-key/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1130,7 +1066,7 @@
 
     <url>
         <loc>http://coderscat.com/how-to-count-the-number-of-processes-in-linux/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1138,7 +1074,7 @@
 
     <url>
         <loc>http://coderscat.com/how-to-delete-a-file-permanently-in-git/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1146,7 +1082,7 @@
 
     <url>
         <loc>http://coderscat.com/how-to-find-which-process-using-a-networking-port/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1154,7 +1090,7 @@
 
     <url>
         <loc>http://coderscat.com/how-to-keep-program-running-with-ssh-logout/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1162,7 +1098,7 @@
 
     <url>
         <loc>http://coderscat.com/how-to-learn-data-structures-and-algorithms/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1170,7 +1106,7 @@
 
     <url>
         <loc>http://coderscat.com/how-to-learn-linux/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1178,7 +1114,7 @@
 
     <url>
         <loc>http://coderscat.com/how-to-randomize-shuffle-a-javascript-array/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1186,7 +1122,7 @@
 
     <url>
         <loc>http://coderscat.com/how-to-shuffle-a-list-in-python/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1194,7 +1130,7 @@
 
     <url>
         <loc>http://coderscat.com/how-to-write-readable-code/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1202,7 +1138,7 @@
 
     <url>
         <loc>http://coderscat.com/i-made-a-500-article-in-my-first-3-months-on-medium/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1210,7 +1146,7 @@
 
     <url>
         <loc>http://coderscat.com/i-use-these-awesome-tools-for-writing/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1218,7 +1154,7 @@
 
     <url>
         <loc>http://coderscat.com/intro-webassembly/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1226,7 +1162,7 @@
 
     <url>
         <loc>http://coderscat.com/is-c-still-worth-learnning/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1234,7 +1170,7 @@
 
     <url>
         <loc>http://coderscat.com/javascript-and-css-optimization/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1242,7 +1178,7 @@
 
     <url>
         <loc>http://coderscat.com/kmp-string-search-algorithm/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1250,7 +1186,7 @@
 
     <url>
         <loc>http://coderscat.com/kth-largest-element-in-an-array/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -1258,7 +1194,79 @@
 
     <url>
         <loc>http://coderscat.com/learn-from-source-code/</loc>
-        <lastmod>2022-02-11T04:03:41.331Z</lastmod>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/learn-programming-languages/</loc>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/leetcode-3sum-closest/</loc>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/leetcode-3sum/</loc>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/leetcode-4sum/</loc>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/leetcode-add-strings/</loc>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/leetcode-add-two-numbers/</loc>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/leetcode-check-array-formation-through-concatenation/</loc>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/leetcode-clone-binary-tree-with-random-pointer/</loc>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>http://coderscat.com/leetcode-coin-change/</loc>
+        <lastmod>2022-02-11T06:36:12.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
